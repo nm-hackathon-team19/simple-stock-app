@@ -1,8 +1,12 @@
 const express = require('express')
 const app = express();
+const path = require('path');
 const axios = require('axios');
 const port = process.env.PORT || 5000;
 
+// Set my buildb  as a static folder.
+// We just need to put the files in buils and it'll work
+app.use('/', express.static(path.join(__dirname, 'client/build')));
 
 app.get('/', (req, res) => {
   res.send('hello world')
