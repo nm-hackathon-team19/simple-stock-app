@@ -4,11 +4,16 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "author": "Amitay Soffer",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
