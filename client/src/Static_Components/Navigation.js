@@ -1,30 +1,27 @@
 import React from 'react'
 import './Static.css'
-import { Navbar, Nav } from 'react-bootstrap'
-import { LinkContainer } from "react-router-bootstrap";
+import { NavLink } from 'react-router-dom'
 
 export default function Navigation() {
   return (
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-      <Navbar.Brand>Stocks Fantazy</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto" >
-          <LinkContainer exact to="/" >
-            <Nav.Link >Home</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/trade">
-            <Nav.Link to="/trade">Trade</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/report">
-            <Nav.Link href="/report" >Reports</Nav.Link>
-          </LinkContainer>
-        </Nav>
-        <Nav>
-          <Nav.Link href="#deets">Register/Login</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">Login</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+    <div id="navbar">
+      <h1 className="logo">
+        <span className="text-primary"><i className="fas fa-book-open"></i> Trading</span>Stocks</h1>
+      <nav>
+        <ul>
+          <NavLink exact to='/' activeClassName="current">
+            <li>Home</li>
+          </NavLink>
+          <NavLink exact to='/trade' activeClassName="current">
+            <li>Trade</li>
+          </NavLink>
+          <NavLink exact to='/report' activeClassName="current">
+            <li>Reports</li>
+          </NavLink>
+          <li>Login</li>
+          <li>Register</li>
+        </ul>
+      </nav>
+    </div>
   )
 }

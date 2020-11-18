@@ -3,9 +3,14 @@ import './Static.css'
 
 export default function Footer() {
   return (
-    <footer className="footer-copyright text-center py-3">
-      <span>© 2020 Copyright:</span>
-      <a href="https://www.linkedin.com/in/amitay-soffer-137304151/" target="_blank"> Amitay Soffer</a>
+    <footer className="footer">
+      <div className="social-links">
+      <a href="www.facebook.com">Facebook</a>
+      <a href="www.instangram.com">Instangram</a>
+      <a href="www.twitter.com">Twitter</a>
+      <a href="www.youtube.com">Youtube</a>
+      </div>
+      <p><a href="https://www.linkedin.com/in/amitay-soffer-137304151/" target="_blank"> © 2020 Copyright: Amitay Soffer</a></p>
     </footer>
   )
 }
