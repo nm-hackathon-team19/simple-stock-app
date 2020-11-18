@@ -1,9 +1,11 @@
 import React from 'react'
+import './Footer.css'
 
 export default function Footer() {
   return (
-    <div>
-      <h1>Hello from the footer</h1>
-    </div>
+    <footer className="footer-copyright text-center py-3">
+      <span>© 2020 Copyright:</span>
+      <a href="https://www.linkedin.com/in/amitay-soffer-137304151/" target="_blank"> Amitay Soffer</a>
+    </footer>
   )
 }

@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-import Navbar from './Static_Components/navbar/Navbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Navigation from './Static_Components/navbar/Navigation'
 import Footer from './Static_Components/footer/Footer'
 import Home from './Page_Components/home/Home'
 import Trade from './Page_Components/trade/Trade'
@@ -10,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className="app" id="app-container">
-        <Navbar />
+        <Navigation />
         <main id="main-container">
           <Route path="/" exact component={Home} />
           <Route path="/trade" component={Trade} />

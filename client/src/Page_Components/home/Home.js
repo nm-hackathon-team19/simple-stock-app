@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div>
       <h1>Greetings from Home component</h1>
-      <Button className="btn btn-danger">Home!</Button>
     </div>
   )
 }
