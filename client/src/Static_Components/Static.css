@@ -1,0 +1,23 @@
+/* Navbar */
+.mr-auto, .mx-auto {
+  margin: auto;
+  font-size: 1.4rem;
+}
+
+.navbar {
+  font-size: 1.4rem;
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+/* Footer */
+.footer-copyright {
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #343a40;
+   color: #fff;
+}

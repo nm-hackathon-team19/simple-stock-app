@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Navigation from './Static_Components/navbar/Navigation'
-import Footer from './Static_Components/footer/Footer'
+import Navigation from './Static_Components/Navigation'
+import Footer from './Static_Components/Footer'
 import Home from './Page_Components/home/Home'
 import Trade from './Page_Components/trade/Trade'
 import Report from './Page_Components/report/Report'
