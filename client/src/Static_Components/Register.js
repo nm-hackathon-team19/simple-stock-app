@@ -9,7 +9,6 @@ function Register(props) {
       <div id="myModal" className="modal">
         <div className="modal-content">
           <form>
-
             <div class="container">
 
               <span className="close" onClick={props.toggleModal}>&times;</span>
@@ -29,7 +28,7 @@ function Register(props) {
               <p>By creating an account you agree to our <a >Terms & Privacy</a>.</p>
 
               <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="cancelbtn" onClick={props.toggleModal}>Cancel</button>
                 <button type="submit" class="signupbtn">Sign Up</button>
               </div>
             </div>
