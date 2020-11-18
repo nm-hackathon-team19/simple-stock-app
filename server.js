@@ -12,9 +12,9 @@ app.get('/', (req, res) => {
   res.send('hello world')
 })
 
-app.get('/home', (req, res) => {
-  res.send('Home page')
-})
+app.get('/api/home', (req, res) => {
+  res.send('my lord')
+});
 
 app.get('/stocks', (req, res) => {
   axios.get('https://cloud.iexapis.com/stable/tops?token=pk_e187f175e42d4ac89045179e525ef0e5&symbols=aapl')
