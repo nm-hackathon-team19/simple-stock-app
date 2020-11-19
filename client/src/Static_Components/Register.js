@@ -6,15 +6,18 @@ function Register(props) {
     return null
   } else {
     return (
-      <div id="myModal" className="modal">
+      <div id="register-modal" className="modal">
         <div className="modal-content">
           <form>
-            <div class="container">
+            <div className="container">
 
               <span className="close" onClick={props.toggleModal}>&times;</span>
 
               <label htmlFor="email"><b>Email</b></label>
               <input type="text" placeholder="Enter Email" name="email" required />
+
+              <label htmlFor="username"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="username" required />
 
               <label htmlFor="psw"><b>Password</b></label>
               <input type="password" placeholder="Enter Password" name="psw" required />
@@ -27,9 +30,9 @@ function Register(props) {
 
               <p>By creating an account you agree to our <a >Terms & Privacy</a>.</p>
 
-              <div class="clearfix">
-                <button type="button" class="cancelbtn" onClick={props.toggleModal}>Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
+              <div className="clearfix">
+                <button type="button" className="cancelbtn" onClick={props.toggleModal}>Cancel</button>
+                <button type="submit" className="signupbtn">Sign Up</button>
               </div>
             </div>
           </form>
