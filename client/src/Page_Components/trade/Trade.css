@@ -1,0 +1,46 @@
+/* User Holdings */
+.holdings-container {
+  border: 2px red solid;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+.showcase-header {
+}
+/* Stocks Showcase */
+.stocks-list {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  /* gap: 2rem; */
+  flex-wrap: wrap;
+}
+.stock-box {
+  border: 3px solid red;
+  background-color: #333;
+  color: #fff;
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.stocks-showcase {
+  height: 85vh;
+}
+
+.showcase-header {
+  text-align: center;
+}
+
+.stock-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-stock-btn {
+  background: rgb(182, 125, 125);
+}

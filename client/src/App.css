@@ -9,13 +9,6 @@ body {
   line-height: 1.6;
 }
 
-/* .container {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 0 2rem;
-  overflow: hidden;
-} */
-
 img {
   max-width: 100%;
 }

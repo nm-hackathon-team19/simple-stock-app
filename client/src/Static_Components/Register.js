@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './Static.css';
 
 function Register(props) {
@@ -38,7 +38,6 @@ function Register(props) {
           </form>
         </div>
       </div>
-
     );
   }
 };
