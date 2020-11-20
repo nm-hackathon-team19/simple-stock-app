@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UserHoldings(props) {
+export default function DisplayHoldings(props) {
   const { companyName, sharesNum, symbol, id } = props.holding
   return (
       <div className="holding-box">

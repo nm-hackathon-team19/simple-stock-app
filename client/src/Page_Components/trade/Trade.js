@@ -1,25 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import './Trade.css'
 import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid';
 import StocksShowcase from './StocksShowcase.js'
-import UserHoldings from './UserHoldings.js'
+import DisplayHoldings from './DisplayHoldings.js'
 import UserFunds from './UserFunds.js'
 import SearchStocks from './SearchStocks.js'
-import { v4 as uuidv4 } from 'uuid';
+import BuyModal from './BuyModal.js'
+import DisplaySearchedStock from './DisplaySearchedStock.js'
 
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
   const [holdings, setHoldings] = useState([]);
   const [funds, setFunds] = useState(10000);
+  const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+  const [searchedStock, setSearchedStock] = useState([])
+
+  function toggleBuyStockModal() {
+    setIsModalBuyStock(!isModalBuyStock);
+  }
 
   // Search for new stock
   function onSearchStockClick(value) {
-    console.log(value);
     axios.get(`api/stocks/search/?symbol=${value}`)
       .then(res => {
         console.log(res.data)
-        addNewStock(2, res.data.companyName, res.data.symbol)
-        updateUserFunds(res.data.latestPrice)
+        // addNewStock(2, res.data.companyName, res.data.symbol)
+        // updateUserFunds(res.data.latestPrice)
+        // debugger
+        setSearchedStock(
+          {
+            number: 2,
+            name: res.data.companyName,
+            symbol: res.data.symbol
+          })
       })
       .catch(err => {
         console.log(err)
@@ -51,8 +65,7 @@ export default function Trade() {
     setHoldings([...holdings]);
   }
 
-  //  console.log(holdings)
-
+  // Set showcases on page
   useEffect(() => {
     axios.get('/api/stocks/showcase', {})
       .then((res) => {
@@ -72,12 +85,22 @@ export default function Trade() {
     />)
 
   const holdingList = holdings.map(holding =>
-    <UserHoldings holding={holding} key={holding.id} />)
+    <DisplayHoldings holding={holding} key={holding.id} />)
 
   return (
     <div className="trade-container">
+      <BuyModal
+        show={isModalBuyStock}
+        toggleBuyStockModal={toggleBuyStockModal}
+      />
       <div className="search-container">
-        <SearchStocks onSearchStockClick={onSearchStockClick} />
+        <SearchStocks
+          onSearchStockClick={onSearchStockClick}
+          toggleBuyStockModal={toggleBuyStockModal}
+        />
+      </div>
+      <div className="searched-stock">
+        <DisplaySearchedStock searchedStock={searchedStock} />
       </div>
       <UserFunds funds={funds} />
       <div className="holdings-container">

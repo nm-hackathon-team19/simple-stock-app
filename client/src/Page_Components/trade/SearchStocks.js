@@ -2,10 +2,12 @@ import { React, useState } from 'react'
 
 export default function SearchStocks(props) {
   const [value, setValue] = useState('')
+  // debugger
 
   function handleSubmit(e) {
     e.preventDefault()
     props.onSearchStockClick(value)
+    props.toggleBuyStockModal();
   }
 
   return (
