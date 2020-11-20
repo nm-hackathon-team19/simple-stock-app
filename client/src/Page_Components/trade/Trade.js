@@ -3,6 +3,8 @@ import './Trade.css'
 import axios from 'axios'
 import StocksShowcase from './StocksShowcase.js'
 import UserHoldings from './UserHoldings.js'
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
@@ -22,18 +24,22 @@ export default function Trade() {
     const newShare = {
       symbol: symbol,
       companyName: company,
-      sharesNum: number
+      sharesNum: number,
+      id: uuidv4()
     }
-    
+
     if (holdings.length == 0) {
       setHoldings(holdings.concat(newShare))
     }
 
     holdings.map(hold => {
+      // debugger
       if (hold.symbol === symbol) {
+        // debugger
         hold.sharesNum += number
         return;
       } else {
+        // debugger
         setHoldings(holdings => [...holdings, newShare])
       }
     })
@@ -65,13 +71,15 @@ export default function Trade() {
     />)
 
   const holdingList = holdings.map(holding =>
-    <UserHoldings holding={holding} />)
+    <UserHoldings holding={holding} key={holding.id} />)
 
   return (
     <div className="trade-container">
       <div className="holdings-container">
         <h1 className="showcase-header">Your current holdings</h1>
-        {holdingList}
+        <div className="holding-list">
+          {holdingList}
+        </div>
       </div>
       <div className="stocks-showcase">
         <h1 className="showcase-header">Showcase of popular stocks</h1>

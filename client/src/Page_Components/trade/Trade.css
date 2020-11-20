@@ -5,8 +5,17 @@
   margin-bottom: 200px;
 }
 
-.showcase-header {
+.holding-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+.holding-box {
+  border: 3px blue solid;
+}
+
 /* Stocks Showcase */
 .stocks-list {
   display: flex;
