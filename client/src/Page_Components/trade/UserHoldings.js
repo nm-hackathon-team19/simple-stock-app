@@ -7,7 +7,6 @@ export default function UserHoldings(props) {
         <h2>Company: {companyName}</h2>
         <h2>Share: {sharesNum}</h2>
         <h2>Share: {symbol}</h2>
-        <h2>id: {id}</h2>
       </div>
   )
 }

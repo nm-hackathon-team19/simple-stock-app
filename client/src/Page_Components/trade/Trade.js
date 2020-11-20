@@ -3,54 +3,55 @@ import './Trade.css'
 import axios from 'axios'
 import StocksShowcase from './StocksShowcase.js'
 import UserHoldings from './UserHoldings.js'
+import UserFunds from './UserFunds.js'
+import SearchStocks from './SearchStocks.js'
 import { v4 as uuidv4 } from 'uuid';
-
 
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
   const [holdings, setHoldings] = useState([]);
-  const [funds, setFunds] = useState(1000);
+  const [funds, setFunds] = useState(10000);
 
-  function purchaseStock(price, sharesNumber, company, symbol) {
-    updateUserShares(sharesNumber, company, symbol)
-    updateUserFunds(price)
+  // Search for new stock
+  function onSearchStockClick(value) {
+    console.log(value);
+    axios.get(`api/stocks/search/?symbol=${value}`)
+      .then(res => {
+        console.log(res.data)
+        addNewStock(2, res.data.companyName, res.data.symbol)
+        updateUserFunds(res.data.latestPrice)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
-
-  function updateUserShares(number, company, symbol) {
-    // loop through the holdings array and see if the symbol of newShare exists
-    // if it exists -> update the current holding with the newShare.number
-    // if it doens't exist -> add newShare as a new object to holdings array
-
-    const newShare = {
-      symbol: symbol,
-      companyName: company,
-      sharesNum: number,
-      id: uuidv4()
-    }
-
-    if (holdings.length == 0) {
-      setHoldings(holdings.concat(newShare))
-    }
-
-    holdings.map(hold => {
-      // debugger
-      if (hold.symbol === symbol) {
-        // debugger
-        hold.sharesNum += number
-        return;
-      } else {
-        // debugger
-        setHoldings(holdings => [...holdings, newShare])
-      }
-    })
-  }
-
-  console.log(holdings)
 
   function updateUserFunds(price) {
-    // console.log('price:', price)
+    const newFunds = funds - price
+    // setFunds(newFunds);
+    newFunds <= 0 ? alert('insufficient funds') : setFunds(newFunds);
   }
-  // console.log(holdings)
+
+  function addNewStock(number, company, symbol) {
+    const matchingHolding = holdings.find(
+      (holding) => holding.symbol === symbol
+    );
+    if (matchingHolding) {
+      const matchIndex = holdings.indexOf(matchingHolding);
+      holdings[matchIndex].sharesNum += number;
+    } else {
+      const newShare = {
+        symbol: symbol,
+        companyName: company,
+        sharesNum: number,
+        id: uuidv4(),
+      };
+      holdings.push(newShare);
+    }
+    setHoldings([...holdings]);
+  }
+
+  //  console.log(holdings)
 
   useEffect(() => {
     axios.get('/api/stocks/showcase', {})
@@ -66,8 +67,8 @@ export default function Trade() {
     <StocksShowcase
       showcase={showcase}
       key={showcase.marketCap}
-      purchaseStock={purchaseStock}
-    // updateUserFunds={updateUserFunds}
+      updateUserFunds={updateUserFunds}
+      addNewStock={addNewStock}
     />)
 
   const holdingList = holdings.map(holding =>
@@ -75,6 +76,10 @@ export default function Trade() {
 
   return (
     <div className="trade-container">
+      <div className="search-container">
+        <SearchStocks onSearchStockClick={onSearchStockClick} />
+      </div>
+      <UserFunds funds={funds} />
       <div className="holdings-container">
         <h1 className="showcase-header">Your current holdings</h1>
         <div className="holding-list">
