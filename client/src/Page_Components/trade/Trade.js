@@ -15,58 +15,29 @@ export default function Trade() {
   }
 
   function updateUserShares(number, company, symbol) {
+    // loop through the holdings array and see if the symbol of newShare exists
+    // if it exists -> update the current holding with the newShare.number
+    // if it doens't exist -> add newShare as a new object to holdings array
 
     const newShare = {
       symbol: symbol,
       companyName: company,
       sharesNum: number
     }
+    
+    if (holdings.length == 0) {
+      setHoldings(holdings.concat(newShare))
+    }
 
-    setHoldings(
-      holdings.map(item =>
-        //  debugger
-        item.symbol === newShare.symbol
-          ? { ...item, [item.sharesNum]: item.sharesNum + newShare.sharesNum }
-          : null
-        //  debugger
-      ))
-
-
-    setHoldings([...holdings, newShare])
-    // for (const holding of holdings) {
-    //   if (holding.symbol == newShare.symbol) {
-    //     for (let i = 0; holdings.length > i; i++) {
-    //       if (holdings[i].symbol == holding.symbol) {
-
-    // setHoldings(holdings.map(item => ))
-    //     prevState => ({
-    //     holdings: prevState.map(hold => {
-    //       if (hold.companyName === newShare.companyName) {
-    //         hold.sharesNum += newShare.sharesNum
-    //       }
-    //     })
-    //     [holdings]
-    //   }))
-    //   // debugger
+    holdings.map(hold => {
+      if (hold.symbol === symbol) {
+        hold.sharesNum += number
+        return;
+      } else {
+        setHoldings(holdings => [...holdings, newShare])
+      }
+    })
   }
-
-  // setHoldings(prevState => ({
-  //   holdings: prevState.holdings.map(
-  //     holding => holding.symbol === newShare.symbol ? { ...holding, sharesNum: holding.sharesNum + newShare.sharesNum } : el
-  //   )
-  // }))
-
-  // setHoldings(...holdings, holdings[i].sharesNum = holdings[i].sharesNum + newShare.sharesNum)
-
-
-  // holdings[i].sharesNum += newShare.sharesNum
-  // setHoldings(holdings => [...holdings, holdings[i].sharesNum += newShare.sharesNum])
-  //       }
-  //     }
-  //   }
-  // }
-
-
 
   console.log(holdings)
 
