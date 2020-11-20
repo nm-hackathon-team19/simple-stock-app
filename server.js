@@ -12,19 +12,21 @@ app.get('/', (req, res) => {
   res.send('hello world')
 })
 
-app.get('/api/home', (req, res) => {
-  res.send('my lord')
-});
-
-app.get('/stocks', (req, res) => {
-  axios.get('https://cloud.iexapis.com/stable/tops?token=pk_e187f175e42d4ac89045179e525ef0e5&symbols=aapl')
+app.get('/api/stocks/showcase', (req, res) => {
+  const companies = []
+  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=fb,aapl,tsla,googl,msft,nflx&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
     .then(function (response) {
       console.log(response.data)
-      res.send(response.data)
+      Object.keys(response.data).forEach(function (key) {
+        companies.push(response.data[key].quote)
+      })
+      res.json(companies)
     })
     .catch(function (err) {
       console.log(err)
     })
 })
+
+app.get("/*", (req, res) => { res.sendFile(path.join(__dirname, "client", "build", "index.html")); });
 
 app.listen(port, () => console.log(`You are live on port: ${port}`))
