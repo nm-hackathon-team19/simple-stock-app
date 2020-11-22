@@ -44,7 +44,6 @@ export default function Trade() {
     newFunds <= 0 ? alert('insufficient funds') : setFunds(newFunds);
   }
 
-
   function buyNewStock() {
     const stocksNumber = searchedStock.number
     const stockName = searchedStock.name
@@ -97,20 +96,19 @@ export default function Trade() {
     <div className="trade-container">
       <BuyModal
         show={isModalBuyStock}
+        buyNewStock={buyNewStock}
         toggleBuyStockModal={toggleBuyStockModal}
       />
       <div className="search-container">
         <SearchStocks
           onSearchStockClick={onSearchStockClick}
-          toggleBuyStockModal={toggleBuyStockModal}
         />
       </div>
-      <div className="searched-stock">
-        <DisplaySearchedStock
-          searchedStock={searchedStock}
-          buyNewStock={buyNewStock}
-        />
-      </div>
+      <DisplaySearchedStock
+        searchedStock={searchedStock}
+        buyNewStock={buyNewStock}
+        toggleBuyStockModal={toggleBuyStockModal}
+      />
       <UserFunds funds={funds} />
       <div className="holdings-container">
         <h1 className="showcase-header">Your current holdings</h1>

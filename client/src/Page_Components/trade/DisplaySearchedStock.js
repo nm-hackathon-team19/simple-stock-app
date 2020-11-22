@@ -12,7 +12,7 @@ export default function DisplaySearchedStock(props) {
         <div className="searched-info-container flexbox-center" style={{ gap: '2rem', border: '3px solid blue' }}>
           <h1>Shares: {number}</h1>
           <h1>Company: {name}: {symbol}</h1>
-          <button className="btn" onClick={props.buyNewStock}>Buy Stock!</button>
+          <button className="btn" onClick={props.toggleBuyStockModal}>Buy Stock!</button>
         </div>
       </div>
     )

@@ -1,6 +1,5 @@
 /* Search Stocks */
 
-
 /* User Funds */
 
 /* User Holdings */
@@ -57,4 +56,13 @@
 
 .details-stock-btn {
   background: rgb(182, 125, 125);
+}
+
+/* Modal Buy */
+.modal-buy {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
 }
