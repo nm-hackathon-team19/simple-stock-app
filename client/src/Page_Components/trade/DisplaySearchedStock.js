@@ -2,12 +2,18 @@ import React from 'react'
 
 export default function DisplaySearchedStock(props) {
   const { number, name, symbol } = props.searchedStock
-  // const { searchedStock } = props
-  return (
-    <div>
-      <h1>Number of shares: {number}</h1>
-      <h1>Number of shares: {name}</h1>
-      <h1>Number of shares: {symbol}</h1>
-    </div>
-  )
+  // debugger
+  if (props.searchedStock.length <= 0) {
+    return null
+  } else {
+    return (
+      <div>
+        <div className="searched-info-container flexbox-center" style={{ gap: '2rem', border: '3px solid blue' }}>
+          <h1>Shares: {number}</h1>
+          <h1>Company: {name}: {symbol}</h1>
+          <button className="btn">Buy Stock!</button>
+        </div>
+      </div>
+    )
+  }
 }

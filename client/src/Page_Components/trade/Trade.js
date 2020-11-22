@@ -25,9 +25,6 @@ export default function Trade() {
     axios.get(`api/stocks/search/?symbol=${value}`)
       .then(res => {
         console.log(res.data)
-        // addNewStock(2, res.data.companyName, res.data.symbol)
-        // updateUserFunds(res.data.latestPrice)
-        // debugger
         setSearchedStock(
           {
             number: 2,

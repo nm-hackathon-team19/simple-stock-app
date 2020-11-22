@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   line-height: 1.6;
 }
 
@@ -47,7 +47,6 @@ img {
   padding: 20px;
 }
 
-
 ul {
   list-style: none;
 }
@@ -56,11 +55,19 @@ a {
   text-decoration: none;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: 300;
   line-height: 1.2;
 }
 
 p {
   margin: 10px 0;
+}
+
+/* flex properties */
+.flexbox-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
