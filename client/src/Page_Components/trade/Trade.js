@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Trade.css'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
-import StocksShowcase from './StocksShowcase.js'
+import Showcases from './Showcases.js'
 import DisplayHoldings from './DisplayHoldings.js'
 import UserFunds from './UserFunds.js'
 import SearchStocks from './SearchStocks.js'
@@ -11,9 +11,9 @@ import DisplaySearchedStock from './DisplaySearchedStock.js'
 
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
-  const [holdings, setHoldings] = useState([]);
   const [funds, setFunds] = useState(10000);
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+  const [holdings, setHoldings] = useState([]);
   const [searchedStock, setSearchedStock] = useState([])
 
   function toggleBuyStockModal() {
@@ -29,7 +29,8 @@ export default function Trade() {
           {
             number: 2,
             name: res.data.companyName,
-            symbol: res.data.symbol
+            symbol: res.data.symbol,
+            price: res.data.latestPrice
           })
       })
       .catch(err => {
@@ -43,23 +44,32 @@ export default function Trade() {
     newFunds <= 0 ? alert('insufficient funds') : setFunds(newFunds);
   }
 
-  function addNewStock(number, company, symbol) {
+
+  function buyNewStock() {
+    const stocksNumber = searchedStock.number
+    const stockName = searchedStock.name
+    const stockSymbol = searchedStock.symbol
+    const stockPrice = searchedStock.price
+    // debugger
     const matchingHolding = holdings.find(
-      (holding) => holding.symbol === symbol
+      (holding) => holding.symbol === stockSymbol
     );
     if (matchingHolding) {
       const matchIndex = holdings.indexOf(matchingHolding);
-      holdings[matchIndex].sharesNum += number;
+      debugger
+      holdings[matchIndex].numberOfStocks += stocksNumber;
     } else {
       const newShare = {
-        symbol: symbol,
-        companyName: company,
-        sharesNum: number,
+        symbol: stockSymbol,
+        name: stockName,
+        numberOfStocks: stocksNumber,
+        price: stockPrice,
         id: uuidv4(),
       };
       holdings.push(newShare);
     }
     setHoldings([...holdings]);
+    updateUserFunds(stockPrice);
   }
 
   // Set showcases on page
@@ -74,11 +84,10 @@ export default function Trade() {
   }, [])
 
   const showcaseList = showcases.map(showcase =>
-    <StocksShowcase
+    <Showcases
       showcase={showcase}
       key={showcase.marketCap}
-      updateUserFunds={updateUserFunds}
-      addNewStock={addNewStock}
+      onSearchStockClick={onSearchStockClick}
     />)
 
   const holdingList = holdings.map(holding =>
@@ -97,7 +106,10 @@ export default function Trade() {
         />
       </div>
       <div className="searched-stock">
-        <DisplaySearchedStock searchedStock={searchedStock} />
+        <DisplaySearchedStock
+          searchedStock={searchedStock}
+          buyNewStock={buyNewStock}
+        />
       </div>
       <UserFunds funds={funds} />
       <div className="holdings-container">

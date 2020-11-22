@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function StocksShowcase(props) {
+export default function Showcases(props) {
   const { companyName, latestPrice, symbol } = props.showcase
 
   return (
@@ -12,13 +12,10 @@ export default function StocksShowcase(props) {
         <button
           className="buy-stock-btn btn"
           onClick={() => {
-            props.updateUserFunds(latestPrice);
-            props.addNewStock(5, companyName, symbol);
-          }}>Buy
+            props.onSearchStockClick(symbol);
+          }}>More Info
           </button>
-        <button className="details-stock-btn btn">Info</button>
       </div>
     </div>
-
   )
 }
