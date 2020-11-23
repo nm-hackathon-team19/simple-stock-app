@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Showcases from './Showcases.js'
 import DisplayHoldings from './DisplayHoldings.js'
 import UserFunds from './UserFunds.js'
-import SearchStocks from './SearchStocks.js'
+import FormStocks from './FormStocks.js'
 import BuyModal from './BuyModal.js'
 import DisplaySearchedStock from './DisplaySearchedStock.js'
 
@@ -18,6 +18,7 @@ export default function Trade() {
 
   function toggleBuyStockModal() {
     setIsModalBuyStock(!isModalBuyStock);
+    // debugger
   }
 
   // Search for new stock
@@ -55,7 +56,7 @@ export default function Trade() {
     );
     if (matchingHolding) {
       const matchIndex = holdings.indexOf(matchingHolding);
-      debugger
+      // debugger
       holdings[matchIndex].numberOfStocks += stocksNumber;
     } else {
       const newShare = {
@@ -82,16 +83,6 @@ export default function Trade() {
       });
   }, [])
 
-  const showcaseList = showcases.map(showcase =>
-    <Showcases
-      showcase={showcase}
-      key={showcase.marketCap}
-      onSearchStockClick={onSearchStockClick}
-    />)
-
-  const holdingList = holdings.map(holding =>
-    <DisplayHoldings holding={holding} key={holding.id} />)
-
   return (
     <div className="trade-container">
       <BuyModal
@@ -99,11 +90,9 @@ export default function Trade() {
         buyNewStock={buyNewStock}
         toggleBuyStockModal={toggleBuyStockModal}
       />
-      <div className="search-container">
-        <SearchStocks
-          onSearchStockClick={onSearchStockClick}
-        />
-      </div>
+      <FormStocks
+        onSearchStockClick={onSearchStockClick}
+      />
       <DisplaySearchedStock
         searchedStock={searchedStock}
         buyNewStock={buyNewStock}
@@ -113,13 +102,21 @@ export default function Trade() {
       <div className="holdings-container">
         <h1 className="showcase-header">Your current holdings</h1>
         <div className="holding-list">
-          {holdingList}
+          {holdings.map(holding => (
+            <DisplayHoldings holding={holding} key={holding.id} />
+          ))}
         </div>
       </div>
       <div className="stocks-showcase">
         <h1 className="showcase-header">Showcase of popular stocks</h1>
         <div className="stocks-list">
-          {showcaseList}
+          {showcases.map(showcase => (
+            <Showcases
+              showcase={showcase}
+              key={showcase.marketCap}
+              onSearchStockClick={onSearchStockClick}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -1,4 +1,13 @@
-/* Search Stocks */
+/* Form Stocks */
+#search-form-container form input[type="text"] {
+  width: 50%;
+  padding: 15px;
+  margin: 20px 0;
+  padding: 10px 30px;
+  border: none;
+  background: #f1f1f1;
+  text-transform: uppercase;
+}
 
 /* User Funds */
 
@@ -65,4 +74,42 @@
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
+}
+
+.buy-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+.buy-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.buy-btn,
+.close-btn {
+  background-color: #4caf50;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.buy-btn {
+  background: #007bff;
+}
+
+.close-btn {
+  background: #6c757d;
+}
+
+.buy-form input {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  width: 25%;
+  font-size: 25px;
 }

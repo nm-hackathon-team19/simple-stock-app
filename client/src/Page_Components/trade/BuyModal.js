@@ -9,7 +9,7 @@ function BuyModal(props) {
     return (
       <div id="register-modal" className="modal">
         <div className="modal-buy">
-          <div className="buy-contant">
+          <div className="buy-content">
             <div className="buy-header">
               <h1>Symbol- Price: 100$</h1>
             </div>
@@ -18,8 +18,20 @@ function BuyModal(props) {
               <input type="number" />
             </form>
             <div className="buy-buttons">
-              <button type="button btn" className="cancelbtn" onClick={props.toggleBuyStockModal}>Close</button>
-              <button type="button btn" className="cancelbtn" onClick={props.toggleBuyStockModal}>Buy</button>
+              <button
+                type="button"
+                className="close-btn btn"
+                onClick={props.toggleBuyStockModal}
+              >Close</button>
+              <button
+                type="button"
+                className="buy-btn btn"
+                onClick={() => {
+                  props.buyNewStock();
+                  props.toggleBuyStockModal();
+                }}
+              >Buy</button>
+
             </div>
 
           </div>

@@ -1,18 +1,17 @@
 import { React, useState } from 'react'
 
-export default function SearchStocks(props) {
+export default function FormStocks(props) {
   const [value, setValue] = useState('')
   // debugger
 
   function handleSubmit(e) {
     e.preventDefault()
     props.onSearchStockClick(value)
-    props.toggleBuyStockModal();
   }
 
   return (
-    <div className="search-container">
-      <form onSubmit={handleSubmit}>
+    <div className="search-container" id="search-form-container">
+      <form className="flexbox-center" onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={e => setValue(e.target.value)}
           placeholder="Search for Stocks (symbol)" />
         <input type="submit" className="btn" value="Click Me!" />
