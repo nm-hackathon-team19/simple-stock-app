@@ -53,25 +53,26 @@ export default function Trade() {
     const stockSymbol = searchedStock.symbol
     const stockPrice = searchedStock.price
 
-    const matchingHolding = holdings.find(
-      (holding) => holding.symbol === stockSymbol
-    );
-    if (matchingHolding) {
-      const matchIndex = holdings.indexOf(matchingHolding);
-      holdings[matchIndex].numberOfStocks = parseInt(holdings[matchIndex].numberOfStocks) + parseInt(stocksNumber);
-    } else {
-      const newShare = {
-        symbol: stockSymbol,
-        name: stockName,
-        numberOfStocks: stocksNumber,
-        price: stockPrice,
-        id: uuidv4(),
-      };
-      holdings.push(newShare);
-    }
-    setHoldings([...holdings]);
+    setHoldings(prevHoldings => {
+      const matchingHolding = prevHoldings.find(
+        (holding) => holding.symbol === stockSymbol
+      );
+      if (matchingHolding) {
+        const matchIndex = prevHoldings.indexOf(matchingHolding);
+        prevHoldings[matchIndex].numberOfStocks = parseInt(prevHoldings[matchIndex].numberOfStocks) + parseInt(stocksNumber);
+      } else {
+        const newShare = {
+          symbol: stockSymbol,
+          name: stockName,
+          numberOfStocks: stocksNumber,
+          price: stockPrice,
+          id: uuidv4(),
+        };
+        prevHoldings.push(newShare);
+      }
+      return prevHoldings
+    })
     updateUserFunds(stockPrice);
-    // debugger
   }
 
   // Set showcases on page
