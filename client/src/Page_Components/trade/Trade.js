@@ -9,6 +9,7 @@ import FormStocks from './FormStocks.js'
 import BuyModal from './BuyModal.js'
 import DisplaySearchedStock from './DisplaySearchedStock.js'
 
+
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
   const [funds, setFunds] = useState(10000);
@@ -22,17 +23,18 @@ export default function Trade() {
   }
 
   // Search for new stock
-  function onSearchStockClick(value) {
-    axios.get(`api/stocks/search/?symbol=${value}`)
+  async function onSearchStockClick(value) {
+    await axios.get(`api/stocks/search/?symbol=${value}`)
       .then(res => {
         console.log(res.data)
         setSearchedStock(
           {
-            number: 2,
+            number: '',
             name: res.data.companyName,
             symbol: res.data.symbol,
             price: res.data.latestPrice
           })
+        toggleBuyStockModal()
       })
       .catch(err => {
         console.log(err)
@@ -41,23 +43,22 @@ export default function Trade() {
 
   function updateUserFunds(price) {
     const newFunds = funds - price
-    // setFunds(newFunds);
     newFunds <= 0 ? alert('insufficient funds') : setFunds(newFunds);
   }
 
-  function buyNewStock() {
-    const stocksNumber = searchedStock.number
+  function buyNewStock(numberShares) {
+    // debugger
+    const stocksNumber = searchedStock.number + numberShares
     const stockName = searchedStock.name
     const stockSymbol = searchedStock.symbol
     const stockPrice = searchedStock.price
-    // debugger
+
     const matchingHolding = holdings.find(
       (holding) => holding.symbol === stockSymbol
     );
     if (matchingHolding) {
       const matchIndex = holdings.indexOf(matchingHolding);
-      // debugger
-      holdings[matchIndex].numberOfStocks += stocksNumber;
+      holdings[matchIndex].numberOfStocks = parseInt(holdings[matchIndex].numberOfStocks) + parseInt(stocksNumber);
     } else {
       const newShare = {
         symbol: stockSymbol,
@@ -70,11 +71,13 @@ export default function Trade() {
     }
     setHoldings([...holdings]);
     updateUserFunds(stockPrice);
+    debugger
   }
 
   // Set showcases on page
-  useEffect(() => {
-    axios.get('/api/stocks/showcase', {})
+  useEffect( async() => {
+    //    debugger
+    await axios.get('/api/stocks/showcase', {})
       .then((res) => {
         setShowcases(res.data)
       })
@@ -85,10 +88,12 @@ export default function Trade() {
 
   return (
     <div className="trade-container">
+      <UserFunds funds={funds} />
       <BuyModal
         show={isModalBuyStock}
         buyNewStock={buyNewStock}
         toggleBuyStockModal={toggleBuyStockModal}
+        searchedStock={searchedStock}
       />
       <FormStocks
         onSearchStockClick={onSearchStockClick}
@@ -98,12 +103,15 @@ export default function Trade() {
         buyNewStock={buyNewStock}
         toggleBuyStockModal={toggleBuyStockModal}
       />
-      <UserFunds funds={funds} />
       <div className="holdings-container">
         <h1 className="showcase-header">Your current holdings</h1>
         <div className="holding-list">
           {holdings.map(holding => (
-            <DisplayHoldings holding={holding} key={holding.id} />
+            <DisplayHoldings
+              holding={holding}
+              key={holding.id}
+              searchedStock={searchedStock}
+            />
           ))}
         </div>
       </div>

@@ -2,7 +2,6 @@ import { React, useState } from 'react'
 
 export default function FormStocks(props) {
   const [value, setValue] = useState('')
-  // debugger
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -13,7 +12,7 @@ export default function FormStocks(props) {
     <div className="search-container" id="search-form-container">
       <form className="flexbox-center" onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={e => setValue(e.target.value)}
-          placeholder="Search for Stocks (symbol)" />
+          placeholder="Search by company symbol" />
         <input type="submit" className="btn" value="Click Me!" />
       </form>
     </div>

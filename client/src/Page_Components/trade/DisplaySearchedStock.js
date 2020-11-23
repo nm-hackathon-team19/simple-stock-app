@@ -4,7 +4,8 @@ export default function DisplaySearchedStock(props) {
   const { number, name, symbol } = props.searchedStock
   // debugger
 
-  if (props.searchedStock.length <= 0) {
+  // if (props.searchedStock.length <= 0) {
+  if (true) {
     return null
   } else {
     return (

@@ -7,6 +7,7 @@
   border: none;
   background: #f1f1f1;
   text-transform: uppercase;
+  text-align: center;
 }
 
 /* User Funds */
@@ -112,4 +113,54 @@
   border: 2px solid #000;
   width: 25%;
   font-size: 25px;
+}
+
+/* Confirm */
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 30px;
+}
+
+.confirm-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  align-items: center;
+}
+
+.confirm-content > div {
+  text-align: center;
+}
+
+.confirm-content hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 500px;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.confirm-buttons button {
+  color: #fff;
+  padding: 8px 80px;
+}
+
+.btn-confirm {
+  background: green;
+}
+
+.btn-cancel {
+  background: red;
 }

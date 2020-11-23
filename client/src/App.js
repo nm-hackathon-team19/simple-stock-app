@@ -5,6 +5,7 @@ import Footer from './Static_Components/Footer'
 import Home from './Page_Components/home/Home'
 import Trade from './Page_Components/trade/Trade'
 import Report from './Page_Components/report/Report'
+import Confirm from './Page_Components/trade/Confirm'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/trade" component={Trade} />
           <Route path="/report" component={Report} />
+          <Route path="/confirm" component={Confirm} />
         </main>
         <Footer />
       </div>
