@@ -36,37 +36,29 @@ function BuyModal(props) {
 
             </form>
             <div className="buy-buttons">
-              {/* <NavLink to={{
-                pathname: '/confirm',
-                aboutProps: {
-                  searchedStock: props.searchedStock,
-                  numberOfShares: value
-                }
-
-              }}> */}
               <button
                 type="button"
                 className="close-btn btn"
                 onClick={props.toggleBuyStockModal}
               >Close</button>
-              {/* </NavLink> */}
-              <NavLink to={{
+              {/* <NavLink to={{
                 pathname: '/confirm',
                 aboutProps: {
                   searchedStock: props.searchedStock,
                   Middleware: buySharesMiddleware,
                   numberOfShares: value
                 }
-              }}>
+              }}> */}
                 <button
                   type="button"
                   className="buy-btn btn"
                   onClick={() => {
+                    buySharesMiddleware()
                     props.toggleBuyStockModal();
                     clearInputField()
                   }}
                 >Buy</button>
-              </NavLink>
+              {/* </NavLink> */}
             </div>
           </div>
         </div>

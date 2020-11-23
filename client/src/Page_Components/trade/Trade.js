@@ -23,8 +23,8 @@ export default function Trade() {
   }
 
   // Search for new stock
-  async function onSearchStockClick(value) {
-    await axios.get(`api/stocks/search/?symbol=${value}`)
+  function onSearchStockClick(value) {
+    axios.get(`api/stocks/search/?symbol=${value}`)
       .then(res => {
         console.log(res.data)
         setSearchedStock(
@@ -71,11 +71,11 @@ export default function Trade() {
     }
     setHoldings([...holdings]);
     updateUserFunds(stockPrice);
-    debugger
+    // debugger
   }
 
   // Set showcases on page
-  useEffect( async() => {
+  useEffect(async () => {
     //    debugger
     await axios.get('/api/stocks/showcase', {})
       .then((res) => {
