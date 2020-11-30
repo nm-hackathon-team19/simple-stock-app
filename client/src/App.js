@@ -14,7 +14,7 @@ function App() {
         <Navigation />
         <main id="main-container">
           <Route path="/" exact component={Home} />
-          <Route path="/trade" component={Trade} />
+          <Route path="/main" component={Trade} />
           <Route path="/report" component={Report} />
           <Route path="/confirm" component={Confirm} />
         </main>

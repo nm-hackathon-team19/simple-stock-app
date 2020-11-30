@@ -9,7 +9,6 @@ import FormStocks from './FormStocks.js'
 import BuyModal from './BuyModal.js'
 import DisplaySearchedStock from './DisplaySearchedStock.js'
 
-
 export default function Trade() {
   const [showcases, setShowcases] = useState([]);
   const [funds, setFunds] = useState(10000);
@@ -26,7 +25,7 @@ export default function Trade() {
   function onSearchStockClick(value) {
     axios.get(`api/stocks/search/?symbol=${value}`)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         setSearchedStock(
           {
             number: '',
@@ -69,11 +68,43 @@ export default function Trade() {
           id: uuidv4(),
         };
         prevHoldings.push(newShare);
+        createTodo(newShare);
       }
       return prevHoldings
     })
     updateUserFunds(stockPrice);
+  };
+
+  const createTodo = async (holding) => {
+    const { id, name, numberOfStocks, price, symbol } = holding
+    const share_number = parseInt(numberOfStocks);
+    const share_price = parseInt(price);
+    const total_money = share_number * share_price
+    try {
+      const response = await axios.post('/trade', {
+        company: name,
+        symbol: symbol,
+        share_number: share_number,
+        total_money: total_money,
+        share_price: share_price
+      })
+    } catch (err) {
+      console.error(err.message)
+    }
   }
+
+  const getHoldings = async () => {
+    try {
+      const response = await axios.get('/trade');
+      setHoldings(response.data)
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getHoldings();
+  }, [])
 
   // Set showcases on page
   useEffect(async () => {
