@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment, useRef } from "react";
 import axios from 'axios';
 import { NavLink } from 'react-router-dom'
 import './Trade.css';
@@ -32,26 +32,31 @@ function BuyModal(props) {
   const [shares, setShare] = useState('');
   const [companyName, setCompanyName] = useState('');
 
-  const [canSearch, setCanSearch] = useState(true);
-  let timeoutRef = useState(null);
+  const [isCanSearch, setCanSearch] = useState(true);
+  const timeoutRef = useRef(null);
 
-  function onSearchFilterChange(e) {
+
+  function onSearchSymbol(e) {
     setCanSearch(false);
     setSymbol(e.target.value);
   }
 
   useEffect(() => {
-    if (timeoutRef !== null) {
-      clearTimeout(timeoutRef);
+    console.log(timeoutRef)
+    if (timeoutRef.current !== null) {
+      debugger
+      clearTimeout(timeoutRef.current);
     }
 
-    if (canSearch) performApiCall();
+    if (isCanSearch) performApiCall();
 
-    timeoutRef = setTimeout(() => {
-      timeoutRef = null;
+    timeoutRef.current = setTimeout(() => {
+      console.log(timeoutRef)
+      timeoutRef.current = null;
       setCanSearch(true);
-    }, 2000);
-  }, [canSearch]);
+    }, 1000);
+    console.log(timeoutRef)
+  }, [isCanSearch]);
 
   const performApiCall = async () => {
     try {
@@ -68,7 +73,7 @@ function BuyModal(props) {
 
   return (
     <Fragment>
-      <Button variant="primary" onClick={handleShow}>Launch demo modal</Button>
+      <Button variant="primary" onClick={handleShow}>Buy Stocks</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -79,7 +84,7 @@ function BuyModal(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Search by company symbol</Form.Label>
               <Form.Control type="name" placeholder="Enter Symbol" value={symbol}
-                onChange={(e) => { onSearchFilterChange(e); }} />
+                onChange={(e) => { onSearchSymbol(e); }} />
               <Form.Text className="text-muted">{companyName}</Form.Text>
               <Form.Label>Share quantity</Form.Label>
               <Form.Control type="number" placeholder="Enter number" value={shares} onChange={(e) => setShare(e.target.value)} />
