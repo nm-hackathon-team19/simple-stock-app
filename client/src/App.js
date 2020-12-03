@@ -6,19 +6,21 @@ import Home from './Page_Components/home/Home'
 import Trade from './Page_Components/trade/Trade'
 import Report from './Page_Components/report/Report'
 import Confirm from './Page_Components/trade/Confirm'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
     <Router>
       <div className="app" id="app-container">
-        <Navigation />
-        <main id="main-container">
-          <Route path="/" exact component={Home} />
-          <Route path="/main" component={Trade} />
-          <Route path="/report" component={Report} />
-          <Route path="/confirm" component={Confirm} />
-        </main>
-        <Footer />
+        {/* <Navigation /> */}
+        {/* <main id="main-container"> */}
+        <Route path="/" exact component={Home} />
+        <Route path="/main" component={Trade} />
+        {/* <Route path="/report" component={Report} /> */}
+        {/* <Route path="/confirm" component={Confirm} /> */}
+        {/* </main> */}
+        {/* <Footer /> */}
       </div>
     </Router>
   );

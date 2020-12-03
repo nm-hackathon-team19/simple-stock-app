@@ -16,6 +16,7 @@ app.get('/trade', async (req, res) => {
     const response = await pool.query("SELECT * FROM holdings");
     res.json(response.rows);
   } catch (err) {
+    2
     console.error(err.message);
   }
 })

@@ -10,7 +10,10 @@
   text-align: center;
 }
 
-/* User Funds */
+/* User Information */
+.user-information {
+  border: blue 1px solid;
+}
 
 /* User Holdings */
 .holdings-container {
