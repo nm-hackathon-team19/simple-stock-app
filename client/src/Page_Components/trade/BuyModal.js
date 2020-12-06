@@ -51,11 +51,9 @@ function BuyModal(props) {
     if (isCanSearch) performApiCall();
 
     timeoutRef.current = setTimeout(() => {
-      console.log(timeoutRef)
       timeoutRef.current = null;
       setCanSearch(true);
     }, 1000);
-    console.log(timeoutRef)
   }, [isCanSearch]);
 
   const performApiCall = async () => {
