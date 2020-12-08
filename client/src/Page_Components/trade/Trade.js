@@ -35,7 +35,7 @@ export default function Trade() {
   // }
 
   const searchForHolding = async (symbol) => {
-    debugger
+    // debugger
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       debugger

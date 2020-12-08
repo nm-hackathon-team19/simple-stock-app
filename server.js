@@ -70,6 +70,7 @@ app.delete('/trade/:id', async (req, res) => {
 // API ROUTES \\
 app.get('/api/stocks/search', (req, res) => {
   const symbol = req.query.symbol
+  console.log(symbol)
   axios.get(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5`)
     .then(response => {
       res.send(response.data[Object.keys(response.data)[0]].quote)
