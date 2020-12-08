@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Trade.css'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
-import Showcases from './Showcases.js'
-import DisplayHoldings from './DisplayHoldings.js'
+// import Showcases from './Showcases.js'
+// import DisplayHoldings from './DisplayHoldings.js'
 // import UserInformation from './UserInformation.js'
-import FormStocks from './FormStocks.js'
-import BuyModal from './BuyModal.js'
+// import FormStocks from './FormStocks.js'
+// import BuyModal from './BuyModal.js'
 import DisplaySearchedStock from './DisplaySearchedStock.js'
 import Header from './Header'
 import Form from './Form'
@@ -18,6 +18,7 @@ export default function Trade() {
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [holdings, setHoldings] = useState([]);
   const [searchedStock, setSearchedStock] = useState([])
+  const [searchedHolding, setSearchedHolding] = useState([])
 
   function toggleBuyStockModal() {
     setIsModalBuyStock(!isModalBuyStock);
@@ -32,6 +33,19 @@ export default function Trade() {
   // function setUserSharesAmount() {
   // console.log(holdings);
   // }
+
+  const searchForHolding = async (symbol) => {
+    debugger
+    try {
+      const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
+      debugger
+      // setHoldings(response.data.companyName);
+      console.log(response.data.companyName);
+    } catch (err) {
+      debugger
+      console.error(err.message)
+    }
+  }
 
   function buyNewStock(numberShares) {
     // debugger
@@ -71,22 +85,22 @@ export default function Trade() {
   }, [])
 
   // Set showcases on page
-  useEffect(async () => {
-    //    debugger
-    await axios.get('/api/stocks/showcase', {})
-      .then((res) => {
-        setShowcases(res.data)
-      })
-      .catch((err) => {
-        console.log("error username response client side", err);
-      });
-  }, [])
+  // useEffect(async () => {
+  //   //    debugger
+  //   await axios.get('/api/stocks/showcase', {})
+  //     .then((res) => {
+  //       setShowcases(res.data)
+  //     })
+  //     .catch((err) => {
+  //       console.log("error username response client side", err);
+  //     });
+  // }, [])
 
   return (
     <div className="container">
       <div className="trade-container">
         <Header />
-        <Form />
+        <Form searchForHolding={searchForHolding} />
         {/* <UserInformation funds={funds} holdings={holdings} /> */}
         {/* <BuyModal
           show={isModalBuyStock}
