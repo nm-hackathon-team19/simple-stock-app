@@ -13,13 +13,13 @@ function App() {
   return (
     <Router>
       <div className="app" id="app-container">
-        {/* <Navigation /> */}
-        {/* <main id="main-container"> */}
-        <Route path="/" exact component={Home} />
-        <Route path="/main" component={Trade} />
-        {/* <Route path="/report" component={Report} /> */}
-        {/* <Route path="/confirm" component={Confirm} /> */}
-        {/* </main> */}
+        <Navigation />
+        <main id="main-container">
+          <Route path="/" exact component={Home} />
+          <Route path="/main" component={Trade} />
+          <Route path="/report" component={Report} />
+          <Route path="/confirm" component={Confirm} />
+        </main>
         {/* <Footer /> */}
       </div>
     </Router>

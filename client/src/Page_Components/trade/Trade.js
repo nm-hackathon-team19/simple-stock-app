@@ -4,10 +4,12 @@ import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
 import Showcases from './Showcases.js'
 import DisplayHoldings from './DisplayHoldings.js'
-import UserInformation from './UserInformation.js'
+// import UserInformation from './UserInformation.js'
 import FormStocks from './FormStocks.js'
 import BuyModal from './BuyModal.js'
 import DisplaySearchedStock from './DisplaySearchedStock.js'
+import Header from './Header'
+import Form from './Form'
 import { getHoldings, createHolding } from './dbFunctions.js'
 
 export default function Trade() {
@@ -83,7 +85,9 @@ export default function Trade() {
   return (
     <div className="container">
       <div className="trade-container">
-        <UserInformation funds={funds} holdings={holdings} />
+        <Header />
+        <Form />
+        {/* <UserInformation funds={funds} holdings={holdings} /> */}
         {/* <BuyModal
           show={isModalBuyStock}
           buyNewStock={buyNewStock}
@@ -98,7 +102,7 @@ export default function Trade() {
           buyNewStock={buyNewStock}
           toggleBuyStockModal={toggleBuyStockModal}
         />
-        <div className="holdings-container">
+        {/* <div className="holdings-container">
           <h1 className="showcase-header">Current holdings</h1>
           <div className="holding-list">
             {holdings.map(holding => (
@@ -109,7 +113,7 @@ export default function Trade() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
         {/* <div className="stocks-showcase">
           <h1 className="showcase-header">Showcase of popular stocks</h1>
           <div className="stocks-list">

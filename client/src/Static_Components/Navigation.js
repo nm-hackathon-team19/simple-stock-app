@@ -16,7 +16,7 @@ export default function Navigation() {
             <li>Trade</li>
           </NavLink>
           <NavLink exact to='/report' activeClassName="current">
-            <li>Reports</li>
+            <li>Portfolio</li>
           </NavLink>
           <li>Login</li>
           <li>Register</li>

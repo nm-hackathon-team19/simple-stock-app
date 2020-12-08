@@ -37,14 +37,12 @@ function BuyModal(props) {
 
 
   function onSearchSymbol(e) {
-    setCanSearch(false);
+    setCanSearch(prevState => prevState = false);
     setSymbol(e.target.value);
   }
 
   useEffect(() => {
-    console.log(timeoutRef)
     if (timeoutRef.current !== null) {
-      debugger
       clearTimeout(timeoutRef.current);
     }
 
