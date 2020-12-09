@@ -19,7 +19,7 @@ export default function Report() {
   }
 
   useEffect(() => {
-    // getHoldings();
+    getHoldings();
     // setUserSharesAmount();
   }, [])
   // console.log(holdings);

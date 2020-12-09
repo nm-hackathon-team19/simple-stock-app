@@ -18,7 +18,6 @@ export const getHoldings = async (setHoldings) => {
   try {
     const response = await axios.get('/trade');
     setHoldings(response.data)
-
   } catch (err) {
     console.error(err.message);
   }
