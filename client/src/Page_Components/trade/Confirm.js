@@ -1,13 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Confirm(props) {
+function Confirm(props) {
   if (!props.location.aboutProps) {
     return null
   } else {
     const { name, symbol, price } = props.location.aboutProps.searchedStock
     const { numberOfShares } = props.location.aboutProps
-    // debugger
 
     return (
       <div id="confirm" className="confirm-container">
@@ -55,3 +54,5 @@ export default function Confirm(props) {
     )
   }
 }
+
+export default Confirm

@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import BuyModal from './BuyModal';
 
 function RenderSelectedHolding(props) {
-  // debugger
-  // const { company, share_number, symbol, share_price } = props.holding
+  const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+
+  function toggleBuyStockModal() {
+    setIsModalBuyStock(!isModalBuyStock);
+    // debugger
+  }
+
+  const passPropsData = (shares) => {
+    props.buyNewHolding(shares);
+  }
   const { companyName, symbol, latestPrice, changePercent, change } = props.holding;
 
   // debugger
@@ -11,8 +20,14 @@ function RenderSelectedHolding(props) {
       <div className="card-head">
         <h2> {companyName}: {symbol}</h2>
         <div className="card-buttons">
-          <button className="btn btn-danger">Buy</button>
-          <button className="btn btn-danger">Sell</button>
+          <BuyModal
+            show={isModalBuyStock}
+            toggleBuyStockModal={toggleBuyStockModal}
+            passPropsData={passPropsData}
+            companyName={companyName}
+          />
+          {/* <button className="btn btn-danger"><BuyModal /></button> */}
+          {/* <button className="btn btn-danger">Sell</button> */}
         </div>
       </div>
       <hr />

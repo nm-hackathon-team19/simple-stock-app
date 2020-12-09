@@ -43,26 +43,20 @@ export default function Trade() {
     }
   }
 
-  function buyNewStock(numberShares) {
-    // debugger
-    const stocksNumber = searchedStock.number + numberShares
-    const stockName = searchedStock.name
-    const stockSymbol = searchedStock.symbol
-    const stockPrice = searchedStock.price
-
+  function buyNewHolding(shares) {
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
-        (holding) => holding.symbol === stockSymbol
+        (holding) => holding.symbol === selectedHolding.symbol
       );
       if (matchingHolding) {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
-        prevHoldings[matchIndex].numberOfStocks = parseInt(prevHoldings[matchIndex].numberOfStocks) + parseInt(stocksNumber);
+        prevHoldings[matchIndex].numberOfShares = parseInt(prevHoldings[matchIndex].numberOfShares) + parseInt(shares);
       } else {
         const newShare = {
-          symbol: stockSymbol,
-          name: stockName,
-          numberOfStocks: stocksNumber,
-          price: stockPrice,
+          symbol: selectedHolding.symbol,
+          name: selectedHolding.companyName,
+          numberOfShares: shares,
+          price: selectedHolding.latestPrice,
           id: uuidv4(),
         };
         prevHoldings.push(newShare);
@@ -73,6 +67,8 @@ export default function Trade() {
     setUserWallet(stockPrice);
     // setUserSharesAmount();
   };
+
+  console.log(holdings)
 
 
   useEffect(() => {
@@ -107,7 +103,7 @@ export default function Trade() {
         {/* <FormStocks
           onSearchStockClick={onSearchStockClick}
         /> */}
-        {selectedHolding ? <RenderSelectedHolding holding={selectedHolding} /> : null}
+        {selectedHolding ? <RenderSelectedHolding holding={selectedHolding} buyNewHolding={buyNewHolding} /> : null}
         {/* buyNewStock={buyNewStock} */}
         {/* toggleBuyStockModal={toggleBuyStockModal} */}
 

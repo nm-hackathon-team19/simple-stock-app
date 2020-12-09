@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment, useRef } from "react";
 import axios from 'axios';
 import { NavLink } from 'react-router-dom'
 import './Trade.css';
+import Confirm from './Confirm'
 import { Button, Modal, Form } from 'react-bootstrap'
 
 // Search for new stock
@@ -25,34 +26,36 @@ import { Button, Modal, Form } from 'react-bootstrap'
 
 function BuyModal(props) {
   const [show, setShow] = useState(false);
+  const [sharesValue, setSharesValue] = useState();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [symbol, setSymbol] = useState('');
-  const [shares, setShare] = useState('');
-  const [companyName, setCompanyName] = useState('');
+  // const [symbol, setSymbol] = useState('');
+  // const [shares, setShare] = useState('');
+  // const [companyName, setCompanyName] = useState('');
 
-  const [isCanSearch, setCanSearch] = useState(true);
-  const timeoutRef = useRef(null);
+  // const [isCanSearch, setCanSearch] = useState(true);
+  // const timeoutRef = useRef(null);
 
 
-  function onSearchSymbol(e) {
-    setCanSearch(prevState => prevState = false);
-    setSymbol(e.target.value);
-  }
+  // function onSearchSymbol(e) {
+  //   setCanSearch(prevState => prevState = false);
+  //   setSymbol(e.target.value);
+  // }
 
-  useEffect(() => {
-    if (timeoutRef.current !== null) {
-      clearTimeout(timeoutRef.current);
-    }
+  // useEffect(() => {
+  //   if (timeoutRef.current !== null) {
+  //     clearTimeout(timeoutRef.current);
+  //   }
 
-    if (isCanSearch) performApiCall();
+  //   if (isCanSearch) performApiCall();
 
-    timeoutRef.current = setTimeout(() => {
-      timeoutRef.current = null;
-      setCanSearch(true);
-    }, 1000);
-  }, [isCanSearch]);
+  //   timeoutRef.current = setTimeout(() => {
+  //     timeoutRef.current = null;
+  //     setCanSearch(true);
+  //   }, 1000);
+  // }, [isCanSearch]);
 
 
   // const performApiCall = async () => {
@@ -65,6 +68,9 @@ function BuyModal(props) {
   //   }
   // }
 
+  const handleSubmit = () => {
+    props.passPropsData(sharesValue)
+  }
 
 
 
@@ -74,23 +80,24 @@ function BuyModal(props) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{props.companyName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form className="row">
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Search by company symbol</Form.Label>
-              <Form.Control type="name" placeholder="Enter Symbol" value={symbol}
-                onChange={(e) => { onSearchSymbol(e); }} />
-              <Form.Text className="text-muted">{companyName}</Form.Text>
               <Form.Label>Share quantity</Form.Label>
-              <Form.Control type="number" placeholder="Enter number" value={shares} onChange={(e) => setShare(e.target.value)} />
+              <Form.Control type="number" placeholder="Shares" value={sharesValue} onChange={(e) => setSharesValue(e.target.value)} />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Total</Form.Label>
+              <Form.Control name="price" type="text" />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
+          Your Order is not complete yet. Review and confirm your order in the next step.
           <Button variant="secondary" onClick={handleClose}>Cancel Order</Button>
-          <Button variant="primary" onClick={() => { handleClose(); }}>Review Order</Button>
+          <Button variant="primary" onClick={() => { handleClose(); handleSubmit(); }}>Buy Shares</Button>
         </Modal.Footer>
       </Modal>
     </Fragment>
