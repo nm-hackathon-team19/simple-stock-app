@@ -80,9 +80,9 @@ app.get('/api/stocks/search', (req, res) => {
     })
 })
 
-app.get('/api/stocks/showcase', (req, res) => {
+app.get('/api/stocks/recommendation', (req, res) => {
   const companies = []
-  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=fb,aapl,tsla,googl,msft,nflx&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
+  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
     .then(function (response) {
       console.log(response.data)
       Object.keys(response.data).forEach(function (key) {

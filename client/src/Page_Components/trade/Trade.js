@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Trade.css'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
-// import Showcases from './Showcases.js'
+import RenderRecommendation from './RenderRecommendations'
 import RenderSelectedHolding from './RenderSelectedHolding'
 // import UserInformation from './UserInformation.js'
 // import FormStocks from './FormStocks.js'
@@ -13,7 +13,7 @@ import Form from './Form'
 import { getHoldings, createHolding } from './dbFunctions.js'
 
 export default function Trade() {
-  // const [showcases, setShowcases] = useState([]);
+  const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [funds, setFunds] = useState(10000);
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [holdings, setHoldings] = useState([]);
@@ -35,18 +35,13 @@ export default function Trade() {
   // }
 
   const searchForHolding = async (symbol) => {
-    // debugger
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
-      // const { companyName, latestPrice, changePercent, change } = response.data;
       setSelectedHolding(response.data);
-      // debugger
     } catch (err) {
-      // debugger
       console.error(err.message)
     }
   }
-  // console.log(selectedHolding);
 
   function buyNewStock(numberShares) {
     // debugger
@@ -81,21 +76,21 @@ export default function Trade() {
 
 
   useEffect(() => {
-    getHoldings(setHoldings);
+    // getHoldings(setHoldings);
     // setUserSharesAmount();
   }, [])
 
   // Set showcases on page
-  // useEffect(async () => {
-  //   //    debugger
-  //   await axios.get('/api/stocks/showcase', {})
-  //     .then((res) => {
-  //       setShowcases(res.data)
-  //     })
-  //     .catch((err) => {
-  //       console.log("error username response client side", err);
-  //     });
-  // }, [])
+  useEffect(async () => {
+    // debugger
+    await axios.get('/api/stocks/recommendation', {})
+      .then((res) => {
+        setRecommendedHoldings(res.data)
+      })
+      .catch((err) => {
+        console.log("error username response client side", err);
+      });
+  }, [])
 
   return (
     <div className="container">
@@ -129,18 +124,14 @@ export default function Trade() {
             ))}
           </div>
         </div> */}
-        {/* <div className="stocks-showcase">
-          <h1 className="showcase-header">Showcase of popular stocks</h1>
-          <div className="stocks-list">
-            {showcases.map(showcase => (
-              <Showcases
-                showcase={showcase}
-                key={showcase.marketCap}
-                onSearchStockClick={onSearchStockClick}
-              />
-            ))}
-          </div>
-        </div> */}
+        <div className="text-center mt-5 h4 font-weight-light">Recommended Stocks</div>
+        {recommendedHoldings.map(holding => (
+          <RenderRecommendation
+            holding={holding}
+            key={holding.marketCap}
+          // onSearchStockClick={onSearchStockClick}
+          />
+        ))}
       </div>
     </div>
   )

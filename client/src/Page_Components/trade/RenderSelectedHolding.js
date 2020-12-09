@@ -3,15 +3,13 @@ import React from 'react'
 function RenderSelectedHolding(props) {
   // debugger
   // const { company, share_number, symbol, share_price } = props.holding
-  const { companyName, latestPrice, changePercent, change } = props.holding;
+  const { companyName, symbol, latestPrice, changePercent, change } = props.holding;
 
   // debugger
   return (
-    <div className="selected-holding card mt-5">
+    <div className="selected-holding card mt-4">
       <div className="card-head">
-        {/* <div> */}
-        <h2><strong> {companyName}</strong></h2>
-        {/* </div> */}
+        <h2> {companyName}: {symbol}</h2>
         <div className="card-buttons">
           <button className="btn btn-danger">Buy</button>
           <button className="btn btn-danger">Sell</button>
@@ -35,9 +33,7 @@ function RenderSelectedHolding(props) {
           <strong>Shares Held</strong>
           <p>10</p>
         </div>
-
       </div>
-
     </div>
   )
 }
