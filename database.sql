@@ -3,10 +3,10 @@ CREATE DATABASE tradingstocks;
 CREATE TABLE public.holdings
 (
     holding_id serial,
-    company character varying,
-    share_number integer,
-    total_money integer,
+    name character varying,
     symbol character varying,
-    share_price integer,
+    shares integer,
+    price integer,
+    percent_change character varying,
     PRIMARY KEY (holding_id)
 );

@@ -35,12 +35,12 @@ app.get('/trade/:id', async (req, res) => {
 // create new holding
 app.post('/trade', async (req, res) => {
   try {
-    const { company, symbol, share_number, total_money, share_price } = req.body;
-    const newHolding = await pool.query("INSERT INTO holdings (company, symbol, share_number, total_money, share_price) VALUES ($1, $2, $3, $4, $5) RETURNING *", [company, symbol, share_number, total_money, share_price]);
-
+    const { name, symbol, shares, changePercent, price } = req.body;
+    console.log(req.body);
+    const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, symbol, shares, changePercent, price]);
     res.json(newHolding.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('error from server', err.message);
   }
 })
 
