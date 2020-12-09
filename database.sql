@@ -6,7 +6,7 @@ CREATE TABLE public.holdings
     name character varying,
     symbol character varying,
     shares integer,
-    price integer,
+    price decimal,
     percent_change character varying,
     PRIMARY KEY (holding_id)
 );
