@@ -26,7 +26,7 @@ import { Button, Modal, Form } from 'react-bootstrap'
 
 function BuyModal(props) {
   const [show, setShow] = useState(false);
-  const [sharesValue, setSharesValue] = useState();
+  const [sharesValue, setSharesValue] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

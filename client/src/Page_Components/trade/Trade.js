@@ -44,6 +44,7 @@ export default function Trade() {
   }
 
   function buyNewHolding(shares) {
+    debugger
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
         (holding) => holding.symbol === selectedHolding.symbol
@@ -59,16 +60,17 @@ export default function Trade() {
           price: selectedHolding.latestPrice,
           id: uuidv4(),
         };
+        debugger
         prevHoldings.push(newShare);
         createHolding(newShare);
       }
       return prevHoldings
     })
-    setUserWallet(stockPrice);
+    // setUserWallet(stockPrice);
     // setUserSharesAmount();
+    console.log(holdings)
   };
 
-  console.log(holdings)
 
 
   useEffect(() => {

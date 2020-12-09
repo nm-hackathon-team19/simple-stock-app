@@ -9,7 +9,6 @@ import Report from './Page_Components/report/Report'
 import Confirm from './Page_Components/trade/Confirm'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
   return (
     <Router>
