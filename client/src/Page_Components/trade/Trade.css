@@ -1,4 +1,4 @@
-/* Form Stocks */
+/* Form */
 #search-form-container form input[type="text"] {
   width: 50%;
   padding: 15px;
@@ -31,6 +31,32 @@
 
 .holding-box {
   border: 3px blue solid;
+}
+
+/* Selected Holding */
+.card-head {
+  display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 10px;
+}
+
+.card-body {
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body > div {
+  padding: 10px;
+  width: 100%;
+}
+.card-body > div:nth-child(-n+3) {
+border-right: 2px solid rgba(0,0,0,.1);
+}
+
+hr {
+  margin: 0!important;
 }
 
 /* Showcase Stocks */

@@ -3,7 +3,7 @@ import './Trade.css'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
 // import Showcases from './Showcases.js'
-// import DisplayHoldings from './DisplayHoldings.js'
+import RenderSelectedHolding from './RenderSelectedHolding'
 // import UserInformation from './UserInformation.js'
 // import FormStocks from './FormStocks.js'
 // import BuyModal from './BuyModal.js'
@@ -18,7 +18,7 @@ export default function Trade() {
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [holdings, setHoldings] = useState([]);
   const [searchedStock, setSearchedStock] = useState([])
-  const [searchedHolding, setSearchedHolding] = useState([])
+  const [selectedHolding, setSelectedHolding] = useState(null);
 
   function toggleBuyStockModal() {
     setIsModalBuyStock(!isModalBuyStock);
@@ -38,14 +38,15 @@ export default function Trade() {
     // debugger
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
-      debugger
-      // setHoldings(response.data.companyName);
-      console.log(response.data.companyName);
+      // const { companyName, latestPrice, changePercent, change } = response.data;
+      setSelectedHolding(response.data);
+      // debugger
     } catch (err) {
-      debugger
+      // debugger
       console.error(err.message)
     }
   }
+  // console.log(selectedHolding);
 
   function buyNewStock(numberShares) {
     // debugger
@@ -111,11 +112,11 @@ export default function Trade() {
         {/* <FormStocks
           onSearchStockClick={onSearchStockClick}
         /> */}
-        <DisplaySearchedStock
-          searchedStock={searchedStock}
-          buyNewStock={buyNewStock}
-          toggleBuyStockModal={toggleBuyStockModal}
-        />
+        {selectedHolding ? <RenderSelectedHolding holding={selectedHolding} /> : null}
+        {/* buyNewStock={buyNewStock} */}
+        {/* toggleBuyStockModal={toggleBuyStockModal} */}
+
+
         {/* <div className="holdings-container">
           <h1 className="showcase-header">Current holdings</h1>
           <div className="holding-list">
