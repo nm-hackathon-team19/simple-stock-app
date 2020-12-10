@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './Trade.css'
 import axios from 'axios'
+import './Trade.css'
+import { HoldingContext } from '../../HoldingContext'
+import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
 import RenderRecommendation from './RenderRecommendations'
 import RenderSelectedHolding from './RenderSelectedHolding'
 import Header from './Header'
 import Form from './Form'
-import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
-import { HoldingContext } from '../../HoldingContext'
 
 export default function Trade() {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
@@ -60,7 +60,6 @@ export default function Trade() {
         console.log("error username response client side", err);
       });
   }
-
 
   useEffect(() => {
     getRecommendations();
