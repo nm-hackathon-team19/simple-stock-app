@@ -6,16 +6,31 @@ import { getHoldings } from '../../dbFunctions'
 
 const Report = () => {
   const [holdings, setHoldings] = useContext(HoldingContext);
+  // const [holdings, setHoldings] = useContext(HoldingContext);
+  // const [funds, setFunds] = useState(100000)
+
+  const calculateFunds = () => {
+    // console.log(holdings)
+    // if (holdings.length > 0) {
+    // console.log(holdings)
+    // holdings.array.forEach(element => console.log(element));
+  }
+
 
   useEffect(() => {
     getHoldings(setHoldings);
-  }, [])
+    // calculateFunds();
+  }, []);
 
+  // console.log(holdings)
   return (
     <div className="container">
-      <UserInfo />
-      {holdings.map(holding => <CurrentHoldings holding={holding}
-        key={holding.holding_id} />)}
+      <UserInfo holdings={holdings} />
+      {holdings.map(holding =>
+        <CurrentHoldings
+          holding={holding}
+          key={holding.holding_id}
+        />)}
     </div>
   )
 }

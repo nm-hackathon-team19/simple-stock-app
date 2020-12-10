@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function UserInformation(props) {
-  // const { funds } = props
+  // const [funds, setFunds] = useState(100000)
+  // const { funds, setFunds } = props
 
   // const handleProps = (symbol, shares) => {
   //   console.log(symbol);

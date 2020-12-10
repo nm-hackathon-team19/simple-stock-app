@@ -26,8 +26,13 @@ export default function Trade() {
   const compareSelectedHoldingToExisting = () => {
     console.log(holdings);
     console.log(selectedHolding);
+    // debugger
   }
-  console.log(selectedHolding);
+  // console.log(selectedHolding);
+
+  useEffect(() => {
+    compareSelectedHoldingToExisting();
+  }, [selectedHolding]);
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
