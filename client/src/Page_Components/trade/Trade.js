@@ -82,6 +82,7 @@ export default function Trade() {
 
         <Recommendations
           recommendedHoldings={recommendedHoldings}
+          searchForHolding={searchForHolding}
         />
       </div>
     </div>
