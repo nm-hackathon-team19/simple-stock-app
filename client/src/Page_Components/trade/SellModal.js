@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import './Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
 
-const BuyModal = (props) => {
+const SellModal = (props) => {
   const [show, setShow] = useState(false);
   const [sharesValue, setSharesValue] = useState('');
 
@@ -12,7 +12,7 @@ const BuyModal = (props) => {
 
   return (
     <Fragment>
-      <Button variant="primary" onClick={handleShow}>Buy Stocks</Button>
+      <Button variant="primary" onClick={handleShow}>Sell Stocks</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -40,4 +40,4 @@ const BuyModal = (props) => {
   )
 };
 
-export default BuyModal;
+export default SellModal;
