@@ -48,8 +48,8 @@ app.post('/trade', async (req, res) => {
 app.put('/trade/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { share_number, total_money } = req.body;
-    const updatedHolding = await pool.query("UPDATE holdings SET share_number = $1, total_money = $2 WHERE holding_id = $3 RETURNING *", [share_number, total_money, id])
+    const { shares } = req.body;
+    const updatedHolding = await pool.query("UPDATE holdings SET shares = $1 WHERE holding_id = $2 RETURNING *", [shares, id])
     res.json(updatedHolding.rows[0]);
   } catch (err) {
     console.error(err.message);
