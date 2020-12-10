@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './Trade.css'
 import axios from 'axios'
-import { v4 as uuidv4 } from 'uuid';
+import './Trade.css'
+import { HoldingContext } from '../../HoldingContext'
+import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
 import RenderRecommendation from './RenderRecommendations'
 import RenderSelectedHolding from './RenderSelectedHolding'
 import Header from './Header'
 import Form from './Form'
-import { createHolding } from '../../dbFunctions.js'
-import { HoldingContext } from '../../HoldingContext'
 
 export default function Trade() {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
@@ -30,16 +29,17 @@ export default function Trade() {
       );
       if (matchingHolding) {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
-        prevHoldings[matchIndex].numberOfShares = parseInt(prevHoldings[matchIndex].numberOfShares) + parseInt(shares);
+        prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
+        debugger
+        updateHolding(matchingHolding.holding_id, matchingHolding.shares);
       } else {
         const newShare = {
           symbol: selectedHolding.symbol,
           companyName: selectedHolding.companyName,
-          numberOfShares: shares,
+          shares: shares,
           price: selectedHolding.latestPrice,
           change: selectedHolding.change,
           changePercent: selectedHolding.changePercent,
-          id: uuidv4(),
         };
         prevHoldings.push(newShare);
         createHolding(newShare);
@@ -63,8 +63,10 @@ export default function Trade() {
 
   useEffect(() => {
     getRecommendations();
+    getHoldings(setHoldings);
   }, [])
 
+  console.log(holdings)
   return (
     <div className="container">
       <div className="trade-container">
