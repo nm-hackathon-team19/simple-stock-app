@@ -4,7 +4,7 @@ import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
 import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
 import Recommendations from './Recommendations'
-import RenderSelectedHolding from './RenderSelectedHolding'
+import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
 
@@ -17,12 +17,19 @@ export default function Trade() {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setSelectedHolding(response.data);
+      compareSelectedHoldingToExisting();
     } catch (err) {
       console.error(err.message)
     }
   }
 
-  function buyNewHolding(shares) {
+  const compareSelectedHoldingToExisting = () => {
+    console.log(holdings);
+    console.log(selectedHolding);
+  }
+  console.log(selectedHolding);
+
+  const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
         (holding) => holding.symbol === selectedHolding.symbol
@@ -45,9 +52,6 @@ export default function Trade() {
       }
       return prevHoldings
     })
-    // setUserWallet(stockPrice);
-    // setUserSharesAmount();
-    // console.log(holdings)
   };
 
   const getRecommendations = async () => {
@@ -65,21 +69,18 @@ export default function Trade() {
     getHoldings(setHoldings);
   }, [])
 
-  console.log(holdings)
+  // console.log(holdings)
   return (
     <div className="container">
       <div className="trade-container">
         <Header />
         <Form searchForHolding={searchForHolding} />
-        {/* <SelectedHolding /> */}
-
         {selectedHolding ?
-          <RenderSelectedHolding
-            holding={selectedHolding}
+          <SelectedHolding
+            selectedHolding={selectedHolding}
             buyNewHolding={buyNewHolding}
           />
           : null}
-
         <Recommendations
           recommendedHoldings={recommendedHoldings}
           searchForHolding={searchForHolding}

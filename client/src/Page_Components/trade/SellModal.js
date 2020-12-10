@@ -16,7 +16,7 @@ const SellModal = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.companyName}</Modal.Title>
+          <Modal.Title>{props.selectedHolding.companyName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form className="row">
