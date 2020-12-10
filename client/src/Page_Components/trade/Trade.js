@@ -61,7 +61,6 @@ export default function Trade() {
       });
   }
 
-  // Set showcases on page
   useEffect(() => {
     getRecommendations();
   }, [])
