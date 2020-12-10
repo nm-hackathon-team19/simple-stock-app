@@ -26,7 +26,7 @@ export default function Trade() {
   const compareSelectedHoldingToExisting = () => {
     console.log(holdings);
     console.log(selectedHolding);
-    // debugger
+    debugger
   }
   // console.log(selectedHolding);
 
