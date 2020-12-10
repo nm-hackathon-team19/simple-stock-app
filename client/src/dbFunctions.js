@@ -24,7 +24,6 @@ export const getHoldings = async (setHoldings) => {
 }
 
 export const updateHolding = async (id, shares) => {
-  debugger
   try {
     const response = await axios.put(`trade/${id}`, {
       shares

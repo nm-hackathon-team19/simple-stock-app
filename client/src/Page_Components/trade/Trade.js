@@ -3,7 +3,7 @@ import axios from 'axios'
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
 import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
-import RenderRecommendation from './RenderRecommendations'
+import Recommendations from './Recommendations'
 import RenderSelectedHolding from './RenderSelectedHolding'
 import Header from './Header'
 import Form from './Form'
@@ -30,7 +30,6 @@ export default function Trade() {
       if (matchingHolding) {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
         prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
-        debugger
         updateHolding(matchingHolding.holding_id, matchingHolding.shares);
       } else {
         const newShare = {
@@ -72,14 +71,18 @@ export default function Trade() {
       <div className="trade-container">
         <Header />
         <Form searchForHolding={searchForHolding} />
-        {selectedHolding ? <RenderSelectedHolding holding={selectedHolding} buyNewHolding={buyNewHolding} /> : null}
-        <div className="text-center mt-5 h4 font-weight-light">Recommended Stocks</div>
-        {recommendedHoldings.map(holding => (
-          <RenderRecommendation
-            holding={holding}
-            key={holding.marketCap}
+        {/* <SelectedHolding /> */}
+
+        {selectedHolding ?
+          <RenderSelectedHolding
+            holding={selectedHolding}
+            buyNewHolding={buyNewHolding}
           />
-        ))}
+          : null}
+
+        <Recommendations
+          recommendedHoldings={recommendedHoldings}
+        />
       </div>
     </div>
   )

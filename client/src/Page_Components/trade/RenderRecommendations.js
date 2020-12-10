@@ -1,21 +1,15 @@
 import React, { Fragment } from 'react'
 
 function RenderRecommendations(props) {
-  // debugger
-  // const { company, share_number, symbol, share_price } = props.holding
   const { companyName, latestPrice, changePercent, change, symbol } = props.holding;
 
-  // debugger
   return (
     <Fragment>
       <div className="recommended-holdings">
         <div className="selected-holding card mt-3">
           <div className="card-head">
             <h2> {companyName}: {symbol}</h2>
-            <div className="card-buttons">
-              <button className="btn btn-danger">Buy</button>
-              <button className="btn btn-danger">Sell</button>
-            </div>
+            <button className="btn btn-danger" onClick={() => props.handleTrade(symbol)}>Trade</button>
           </div>
           <hr />
           <div className="card-body">
