@@ -17,18 +17,21 @@ export default function Trade() {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setSelectedHolding(response.data);
-      compareSelectedHoldingToExisting();
+      // compareSelectedHoldingToExisting();
     } catch (err) {
       console.error(err.message)
     }
   }
 
   const compareSelectedHoldingToExisting = () => {
-    console.log(holdings);
-    console.log(selectedHolding);
-    debugger
+    if (selectedHolding) {
+      const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
+      console.log(holdingExist)
+    } else {
+      console.log('holding doesnt exist');
+    }
+
   }
-  // console.log(selectedHolding);
 
   useEffect(() => {
     compareSelectedHoldingToExisting();
