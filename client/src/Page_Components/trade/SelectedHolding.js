@@ -1,19 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
 
-function SelectedHolding(props) {
+function SelectedHolding({ selectedHolding, buyNewHolding }) {
+  // debugger
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+  const [shares, setShares] = useState(0);
+  const [holdings, setHoldings] = useContext(HoldingContext);
 
   function toggleBuyStockModal() {
     setIsModalBuyStock(!isModalBuyStock);
   }
 
   const passPropsData = (shares) => {
-    props.buyNewHolding(shares);
+    buyNewHolding(shares);
   }
-  const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
-  // debugger
+
+  const compareSelectedHoldingToExisting = () => {
+    if (selectedHolding) {
+      const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
+      console.log(holdingExist);
+      setShares(holdingExist.shares);
+    } else {
+      console.log('holding doesnt exist');
+    }
+  }
+
+  useEffect(() => {
+    compareSelectedHoldingToExisting();
+  }, [selectedHolding]);
+
+  const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">
@@ -23,23 +41,22 @@ function SelectedHolding(props) {
             show={isModalBuyStock}
             toggleBuyStockModal={toggleBuyStockModal}
             passPropsData={passPropsData}
-            selectedHolding={props.selectedHolding}
+            selectedHolding={selectedHolding}
           />
           <SellModal
             show={isModalBuyStock}
             toggleBuyStockModal={toggleBuyStockModal}
             passPropsData={passPropsData}
-            selectedHolding={props.selectedHolding}
+            selectedHolding={selectedHolding}
           />
-          {/* <button className="btn btn-danger"><BuyModal /></button> */}
-          {/* <button className="btn btn-danger">Sell</button> */}
         </div>
       </div>
       <hr />
       <div className="card-body">
         <div className="price">
           <strong>Current Price</strong>
-          <p>${latestPrice}</p>
+          <p className="mb-0">${latestPrice}</p>
+          <small>Previous Closed: ${previousClose} </small>
         </div>
         <div className="percent">
           <strong>Percent Change</strong>
@@ -51,7 +68,7 @@ function SelectedHolding(props) {
         </div>
         <div className="shares-held">
           <strong>Shares Held</strong>
-          <p>10</p>
+          <p>{shares}</p>
         </div>
       </div>
     </div>

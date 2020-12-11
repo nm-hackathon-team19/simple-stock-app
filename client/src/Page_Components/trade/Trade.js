@@ -17,25 +17,24 @@ export default function Trade() {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setSelectedHolding(response.data);
-      // compareSelectedHoldingToExisting();
     } catch (err) {
       console.error(err.message)
     }
   }
 
-  const compareSelectedHoldingToExisting = () => {
-    if (selectedHolding) {
-      const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
-      console.log(holdingExist)
-    } else {
-      console.log('holding doesnt exist');
-    }
+  // const compareSelectedHoldingToExisting = () => {
+  //   if (selectedHolding) {
+  //     const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
+  //     // setSelectedHolding(prevState => ({ ...prevState, shares: holdingExist.shares }))
+  //     console.log(selectedHolding);
+  //   } else {
+  //     console.log('holding doesnt exist');
+  //   }
+  // }
 
-  }
-
-  useEffect(() => {
-    compareSelectedHoldingToExisting();
-  }, [selectedHolding]);
+  // useEffect(() => {
+  //   compareSelectedHoldingToExisting();
+  // }, [selectedHolding]);
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
