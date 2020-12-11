@@ -15,15 +15,13 @@ function SelectedHolding({ selectedHolding, buyNewHolding }) {
 
   const passPropsData = (shares) => {
     buyNewHolding(shares);
+    setShares(prevState => prevState + parseInt(shares));
   }
 
   const compareSelectedHoldingToExisting = () => {
     if (selectedHolding) {
       const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
-      console.log(holdingExist);
-      setShares(holdingExist.shares);
-    } else {
-      console.log('holding doesnt exist');
+      holdingExist ? setShares(holdingExist.shares) : null;
     }
   }
 

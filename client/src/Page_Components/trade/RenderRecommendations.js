@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { HoldingContext } from '../../HoldingContext'
+
+
 
 function RenderRecommendations(props) {
-  const { companyName, latestPrice, changePercent, change, symbol } = props.holding;
+  const [shares, setShares] = useState(0);
+  const [holdings, setHoldings] = useContext(HoldingContext);
+
+  const compareSelectedHoldingToExisting = () => {
+    // debugger
+    // if (props.recommendedHolding) {
+    const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
+    if (holdingExist) {
+      setShares(holdingExist.shares);
+    } else {
+      console.log('recommendedHolding doesnt exist');
+    }
+    // setShares(holdingExist.shares);
+    // } else {
+    // }
+  }
+
+  useEffect(() => {
+    compareSelectedHoldingToExisting();
+  }, [props.recommendedHolding]);
+
+  const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
 
   return (
     <div className="recommended-holding">
@@ -26,7 +50,7 @@ function RenderRecommendations(props) {
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
-            <p>10</p>
+            <p>{shares}</p>
           </div>
         </div>
       </div>
