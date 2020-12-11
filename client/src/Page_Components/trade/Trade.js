@@ -8,7 +8,7 @@ import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
 
-export default function Trade() {
+const Trade = () => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useContext(HoldingContext);
   const [selectedHolding, setSelectedHolding] = useState(null);
@@ -21,20 +21,6 @@ export default function Trade() {
       console.error(err.message)
     }
   }
-
-  // const compareSelectedHoldingToExisting = () => {
-  //   if (selectedHolding) {
-  //     const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
-  //     // setSelectedHolding(prevState => ({ ...prevState, shares: holdingExist.shares }))
-  //     console.log(selectedHolding);
-  //   } else {
-  //     console.log('holding doesnt exist');
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   compareSelectedHoldingToExisting();
-  // }, [selectedHolding]);
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
@@ -97,41 +83,4 @@ export default function Trade() {
   )
 }
 
-
-// Auto complete the name of the company if it exists
-
-  // const [symbol, setSymbol] = useState('');
-  // const [shares, setShare] = useState('');
-  // const [companyName, setCompanyName] = useState('');
-
-  // const [isCanSearch, setCanSearch] = useState(true);
-  // const timeoutRef = useRef(null);
-
-  // function onSearchSymbol(e) {
-  //   setCanSearch(prevState => prevState = false);
-  //   setSymbol(e.target.value);
-  // }
-
-  // useEffect(() => {
-  //   if (timeoutRef.current !== null) {
-  //     clearTimeout(timeoutRef.current);
-  //   }
-
-  //   if (isCanSearch) performApiCall();
-
-  //   timeoutRef.current = setTimeout(() => {
-  //     timeoutRef.current = null;
-  //     setCanSearch(true);
-  //   }, 1000);
-  // }, [isCanSearch]);
-
-
-  // const performApiCall = async () => {
-  //   try {
-  //     const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
-  //     setCompanyName(response.data.companyName);
-  //     console.log(response.data.companyName)
-  //   } catch (err) {
-  //     console.error(err.message)
-  //   }
-  // }
+export default Trade
