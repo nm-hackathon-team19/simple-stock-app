@@ -67,6 +67,14 @@ p {
   margin: 10px 0;
 }
 
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 /* flex properties */
 .flexbox-center {
   display: flex;
