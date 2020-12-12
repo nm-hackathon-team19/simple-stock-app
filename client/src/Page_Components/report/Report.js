@@ -10,17 +10,17 @@ const Report = () => {
   // const [funds, setFunds] = useState(100000)
 
   const calculateFunds = () => {
-    console.log('calculateFunds start')
+    // console.log('calculateFunds start')
     // holdings.forEach(element => {
     //   console.log('calculateFunds inside foreach')
     //   console.log(element);
     // });
-    console.log('calculateFunds end')
+    // console.log('calculateFunds end')
   }
 
   // console.log(holdings);
   useEffect(() => {
-    console.log('inside useEffect')
+    // console.log('inside useEffect')
     getHoldings(setHoldings);
     calculateFunds();
   }, []);
