@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import Navigation from './Static_Components/Navigation'
-import Footer from './Static_Components/Footer'
+// import Footer from './Static_Components/Footer'
 import Home from './Page_Components/home/Home'
 import Trade from './Page_Components/trade/Trade'
 import Report from './Page_Components/report/Report'

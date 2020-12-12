@@ -20,7 +20,7 @@ const Trade = () => {
     } catch (err) {
       console.error(err.message)
     }
-  }
+  };
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
