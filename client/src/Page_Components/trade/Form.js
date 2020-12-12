@@ -46,6 +46,7 @@ const Form = (props) => {
       <input
         type="symbol"
         value={symbol}
+        autoFocus
         onChange={(e) => onSearchSymbol(e)}
         className="form-control col-sm-5 text-uppercase"
       />
