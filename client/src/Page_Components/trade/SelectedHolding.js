@@ -23,7 +23,6 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares }) {
     setShares(prevState => prevState - parseInt(shares));
   }
 
-
   const compareSelectedHoldingToExisting = () => {
     if (selectedHolding) {
       const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);

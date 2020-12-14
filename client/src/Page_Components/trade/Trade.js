@@ -7,8 +7,9 @@ import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
+import qa from 'qs';
 
-const Trade = () => {
+const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useContext(HoldingContext);
   const [selectedHolding, setSelectedHolding] = useState(null);
@@ -21,6 +22,16 @@ const Trade = () => {
       console.error(err.message);
     };
   };
+
+  useEffect(() => {
+    // console.log(props.location.search);
+    const queryStrings = qa.parse(
+      props.location.search,
+      { ignoreQueryPrefix: true });
+    if (queryStrings.symbol) {
+      console.log(queryStrings);
+    }
+  }, []);
 
   const sellShares = (shares) => {
     const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
-
 const CurrentHoldings = (props) => {
   const { name, symbol, price, percent_change, shares } = props.holding;
   return (
@@ -10,8 +9,7 @@ const CurrentHoldings = (props) => {
         <h2> {name}: {symbol}</h2>
         <div className="card-buttons">
           <NavLink to={{
-            pathname: '/main',
-
+            pathname: `/main?symbol=${symbol}`
           }}>
             <button className="btn btn-primary">Trade</button>
           </NavLink>
@@ -36,7 +34,7 @@ const CurrentHoldings = (props) => {
           <p>{percent_change}%</p>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

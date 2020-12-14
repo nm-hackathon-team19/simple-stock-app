@@ -9,8 +9,6 @@ function RenderRecommendations(props) {
     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
     if (holdingExist) {
       setShares(holdingExist.shares);
-    } else {
-      console.log('Recommended holding is not part of user holdings');
     }
   }
 
