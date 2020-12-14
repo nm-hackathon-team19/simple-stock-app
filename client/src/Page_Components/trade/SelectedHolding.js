@@ -3,7 +3,7 @@ import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
 
-function SelectedHolding({ selectedHolding, buyNewHolding }) {
+function SelectedHolding({ selectedHolding, buyNewHolding, sellShares }) {
   // debugger
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [shares, setShares] = useState(0);
@@ -13,10 +13,16 @@ function SelectedHolding({ selectedHolding, buyNewHolding }) {
     setIsModalBuyStock(!isModalBuyStock);
   }
 
-  const passPropsData = (shares) => {
+  const handleBuyShares = (shares) => {
     buyNewHolding(shares);
     setShares(prevState => prevState + parseInt(shares));
   }
+
+  const handleSellShares = (shares) => {
+    sellShares(shares);
+    setShares(prevState => prevState - parseInt(shares));
+  }
+
 
   const compareSelectedHoldingToExisting = () => {
     if (selectedHolding) {
@@ -38,14 +44,16 @@ function SelectedHolding({ selectedHolding, buyNewHolding }) {
           <BuyModal
             show={isModalBuyStock}
             toggleBuyStockModal={toggleBuyStockModal}
-            passPropsData={passPropsData}
+            handleBuyShares={handleBuyShares}
             selectedHolding={selectedHolding}
+            shares={shares}
           />
           <SellModal
             show={isModalBuyStock}
             toggleBuyStockModal={toggleBuyStockModal}
-            passPropsData={passPropsData}
+            handleSellShares={handleSellShares}
             selectedHolding={selectedHolding}
+            shares={shares}
           />
         </div>
       </div>

@@ -18,9 +18,14 @@ const Trade = () => {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setSelectedHolding(response.data);
     } catch (err) {
-      console.error(err.message)
-    }
+      console.error(err.message);
+    };
   };
+
+  const sellShares = (shares) => {
+    const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);
+    updateHolding(holding.holding_id, holding.shares - shares);
+  }
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
@@ -72,6 +77,7 @@ const Trade = () => {
           <SelectedHolding
             selectedHolding={selectedHolding}
             buyNewHolding={buyNewHolding}
+            sellShares={sellShares}
           />
           : null}
         <Recommendations

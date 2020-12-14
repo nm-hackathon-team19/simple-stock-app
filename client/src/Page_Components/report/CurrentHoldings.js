@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
+
 
 const CurrentHoldings = (props) => {
   const { name, symbol, price, percent_change, shares } = props.holding;
@@ -7,7 +9,12 @@ const CurrentHoldings = (props) => {
       <div className="card-head">
         <h2> {name}: {symbol}</h2>
         <div className="card-buttons">
-          <button className="btn btn-primary">Trade</button>
+          <NavLink to={{
+            pathname: '/main',
+
+          }}>
+            <button className="btn btn-primary">Trade</button>
+          </NavLink>
         </div>
       </div>
       <hr />

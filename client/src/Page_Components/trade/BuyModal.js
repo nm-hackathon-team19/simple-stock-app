@@ -8,7 +8,7 @@ const BuyModal = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => props.passPropsData(sharesValue);
+  const handleSubmit = () => props.handleBuyShares(sharesValue);
 
   // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
@@ -23,6 +23,7 @@ const BuyModal = (props) => {
         <Modal.Body>
           <Form>
             <h5 className="text-center">Share value: ${latestPrice}</h5>
+            <h5 className="text-center">Current Shares Held: {props.shares}</h5>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Share quantity</Form.Label>
               <Form.Control type="number" placeholder="Shares" value={sharesValue} onChange={(e) => setSharesValue(e.target.value)} />

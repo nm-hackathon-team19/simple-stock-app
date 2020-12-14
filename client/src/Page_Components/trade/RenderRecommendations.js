@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { HoldingContext } from '../../HoldingContext'
 
-
-
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useContext(HoldingContext);
