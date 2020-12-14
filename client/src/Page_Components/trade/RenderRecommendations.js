@@ -8,17 +8,12 @@ function RenderRecommendations(props) {
   const [holdings, setHoldings] = useContext(HoldingContext);
 
   const compareSelectedHoldingToExisting = () => {
-    // debugger
-    // if (props.recommendedHolding) {
     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
     if (holdingExist) {
       setShares(holdingExist.shares);
     } else {
-      console.log('recommendedHolding doesnt exist');
+      console.log('Recommended holding is not part of user holdings');
     }
-    // setShares(holdingExist.shares);
-    // } else {
-    // }
   }
 
   useEffect(() => {

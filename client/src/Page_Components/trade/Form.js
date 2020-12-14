@@ -8,6 +8,12 @@ const Form = (props) => {
   const [isCanSearch, setCanSearch] = useState(true);
   const timeoutRef = useRef(null);
 
+  useEffect(() => {
+    if (symbol === '') {
+      setCompanyName(null);
+    }
+  }, [symbol])
+
   function handleSubmit(e) {
     e.preventDefault()
     props.searchForHolding(symbol)

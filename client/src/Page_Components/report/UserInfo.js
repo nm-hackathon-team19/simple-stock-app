@@ -1,25 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-function UserInformation(props) {
-  // const [funds, setFunds] = useState(100000)
-  // const { funds, setFunds } = props
+function UserInformation({ holdings }) {
+  const [funds, setFunds] = useState(100000);
+  const [wallet, setWallet] = useState(0);
 
-  // const handleProps = (symbol, shares) => {
-  //   console.log(symbol);
-  //   console.log(shares);
+  const calculateFunds = () => {
+    let funds = 0
+    holdings.forEach(holding => {
+      funds += holding.price * holding.shares
+    });
+    setFunds(prevState => prevState - funds);
+    setWallet(funds);
+  }
 
-  // function handleClick() {
-  //   console.log(props)
-  //   props.show()
-  // }
+  useEffect(() => {
+    calculateFunds();
+  }, [holdings]);
 
   return (
     <div className="container user-information">
-      <h1>User Information</h1>
+      <h1>Account Balance</h1>
       <h3>User: John Doe</h3>
-      <h3>Wallet: $funds </h3>
-      <h3>Holdings: $1000 </h3>
-      {/* <BuyModal /> */}
+      <h3>Total Holding Value: ${wallet} </h3>
+      <h3>Wallet: ${funds} </h3>
     </div>
   )
 }

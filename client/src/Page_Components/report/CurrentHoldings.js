@@ -13,7 +13,7 @@ const CurrentHoldings = (props) => {
       <hr />
       <div className="card-body">
         <div className="Holding Value:">
-          <strong>Current Price</strong>
+          <strong>Holding Value</strong>
           <p>${price * shares}</p>
         </div>
         <div className="shares">
