@@ -24,12 +24,11 @@ const Trade = (props) => {
   };
 
   useEffect(() => {
-    // console.log(props.location.search);
     const queryStrings = qa.parse(
       props.location.search,
       { ignoreQueryPrefix: true });
     if (queryStrings.symbol) {
-      console.log(queryStrings);
+      searchForHolding(queryStrings.symbol);
     }
   }, []);
 

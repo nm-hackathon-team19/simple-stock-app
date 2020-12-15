@@ -9,7 +9,8 @@ const CurrentHoldings = (props) => {
         <h2> {name}: {symbol}</h2>
         <div className="card-buttons">
           <NavLink to={{
-            pathname: `/main?symbol=${symbol}`
+            pathname: "/main",
+            search: `?symbol=${symbol}`
           }}>
             <button className="btn btn-primary">Trade</button>
           </NavLink>
