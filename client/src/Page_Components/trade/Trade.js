@@ -14,15 +14,23 @@ const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useContext(HoldingContext);
   const [selectedHolding, setSelectedHolding] = useState(null);
-  const [isShowAlert, setSsShowAlert] = useState(false);
+  const [isShowAlert, setIsShowAlert] = useState(false);
+  const [sharesPurchased, setSharesPurchased] = useState(0);
 
+  const updateShares = (shares) => {
+    setSharesPurchased(shares);
+  }
+
+  const toggleAlertState = () => {
+    setIsShowAlert(prevState => !prevState);
+  }
 
   const searchForHolding = async (symbol) => {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setSelectedHolding(response.data);
     } catch (err) {
-      console.error(err.message);
+      console.error('error in search for holding', err.message);
     };
   };
 
@@ -49,7 +57,7 @@ const Trade = (props) => {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
         prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
         updateHolding(matchingHolding.holding_id, matchingHolding.shares);
-        setSsShowAlert(true);
+        toggleAlertState()
       } else {
         const newShare = {
           symbol: selectedHolding.symbol,
@@ -61,7 +69,7 @@ const Trade = (props) => {
         };
         prevHoldings.push(newShare);
         createHolding(newShare);
-        setSsShowAlert(true);
+        toggleAlertState()
       }
       return prevHoldings
     })
@@ -86,13 +94,19 @@ const Trade = (props) => {
     <div className="container">
       <div className="trade-container">
         <Header />
-        {isShowAlert ? <Alert /> : null}
+        {isShowAlert && <Alert
+          toggleAlertState={toggleAlertState}
+          isShowAlert={isShowAlert}
+          selectedHolding={selectedHolding}
+          sharesPurchased={sharesPurchased}
+        />}
         <Form searchForHolding={searchForHolding} />
         {selectedHolding ?
           <SelectedHolding
             selectedHolding={selectedHolding}
             buyNewHolding={buyNewHolding}
             sellShares={sellShares}
+            updateShares={updateShares}
           />
           : null}
         <Recommendations

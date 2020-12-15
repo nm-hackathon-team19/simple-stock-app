@@ -41,7 +41,7 @@ const Form = (props) => {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setCompanyName(response.data.companyName);
-      console.log(response.data.companyName)
+      // console.log(response.data.companyName)
     } catch (err) {
       console.error(err.message)
     }

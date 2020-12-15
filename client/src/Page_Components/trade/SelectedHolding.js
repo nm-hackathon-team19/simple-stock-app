@@ -3,7 +3,7 @@ import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
 
-function SelectedHolding({ selectedHolding, buyNewHolding, sellShares }) {
+function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateShares }) {
   // debugger
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [shares, setShares] = useState(0);
@@ -14,6 +14,7 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares }) {
   }
 
   const handleBuyShares = (shares) => {
+    updateShares(shares);
     buyNewHolding(shares);
     setShares(prevState => prevState + parseInt(shares));
   }
