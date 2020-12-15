@@ -17,7 +17,7 @@ app.get('/trade', async (req, res) => {
     res.json(response.rows);
   } catch (err) {
     2
-    console.error(err.message);
+    console.error('error from server- get all holdings', err.message);
   }
 })
 
@@ -28,7 +28,7 @@ app.get('/trade/:id', async (req, res) => {
     const response = await pool.query("SELECT * FROM holdings WHERE holding_id = ($1)", [id])
     res.json(response.rows[0]);
   } catch (err) {
-    console.log(err.message)
+    console.log('error from server- get a holding', err.message)
   }
 })
 
@@ -40,7 +40,7 @@ app.post('/trade', async (req, res) => {
     const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, symbol, shares, changePercent, price]);
     res.json(newHolding.rows[0]);
   } catch (err) {
-    console.error('error from server', err.message);
+    console.error('error from server- create new holding', err.message);
   }
 })
 
@@ -52,7 +52,7 @@ app.put('/trade/:id', async (req, res) => {
     const updatedHolding = await pool.query("UPDATE holdings SET shares = $1 WHERE holding_id = $2 RETURNING *", [shares, id])
     res.json(updatedHolding.rows[0]);
   } catch (err) {
-    console.error(err.message);
+    console.error('error from server- update holding', err.message);
   }
 })
 
@@ -63,7 +63,7 @@ app.delete('/trade/:id', async (req, res) => {
     const deletedHolding = await pool.query("DELETE FROM holdings WHERE holding_id = $1", [id]);
     res.send(`successfully deleted holding id: ${id}`);
   } catch (err) {
-    console.error(err.message);
+    console.error('error from server- delete holdings', err.message);
   }
 })
 
@@ -76,7 +76,7 @@ app.get('/api/stocks/search', (req, res) => {
       res.send(response.data[Object.keys(response.data)[0]].quote)
     })
     .catch(error => {
-      console.log(error)
+      console.log('error from server- API routes', error)
     })
 })
 
@@ -91,7 +91,7 @@ app.get('/api/stocks/recommendation', (req, res) => {
       res.json(companies)
     })
     .catch(function (err) {
-      console.log(err)
+      console.log('error from server- API routes', err)
     })
 })
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios'
+import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
 import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
@@ -7,12 +8,14 @@ import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
-import qa from 'qs';
+import Alert from './Alert'
 
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useContext(HoldingContext);
   const [selectedHolding, setSelectedHolding] = useState(null);
+  const [isShowAlert, setSsShowAlert] = useState(false);
+
 
   const searchForHolding = async (symbol) => {
     try {
@@ -46,6 +49,7 @@ const Trade = (props) => {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
         prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
         updateHolding(matchingHolding.holding_id, matchingHolding.shares);
+        setSsShowAlert(true);
       } else {
         const newShare = {
           symbol: selectedHolding.symbol,
@@ -57,6 +61,7 @@ const Trade = (props) => {
         };
         prevHoldings.push(newShare);
         createHolding(newShare);
+        setSsShowAlert(true);
       }
       return prevHoldings
     })
@@ -77,11 +82,11 @@ const Trade = (props) => {
     getHoldings(setHoldings);
   }, [])
 
-  // console.log(holdings)
   return (
     <div className="container">
       <div className="trade-container">
         <Header />
+        {isShowAlert ? <Alert /> : null}
         <Form searchForHolding={searchForHolding} />
         {selectedHolding ?
           <SelectedHolding
