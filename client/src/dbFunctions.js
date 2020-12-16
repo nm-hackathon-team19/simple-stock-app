@@ -40,13 +40,3 @@ export const deleteHolding = async (id) => {
     console.error('Error in delete holding', err.message);
   }
 }
-
-// app.delete('/trade/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const deletedHolding = await pool.query("DELETE FROM holdings WHERE holding_id = $1", [id]);
-//     res.send(`successfully deleted holding id: ${id}`);
-//   } catch (err) {
-//     console.error('error from server- delete holdings', err.message);
-//   }
-// })

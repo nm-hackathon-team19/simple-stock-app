@@ -15,7 +15,7 @@ export default function Navigation() {
           <NavLink exact to='/main' activeClassName="current">
             <li>Trade</li>
           </NavLink>
-          <NavLink exact to='/report' activeClassName="current">
+          <NavLink exact to='/portfolio' activeClassName="current">
             <li>Portfolio</li>
           </NavLink>
           <li>Login</li>

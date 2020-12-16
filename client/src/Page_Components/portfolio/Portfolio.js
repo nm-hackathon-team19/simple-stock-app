@@ -4,22 +4,13 @@ import CurrentHoldings from './CurrentHoldings'
 import { HoldingContext } from '../../HoldingContext'
 import { getHoldings } from '../../dbFunctions'
 
-const Report = () => {
+const Portfolio = () => {
   const [holdings, setHoldings] = useContext(HoldingContext);
-  // const [holdings, setHoldings] = useContext(HoldingContext);
-
-
-  // console.log(funds);
-
-
-  // console.log(holdings);
 
   useEffect(() => {
-    // console.log('inside useEffect')
     getHoldings(setHoldings)
   }, []);
 
-  // console.log(holdings)
   return (
     <div className="container">
       <UserInfo holdings={holdings} />
@@ -32,4 +23,4 @@ const Report = () => {
   )
 }
 
-export default Report
+export default Portfolio
