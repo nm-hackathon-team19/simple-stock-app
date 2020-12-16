@@ -28,7 +28,7 @@ const BuyModal = (props) => {
               <Form.Label>Share quantity</Form.Label>
               <Form.Control type="number" placeholder="Shares" value={sharesValue} onChange={(e) => setSharesValue(e.target.value)} />
               <Form.Text className="total-price">
-                {sharesValue ? '$' + sharesValue * latestPrice : 'Total amount'}
+                {sharesValue ? '$' + (sharesValue * latestPrice).toFixed(2) : 'Total amount'}
               </Form.Text>
             </Form.Group>
           </Form>

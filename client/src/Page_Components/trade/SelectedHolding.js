@@ -21,6 +21,7 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const handleSellShares = (shares) => {
     sellShares(shares);
+    updateShares(shares);
     setShares(prevState => prevState - parseInt(shares));
   }
 
@@ -61,12 +62,12 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
       <div className="card-body">
         <div className="price">
           <strong>Current Price</strong>
-          <p className="mb-0">${latestPrice}</p>
-          <small>Previous Closed: ${previousClose} </small>
+          <p className="mb-0">${latestPrice.toFixed(2)}</p>
+          <small>Previous Closed: ${previousClose.toFixed(2)} </small>
         </div>
         <div className="percent">
           <strong>Percent Change</strong>
-          <p>%{changePercent}</p>
+          <p>{changePercent.toFixed(3)}%</p>
         </div>
         <div className="change">
           <strong>Daily Gain/Loss</strong>

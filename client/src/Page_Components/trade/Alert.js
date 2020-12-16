@@ -4,6 +4,7 @@ import { FiCheckCircle } from 'react-icons/fi'
 
 const Alert = (props) => {
   const { latestPrice, symbol } = props.selectedHolding
+
   return (
     <Toast className="mx-auto" onClose={() => props.toggleAlertState()} show={props.isShowAlert} delay={7000} autohide>
       <Toast.Header>
@@ -14,7 +15,7 @@ const Alert = (props) => {
         />
         <strong className="mr-auto">Transaction Completed <FiCheckCircle className="text-success h5 mb-0" /></strong>
       </Toast.Header>
-      <Toast.Body>Successfully purchased {props.sharesPurchased} shares from {symbol} for a total of ${props.sharesPurchased * latestPrice}</Toast.Body>
+      <Toast.Body>Successfully {props.alertMessage} {props.sharesPurchased} shares from {symbol} for a total of ${props.sharesPurchased * latestPrice}</Toast.Body>
     </Toast>
   );
 }

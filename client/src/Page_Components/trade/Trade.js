@@ -16,6 +16,7 @@ const Trade = (props) => {
   const [selectedHolding, setSelectedHolding] = useState(null);
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [sharesPurchased, setSharesPurchased] = useState(0);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const updateShares = (shares) => {
     setSharesPurchased(shares);
@@ -46,18 +47,20 @@ const Trade = (props) => {
   const sellShares = (shares) => {
     const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);
     updateHolding(holding.holding_id, holding.shares - shares);
+    setAlertMessage('sold');
+    toggleAlertState()
   }
 
   const buyNewHolding = (shares) => {
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
-        (holding) => holding.symbol === selectedHolding.symbol
-      );
+        (holding) => holding.symbol === selectedHolding.symbol);
       if (matchingHolding) {
         const matchIndex = prevHoldings.indexOf(matchingHolding);
         prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
         updateHolding(matchingHolding.holding_id, matchingHolding.shares);
-        toggleAlertState()
+        setAlertMessage('purchased');
+        toggleAlertState();
       } else {
         const newShare = {
           symbol: selectedHolding.symbol,
@@ -69,6 +72,7 @@ const Trade = (props) => {
         };
         prevHoldings.push(newShare);
         createHolding(newShare);
+        setAlertMessage('purchased');
         toggleAlertState()
       }
       return prevHoldings
@@ -94,12 +98,14 @@ const Trade = (props) => {
     <div className="container">
       <div className="trade-container">
         <Header />
-        {isShowAlert && <Alert
-          toggleAlertState={toggleAlertState}
-          isShowAlert={isShowAlert}
-          selectedHolding={selectedHolding}
-          sharesPurchased={sharesPurchased}
-        />}
+        {isShowAlert &&
+          <Alert
+            toggleAlertState={toggleAlertState}
+            isShowAlert={isShowAlert}
+            selectedHolding={selectedHolding}
+            sharesPurchased={sharesPurchased}
+            alertMessage={alertMessage}
+          />}
         <Form searchForHolding={searchForHolding} />
         {selectedHolding ?
           <SelectedHolding

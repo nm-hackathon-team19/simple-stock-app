@@ -13,10 +13,6 @@ const SellModal = (props) => {
     if (sharesInput > props.shares) {
       console.log('not enough shares');
       setIsShowAlert(true);
-      // setTimeout(() => {
-      //   console.log('inside timeout')
-      //   setIsShowAlert(false);
-      // }, 3000)
       setShow(true);
     } else {
       console.log('youre good')
@@ -48,7 +44,7 @@ const SellModal = (props) => {
               < Form.Label > Share quantity</Form.Label>
               <Form.Control type="number" placeholder="Shares" value={sharesInput} onChange={(e) => setSharesInput(e.target.value)} />
               <Form.Text className="total-price">
-                {sharesInput ? '$' + sharesInput * latestPrice : 'Total amount'}
+                {sharesInput ? '$' + (sharesInput * latestPrice).toFixed(2) : 'Total amount'}
               </Form.Text>
             </Form.Group>
           </Form>

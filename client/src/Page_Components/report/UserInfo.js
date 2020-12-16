@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react'
 
 function UserInformation({ holdings }) {
-  const [funds, setFunds] = useState(100000);
-  const [wallet, setWallet] = useState(0);
+  const [wallet, setWallet] = useState(100000);
+  const [totalHoldingAmount, setTotalHoldingAmount] = useState(0);
 
   const calculateFunds = () => {
-    let funds = 0
+    let amitay = 0
     holdings.forEach(holding => {
-      funds += holding.price * holding.shares
+      amitay += holding.price * holding.shares
     });
-    setFunds(prevState => prevState - funds);
-    setWallet(funds);
+    setWallet(prevState => prevState - amitay);
+    setTotalHoldingAmount(amitay);
   }
+
+  //totalHoldingAmount.toFixed(1)
+
+  useEffect(() => {
+    console.log(wallet);
+    console.log(totalHoldingAmount);
+    debugger
+  }, [wallet])
 
   useEffect(() => {
     calculateFunds();
@@ -21,8 +29,8 @@ function UserInformation({ holdings }) {
     <div className="container user-information">
       <h1>Account Balance</h1>
       <h3>User: John Doe</h3>
-      <h3>Total Holding Value: ${wallet} </h3>
-      <h3>Wallet: ${funds} </h3>
+      <h3>Total Holding Value: ${totalHoldingAmount.toFixed(1)} </h3>
+      <h3>Wallet: ${wallet.toFixed(1)} </h3>
     </div>
   )
 }

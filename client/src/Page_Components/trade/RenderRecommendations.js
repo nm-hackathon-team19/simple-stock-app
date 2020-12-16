@@ -29,15 +29,15 @@ function RenderRecommendations(props) {
         <div className="card-body">
           <div className="price">
             <strong>Current Price</strong>
-            <p>{latestPrice}</p>
+            <p>${latestPrice.toFixed(2)}</p>
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p>{changePercent}</p>
+            <p>{changePercent.toFixed(3)}%</p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p>{change}</p>
+            <p>${change}</p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
