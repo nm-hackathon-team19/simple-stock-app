@@ -3,7 +3,7 @@ import axios from 'axios'
 import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
-import { createHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
+import { createHolding, deleteHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
 import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
@@ -49,6 +49,8 @@ const Trade = (props) => {
     updateHolding(holding.holding_id, holding.shares - shares);
     setAlertMessage('sold');
     toggleAlertState()
+    shares == holding.shares &&
+      deleteHolding(holding.holding_id);
   }
 
   const buyNewHolding = (shares) => {

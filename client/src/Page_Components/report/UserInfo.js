@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react'
 
 function UserInformation({ holdings }) {
-  const [wallet, setWallet] = useState(100000);
+  const [wallet, setWallet] = useState(1000);
   const [totalHoldingAmount, setTotalHoldingAmount] = useState(0);
 
   const calculateFunds = () => {
-    let amitay = 0
+    let tempCalc = 0
     holdings.forEach(holding => {
-      amitay += holding.price * holding.shares
+      tempCalc += holding.price * holding.shares
     });
-    setWallet(prevState => prevState - amitay);
-    setTotalHoldingAmount(amitay);
-  }
-
-  //totalHoldingAmount.toFixed(1)
+    setWallet(prevState => prevState - tempCalc);
+    setTotalHoldingAmount(tempCalc);
+  };
 
   useEffect(() => {
     console.log(wallet);
     console.log(totalHoldingAmount);
-    debugger
+    // debugger
   }, [wallet])
 
   useEffect(() => {
