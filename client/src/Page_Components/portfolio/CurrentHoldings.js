@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const CurrentHoldings = (props) => {
   const { name, symbol, price, percent_change, shares } = props.holding;
+  // console.log(props.holding)
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">
@@ -20,7 +21,7 @@ const CurrentHoldings = (props) => {
       <div className="card-body">
         <div className="Holding Value:">
           <strong>Holding Value</strong>
-          <p>${price * shares}</p>
+          <p>${Number(price * shares).toFixed(2)}</p>
         </div>
         <div className="shares">
           <strong>Shares:</strong>

@@ -13,7 +13,7 @@ const Portfolio = () => {
 
   return (
     <div className="container">
-      <UserInfo holdings={holdings} />
+      <UserInfo />
       {holdings.map(holding =>
         <CurrentHoldings
           holding={holding}

@@ -18,7 +18,7 @@ function App() {
         <main id="main-container">
           <HoldingProvider>
             <Route path="/" exact component={Home} />
-            <Route path="/main*" component={Trade} />
+            <Route path="/main" component={Trade} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/confirm" component={Confirm} />
           </HoldingProvider>
