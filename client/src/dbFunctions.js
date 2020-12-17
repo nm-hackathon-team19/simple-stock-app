@@ -17,7 +17,8 @@ export const createHolding = async (holding) => {
 export const getHoldings = async (setHoldings) => {
   try {
     const response = await axios.get('/trade');
-    setHoldings(response.data)
+    // setHoldings(response.data)
+    return response.data;
   } catch (err) {
     console.error('Error in get holdings', err.message);
   }
