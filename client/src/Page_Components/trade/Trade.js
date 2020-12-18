@@ -96,8 +96,9 @@ const Trade = (props) => {
   useEffect(() => {
     getRecommendations();
     // getHoldings(setHoldings);
-    getHoldings().then(holdingsData => setHoldings(holdingsData));
-
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(function (err) { console.error('error get holdings', err) });
   }, [])
 
   return (

@@ -12,10 +12,8 @@ const Portfolio = () => {
   useEffect(() => {
     // getHoldings(setHoldings)
     getHoldings().then(holdingsData => setHoldings(holdingsData))
-    console.log(holdings);
   }, []);
 
-  console.log(holdings);
   return (
     <div className="container">
       <UserInfo />

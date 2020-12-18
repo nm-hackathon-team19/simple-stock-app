@@ -13,7 +13,9 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [holdings, setHoldings] = useState([]);
 
   useEffect(() => {
-    getHoldings().then(holdingsData => setHoldings(holdingsData));
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(function (err) { console.error('error get holdings', err) });
   }, []);
 
   function toggleBuyStockModal() {

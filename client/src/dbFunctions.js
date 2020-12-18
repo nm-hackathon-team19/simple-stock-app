@@ -14,7 +14,7 @@ export const createHolding = async (holding) => {
   }
 }
 
-export const getHoldings = async (setHoldings) => {
+export const getHoldings = async () => {
   try {
     const response = await axios.get('/trade');
     // setHoldings(response.data)
