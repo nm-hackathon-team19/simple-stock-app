@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { HoldingContext } from '../../HoldingContext'
+import { getHoldings } from '../../dbFunctions'
+
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
-  const [holdings, setHoldings] = useContext(HoldingContext);
+  // const [holdings, setHoldings] = useContext(HoldingContext);
+  const [holdings, setHoldings] = useState([]);
 
   const compareSelectedHoldingToExisting = () => {
     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
@@ -13,8 +16,12 @@ function RenderRecommendations(props) {
   }
 
   useEffect(() => {
+    getHoldings().then(holdingsData => setHoldings(holdingsData));
+  }, []);
+
+  useEffect(() => {
     compareSelectedHoldingToExisting();
-  }, [props.recommendedHolding]);
+  }, [holdings]);
 
   const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
 

@@ -2,12 +2,19 @@ import React, { useState, useContext, useEffect } from 'react'
 import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
+import { getHoldings } from '../../dbFunctions'
+
 
 function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateShares }) {
   // debugger
   const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [shares, setShares] = useState(0);
-  const [holdings, setHoldings] = useContext(HoldingContext);
+  // const [holdings, setHoldings] = useContext(HoldingContext);
+  const [holdings, setHoldings] = useState([]);
+
+  useEffect(() => {
+    getHoldings().then(holdingsData => setHoldings(holdingsData));
+  }, []);
 
   function toggleBuyStockModal() {
     setIsModalBuyStock(!isModalBuyStock);
@@ -34,7 +41,7 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   useEffect(() => {
     compareSelectedHoldingToExisting();
-  }, [selectedHolding]);
+  }, [holdings]);
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
   return (

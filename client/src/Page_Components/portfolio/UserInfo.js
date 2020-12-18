@@ -10,13 +10,10 @@ function UserInformation() {
   const [holdings, setHoldings] = useState([]);
 
   useEffect(() => {
-    getHoldings.then(holdingsData => setHoldings(holdingsData));
-    // console.log('inside useEffect', holdings);
-    // calculateFunds();
-    // return () => {
-    //   console.log('clean up', holdings);
-    // }
-  }, []); // [] ==> 2 shares on facebook ...
+    getHoldings().then(holdingsData => {
+      setHoldings(holdingsData);
+    })
+  }, []);
 
   // const calculateFunds = () => {
   //   console.log('beggining calculatorFunds');
@@ -30,8 +27,8 @@ function UserInformation() {
   //   setTotalHoldingAmount(tempCalc);
   // };
 
-  const holdingValue = holdings.reduce(total, holding => {
-    return total + (holding.amount * holding.value);
+  const holdingValue = holdings.reduce((total, holding) => {
+    return total + (holding.shares * holding.price);
   }, 0);
 
 
@@ -39,7 +36,7 @@ function UserInformation() {
     <div className="container user-information">
       <h1>Account Balance</h1>
       <h3>User: John Doe</h3>
-      <h3>Wallet: ${(10000 - holdingValue).toFixed(1)}</h3>
+      <h3>Wallet: ${(1000 - holdingValue).toFixed(1)}</h3>
       <h3>Total Holding Value: ${holdingValue.toFixed(1)} </h3>
     </div>
   )

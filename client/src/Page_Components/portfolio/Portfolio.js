@@ -11,7 +11,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     // getHoldings(setHoldings)
-    getHoldings.then(holdingsData => setHoldings(holdingsData))
+    getHoldings().then(holdingsData => setHoldings(holdingsData))
     console.log(holdings);
   }, []);
 

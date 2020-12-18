@@ -12,7 +12,9 @@ import Alert from './Alert'
 
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
-  const [holdings, setHoldings] = useContext(HoldingContext);
+  // const [holdings, setHoldings] = useContext(HoldingContext);
+  const [holdings, setHoldings] = useState([]);
+
   const [selectedHolding, setSelectedHolding] = useState(null);
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [sharesPurchased, setSharesPurchased] = useState(0);
@@ -93,7 +95,9 @@ const Trade = (props) => {
 
   useEffect(() => {
     getRecommendations();
-    getHoldings(setHoldings);
+    // getHoldings(setHoldings);
+    getHoldings().then(holdingsData => setHoldings(holdingsData));
+
   }, [])
 
   return (
