@@ -2,18 +2,9 @@ import React from 'react'
 import './Static.css'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
-function Navigation(props) {
-
-  const handleSelect = (props) => {
-    console.log('hello');
-    console.log(props);
-    console.log(this);
-
-    // debugger
-  };
-
+const Navigation = () => {
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" id="navbar" >
       <Navbar.Brand href="/">TradingStocks</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="/">Home</Nav.Link>
