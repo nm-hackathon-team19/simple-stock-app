@@ -1,5 +1,5 @@
 /* Navbar */
-#navbar {
+/* #navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -26,15 +26,20 @@ nav li {
   padding: 10px 20px;
   margin: 0 5px;
   cursor: pointer;
-}
+} */
 
-nav li:hover {
+/* nav li:hover {
   opacity: 0.6;
-}
+  border-bottom: black solid 2px;
+} */
 
+.navbar-nav a:hover {
+  color: red;
+      text-decoration: none;
+
+}
 .current {
-  background: #c72727;
-  border-radius: 20px;
+  border-bottom: black solid 2px;
 }
 
 /* Footer */

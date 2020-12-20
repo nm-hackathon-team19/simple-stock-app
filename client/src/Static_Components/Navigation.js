@@ -1,27 +1,31 @@
 import React from 'react'
 import './Static.css'
-import { NavLink } from 'react-router-dom'
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
-export default function Navigation() {
+function Navigation(props) {
+
+  const handleSelect = (props) => {
+    console.log('hello');
+    console.log(props);
+    console.log(this);
+
+    // debugger
+  };
+
   return (
-    <div id="navbar">
-      <h1 className="logo">
-        <span className="text-primary"><i className="fas fa-book-open"></i> Trading</span>Stocks</h1>
-      <nav>
-        <ul>
-          <NavLink exact to='/' activeClassName="current">
-            <li>Home</li>
-          </NavLink>
-          <NavLink exact to='/main' activeClassName="current">
-            <li>Trade</li>
-          </NavLink>
-          <NavLink exact to='/portfolio' activeClassName="current">
-            <li>Portfolio</li>
-          </NavLink>
-          <li>Login</li>
-          <li>Register</li>
-        </ul>
-      </nav>
-    </div>
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand href="/">TradingStocks</Navbar.Brand>
+      <Nav className="mr-auto">
+        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/main">Trade</Nav.Link>
+        <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
+      </Nav>
+      <Form inline>
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Button variant="outline-info">Search</Button>
+      </Form>
+    </Navbar>
   )
 }
+
+export default Navigation
