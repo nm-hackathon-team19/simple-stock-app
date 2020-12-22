@@ -10,6 +10,7 @@ const RenderChart = ({ chartData }) => {
   // legendPosition: 'right',
   // location: 'City'
   //   }
+
   useEffect(() => {
     console.log(chartData);
     console.log(isShow);
