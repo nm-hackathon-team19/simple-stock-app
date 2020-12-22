@@ -17,79 +17,62 @@ const Chart = (props) => {
 
   // console.log(holdings)
 
+  // const getNames = () => {
+  //   for (let i = 0; holdings.length > i; i++) {
+  //     // debugger
+  //     // console.log(holdings[i].name);
+  //     setHoldingNames(prevState => [...prevState, holdings[i].name]);
+  //   }
+  //   return holdingNames
+  // }
+
+
   useEffect(() => {
-    console.log('useEffect')
-    console.log(holdings);
-    // debugger
     for (let i = 0; holdings.length > i; i++) {
       // debugger
-      console.log(holdings[i].name);
+      // console.log(holdings[i].name);
       setHoldingNames(prevState => [...prevState, holdings[i].name]);
     }
+
   }, [holdings])
 
-  if (holdingNames.length > 0) {
-    getChartData();
-  }
+  console.log(holdingNames)
 
-  console.log(holdingNames);
-  // console.log(props.holdings);
-
-  console.log(holdingNames.length)
   useEffect(() => {
-    // console.log(chartData);
-    // console.log(isShow);
-    setIsShow(true)
-  }, [isShow])
-  // console.log(isShow)
+    // if (holdingNames.length > 0) {
+    console.log(holdingNames)
 
-  const getHoldingNames = () => {
-    let holdingNames = []
-    // debugger
-    for (let i = 0; props.holdings.length > 0; i++) {
-      // debugger
-      console.log(props.holdings[i].name);
-    }
-    // return 
-  }
+    setChartData({
+      labels: holdingNames,
+      datasets: [
+        {
+          label: 'Population',
+          data: [
+            617594,
+            181045,
+            153060,
+            106519,
+            105162,
+            95072
+          ],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)'
+          ]
+        }
+      ]
+    });
+  }, [holdingNames])
 
-  if (holdingNames.length > 0) {
 
-
-    const getChartData = () => {
-      // Ajax calls here
-      console.log('getCharData', holdingNames)
-      setChartData({
-        labels: holdingNames,
-        datasets: [
-          {
-            label: 'Population',
-            data: [
-              617594,
-              181045,
-              153060,
-              106519,
-              105162,
-              95072
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)',
-              'rgba(255, 159, 64, 0.6)',
-              'rgba(255, 99, 132, 0.6)'
-            ]
-          }
-        ]
-      });
-    }
-  }
-
-  if (isShow) {
-    return (
-      <div className="chart">
+  return (
+    <div className="chart">
+      {holdingNames.length > 0 ?
         <Bar
           data={holdingNames.length > 0 ? chartData : {}}
           options={{
@@ -104,15 +87,11 @@ const Chart = (props) => {
             }
           }}
         />
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <h1>loser</h1>
-      </div>
-    )
-  }
+        : <h1>Update</h1>}
+    </div>
+  )
+
+
 }
 
 
