@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { getHoldings } from '../../dbFunctions';
-import RenderChart from './RenderChart'
 
 const Chart = () => {
   const [chartData, setChartData] = useState({})
   const [holdings, setHoldings] = useState([]);
   const [holdingNames, setHoldingNames] = useState([]);
   const [holdingShares, setHoldingShares] = useState([]);
-
 
   useEffect(() => {
     getHoldings().then(holdingsData => setHoldings(holdingsData));
@@ -20,8 +18,6 @@ const Chart = () => {
       setHoldingShares(prevState => [...prevState, holdings[i].shares]);
     }
   }, [holdings])
-
-  console.log(holdings)
 
   useEffect(() => {
     setChartData({
@@ -46,7 +42,7 @@ const Chart = () => {
 
   return (
     <div className="chart">
-      {holdingNames.length > 0 ?
+      {holdingNames.length > 0 &&
         <Bar
           data={holdingNames.length > 0 ? chartData : null}
           options={{
@@ -61,7 +57,7 @@ const Chart = () => {
             }
           }}
         />
-        : <h1>Update</h1>}
+      }
     </div>
   )
 }
