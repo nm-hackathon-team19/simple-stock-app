@@ -3,58 +3,33 @@ import { Bar, Line, Pie } from 'react-chartjs-2';
 import { getHoldings } from '../../dbFunctions';
 import RenderChart from './RenderChart'
 
-const Chart = (props) => {
+const Chart = () => {
   const [chartData, setChartData] = useState({})
-  const [isShow, setIsShow] = useState(false)
   const [holdings, setHoldings] = useState([]);
   const [holdingNames, setHoldingNames] = useState([]);
+  const [holdingShares, setHoldingShares] = useState([]);
 
 
   useEffect(() => {
     getHoldings().then(holdingsData => setHoldings(holdingsData));
-    console.log('AMITAY')
   }, []);
-
-  // console.log(holdings)
-
-  // const getNames = () => {
-  //   for (let i = 0; holdings.length > i; i++) {
-  //     // debugger
-  //     // console.log(holdings[i].name);
-  //     setHoldingNames(prevState => [...prevState, holdings[i].name]);
-  //   }
-  //   return holdingNames
-  // }
-
 
   useEffect(() => {
     for (let i = 0; holdings.length > i; i++) {
-      // debugger
-      // console.log(holdings[i].name);
       setHoldingNames(prevState => [...prevState, holdings[i].name]);
+      setHoldingShares(prevState => [...prevState, holdings[i].shares]);
     }
-
   }, [holdings])
 
-  console.log(holdingNames)
+  console.log(holdings)
 
   useEffect(() => {
-    // if (holdingNames.length > 0) {
-    console.log(holdingNames)
-
     setChartData({
       labels: holdingNames,
       datasets: [
         {
           label: 'Population',
-          data: [
-            617594,
-            181045,
-            153060,
-            106519,
-            105162,
-            95072
-          ],
+          data: holdingShares,
           backgroundColor: [
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
@@ -69,12 +44,11 @@ const Chart = (props) => {
     });
   }, [holdingNames])
 
-
   return (
     <div className="chart">
       {holdingNames.length > 0 ?
         <Bar
-          data={holdingNames.length > 0 ? chartData : {}}
+          data={holdingNames.length > 0 ? chartData : null}
           options={{
             title: {
               display: true,
@@ -90,9 +64,6 @@ const Chart = (props) => {
         : <h1>Update</h1>}
     </div>
   )
-
-
 }
-
 
 export default Chart;
