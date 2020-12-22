@@ -22,14 +22,20 @@ const Chart = (props) => {
     console.log(holdings);
     // debugger
     for (let i = 0; holdings.length > i; i++) {
-      debugger
+      // debugger
       console.log(holdings[i].name);
+      setHoldingNames(prevState => [...prevState, holdings[i].name]);
     }
-    getChartData();
   }, [holdings])
 
+  if (holdingNames.length > 0) {
+    getChartData();
+  }
+
+  console.log(holdingNames);
   // console.log(props.holdings);
 
+  console.log(holdingNames.length)
   useEffect(() => {
     // console.log(chartData);
     // console.log(isShow);
@@ -47,41 +53,45 @@ const Chart = (props) => {
     // return 
   }
 
-  const getChartData = () => {
-    // Ajax calls here
-    // console.log('getCharData')
-    setChartData({
-      labels: ['a', 'b'],
-      datasets: [
-        {
-          label: 'Population',
-          data: [
-            617594,
-            181045,
-            153060,
-            106519,
-            105162,
-            95072
-          ],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)',
-            'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)'
-          ]
-        }
-      ]
-    });
+  if (holdingNames.length > 0) {
+
+
+    const getChartData = () => {
+      // Ajax calls here
+      console.log('getCharData', holdingNames)
+      setChartData({
+        labels: holdingNames,
+        datasets: [
+          {
+            label: 'Population',
+            data: [
+              617594,
+              181045,
+              153060,
+              106519,
+              105162,
+              95072
+            ],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(153, 102, 255, 0.6)',
+              'rgba(255, 159, 64, 0.6)',
+              'rgba(255, 99, 132, 0.6)'
+            ]
+          }
+        ]
+      });
+    }
   }
 
   if (isShow) {
     return (
       <div className="chart">
         <Bar
-          data={chartData}
+          data={holdingNames.length > 0 ? chartData : {}}
           options={{
             title: {
               display: true,
