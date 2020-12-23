@@ -43,12 +43,12 @@ const Chart = () => {
   return (
     <div className="chart">
       {holdingNames.length > 0 &&
-        <Bar
+        <Pie
           data={holdingNames.length > 0 ? chartData : null}
           options={{
             title: {
               display: true,
-              text: 'Largest Cities In ' + 'city',
+              text: 'Holdings Pie Chart',
               fontSize: 25
             },
             legend: {
