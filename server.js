@@ -95,6 +95,18 @@ app.get('/api/stocks/recommendation', (req, res) => {
     })
 })
 
+app.get('/api/chart/search', (req, res) => {
+  const symbol = req.query.symbol
+  console.log(symbol)
+  axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=pk_e187f175e42d4ac89045179e525ef0e5`)
+    .then(response => {
+      res.send(response.data)
+    })
+    .catch(error => {
+      console.log('error from server- API routes', error)
+    })
+})
+
 app.get("/*", (req, res) => { res.sendFile(path.join(__dirname, "client", "build", "index.html")); });
 
 app.listen(port, () => console.log(`Running on port: ${port}`))

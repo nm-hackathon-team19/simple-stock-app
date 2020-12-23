@@ -3,7 +3,7 @@ import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
 import { getHoldings } from '../../dbFunctions'
-
+import ChartTrade from './ChartTrade'
 
 function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateShares }) {
   // debugger
@@ -47,47 +47,51 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
   return (
-    <div className="selected-holding card mt-4">
-      <div className="card-head">
-        <h2> {companyName}: {symbol}</h2>
-        <div className="card-buttons">
-          <BuyModal
-            show={isModalBuyStock}
-            toggleBuyStockModal={toggleBuyStockModal}
-            handleBuyShares={handleBuyShares}
-            selectedHolding={selectedHolding}
-            shares={shares}
-          />
-          <SellModal
-            show={isModalBuyStock}
-            toggleBuyStockModal={toggleBuyStockModal}
-            handleSellShares={handleSellShares}
-            selectedHolding={selectedHolding}
-            shares={shares}
-          />
+    // <Fragment>
+    <>
+      <ChartTrade symbol={symbol} />
+      <div className="selected-holding card mt-4">
+        <div className="card-head">
+          <h2> {companyName}: {symbol}</h2>
+          <div className="card-buttons">
+            <BuyModal
+              show={isModalBuyStock}
+              toggleBuyStockModal={toggleBuyStockModal}
+              handleBuyShares={handleBuyShares}
+              selectedHolding={selectedHolding}
+              shares={shares}
+            />
+            <SellModal
+              show={isModalBuyStock}
+              toggleBuyStockModal={toggleBuyStockModal}
+              handleSellShares={handleSellShares}
+              selectedHolding={selectedHolding}
+              shares={shares}
+            />
+          </div>
+        </div>
+        <hr />
+        <div className="card-body">
+          <div className="price">
+            <strong>Current Price</strong>
+            <p className="mb-0">${latestPrice.toFixed(2)}</p>
+            <small>Previous Closed: ${previousClose.toFixed(2)} </small>
+          </div>
+          <div className="percent">
+            <strong>Percent Change</strong>
+            <p>{changePercent.toFixed(3)}%</p>
+          </div>
+          <div className="change">
+            <strong>Daily Gain/Loss</strong>
+            <p>${change}</p>
+          </div>
+          <div className="shares-held">
+            <strong>Shares Held</strong>
+            <p>{shares}</p>
+          </div>
         </div>
       </div>
-      <hr />
-      <div className="card-body">
-        <div className="price">
-          <strong>Current Price</strong>
-          <p className="mb-0">${latestPrice.toFixed(2)}</p>
-          <small>Previous Closed: ${previousClose.toFixed(2)} </small>
-        </div>
-        <div className="percent">
-          <strong>Percent Change</strong>
-          <p>{changePercent.toFixed(3)}%</p>
-        </div>
-        <div className="change">
-          <strong>Daily Gain/Loss</strong>
-          <p>${change}</p>
-        </div>
-        <div className="shares-held">
-          <strong>Shares Held</strong>
-          <p>{shares}</p>
-        </div>
-      </div>
-    </div>
+    </>
   )
 }
 
