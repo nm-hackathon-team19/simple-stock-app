@@ -41,8 +41,7 @@ const ChartTrade = ({ symbol }) => {
         labels: holdingDays,
         datasets: [
           {
-            label: 'Price',
-            label: 'Date',
+            label: symbol,
             data: holdingPrices,
             backgroundColor: [
               'rgba(255, 99, 132, 0.6)',
@@ -67,17 +66,32 @@ const ChartTrade = ({ symbol }) => {
           options={{
             title: {
               display: true,
-              text: `Daily Prices For ${symbol} on last 10 business days`,
+              text: `Highest price for each last 10 business days`,
               fontSize: 25
             },
             legend: {
               display: true,
-              position: 'top'
+              position: 'right'
             },
-            legend: {
-              display: true,
-              position: 'bottom'
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Price',
+                  fontSize: 15,
+                  fontStyle: 'italic'
+                }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Date',
+                  fontSize: 15,
+                  fontStyle: 'italic'
+                }
+              }]
             }
+
           }}
         />
       }
