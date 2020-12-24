@@ -47,9 +47,7 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
   return (
-    // <Fragment>
     <>
-      <ChartTrade symbol={symbol} />
       <div className="selected-holding card mt-4">
         <div className="card-head">
           <h2> {companyName}: {symbol}</h2>
@@ -91,6 +89,7 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
           </div>
         </div>
       </div>
+      <ChartTrade symbol={symbol} />
     </>
   )
 }

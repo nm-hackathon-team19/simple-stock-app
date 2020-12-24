@@ -35,8 +35,6 @@ const ChartTrade = ({ symbol }) => {
 
   useEffect(() => {
     if (holdingDays.length > 0) {
-      console.log('inside useEffect', holdingDays)
-      console.log('inside useEffect', holdingPrices)
       setChartData({
         labels: holdingDays,
         datasets: [
@@ -66,12 +64,12 @@ const ChartTrade = ({ symbol }) => {
           options={{
             title: {
               display: true,
-              text: `Highest price for each last 10 business days`,
-              fontSize: 25
+              text: `Average Prices For ${symbol} last 10 business days`,
+              fontSize: 20
             },
             legend: {
               display: true,
-              position: 'right'
+              position: 'right',
             },
             scales: {
               yAxes: [{
