@@ -13,31 +13,12 @@ const ChartTrade = ({ symbol }) => {
     getHoldings().then(holdings => setHoldings(holdings));
   }, []);
 
-  // useEffect(() => {
-  //   for (let i = 0; holdings.length > i; i++) {
-  //     holdingDays(prevState => [...prevState, holdings[i].name]);
-  //     holdingPrices(prevState => [...prevState, holdings[i].shares]);
-  //   }
-  // }, [holdings]);
-
-
-
-  // console.log(holdingDays)
-  // console.log(holdingPrices)
-
-  // const { symbol } = props
-  // console.log(symbol)
-
   useEffect(() => {
     getHoldingPricesByDates(symbol);
   }, [])
 
   const getHoldingPricesByDates = async (symbol) => {
-    // console.log('beggiing getHoldingPricesByDates')
     try {
-      // console.log('middle getHoldingPricesByDates')
-      // console.log(symbol)
-      // debugger
       const response = await axios.get(`api/chart/search/?symbol=${symbol}`);
       setDatesAndPricesStates(response.data)
     } catch (err) {
@@ -46,10 +27,7 @@ const ChartTrade = ({ symbol }) => {
   }
 
   const setDatesAndPricesStates = (data) => {
-    // console.log(data);
     for (let i = 0; data.length > i; i++) {
-      debugger
-      // console.log('inside for loop', i)
       setHoldingDays(prevState => [...prevState, data[i].label]);
       setHoldingPrices(prevState => [...prevState, data[i].close]);
     }
@@ -60,12 +38,11 @@ const ChartTrade = ({ symbol }) => {
       console.log('inside useEffect', holdingDays)
       console.log('inside useEffect', holdingPrices)
       setChartData({
-        // labels: ['a', 'b', 'c'],
         labels: holdingDays,
         datasets: [
           {
             label: 'Price',
-            // data: ['1', '2', '3'],
+            label: 'Date',
             data: holdingPrices,
             backgroundColor: [
               'rgba(255, 99, 132, 0.6)',
@@ -90,12 +67,16 @@ const ChartTrade = ({ symbol }) => {
           options={{
             title: {
               display: true,
-              text: 'Holdings Line Chart',
+              text: `Daily Prices For ${symbol} on last 10 business days`,
               fontSize: 25
             },
             legend: {
               display: true,
-              position: 'right'
+              position: 'top'
+            },
+            legend: {
+              display: true,
+              position: 'bottom'
             }
           }}
         />
