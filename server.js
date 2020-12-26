@@ -142,8 +142,7 @@ app.get('/login/:email', async (req, res) => {
       return res.status(401).json("User doesn't exists!");
     };
 
-
-    res.json(user.rows[0]);
+    res.json(user.rows[0].user_password);
 
   } catch (err) {
     console.error('error from server- create new holding', err.message);
