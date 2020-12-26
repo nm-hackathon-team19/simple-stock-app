@@ -113,10 +113,10 @@ app.post('/register', async (req, res) => {
   try {
     const { user, email, password } = req.body;
 
-    const userEmail = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+    const userSelected = await pool.query("SELECT * FROM users WHERE user_email = $1", [
       email
     ]);
-    if (userEmail.rows.length > 0) {
+    if (userSelected.rows.length > 0) {
       return res.status(401).json("User already exists!");
     };
 
@@ -127,6 +127,28 @@ app.post('/register', async (req, res) => {
   }
 });
 
+app.get('/login/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    console.log(email);
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = ($1)", [email]);
+
+    console.log(user);
+    console.log(user.rows.length);
+    console.log(user.rows.length === 0);
+
+    if (user.rows.length === 0) {
+      return res.status(401).json("User doesn't exists!");
+    };
+
+
+    res.json(user.rows[0]);
+
+  } catch (err) {
+    console.error('error from server- create new holding', err.message);
+  }
+});
 
 app.get("/*", (req, res) => { res.sendFile(path.join(__dirname, "client", "build", "index.html")); });
 

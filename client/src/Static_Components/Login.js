@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form } from 'react-bootstrap'
 
-const Register = () => {
+const Login = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const loginUser = async (e) => {
-  //   e.preventDefault();
-  //   try {
-
-  //   } catch (err) {
-  //     console.error('error in loginUser', err.message)
-  //   }
-  // }
+  const loginUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`/login/${email}`);
+      console.log(response.data);
+    } catch (err) {
+      console.error('error in loginUser', err.message)
+    }
+  };
 
   return (
     <>
@@ -27,7 +28,7 @@ const Register = () => {
         <Modal.Header closeButton>
           <Modal.Title>Login Form</Modal.Title>
         </Modal.Header>
-        <Form>
+        <Form onSubmit={loginUser}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email"
@@ -36,9 +37,7 @@ const Register = () => {
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} />
+            <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <Button variant="primary" type="submit" >
             Submit
@@ -49,4 +48,4 @@ const Register = () => {
   );
 }
 
-export default Register;
+export default Login
