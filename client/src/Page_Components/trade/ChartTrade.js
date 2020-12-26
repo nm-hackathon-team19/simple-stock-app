@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, Line, Pie } from 'react-chartjs-2';
-import { getHoldings } from '../../dbFunctions';
 import axios from 'axios'
 
 const ChartTrade = ({ symbol }) => {
   const [chartData, setChartData] = useState({})
-  // const [holdings, setHoldings] = useState([]);
   const [holdingDays, setHoldingDays] = useState([]);
   const [holdingPrices, setHoldingPrices] = useState([]);
-
-  // useEffect(() => {
-  //   getHoldings().then(holdings => setHoldings(holdings));
-  // }, []);
 
   useEffect(() => {
     getHoldingPricesByDates(symbol);

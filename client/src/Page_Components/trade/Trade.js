@@ -12,7 +12,6 @@ import Alert from './Alert'
 
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
-  // const [holdings, setHoldings] = useContext(HoldingContext);
   const [holdings, setHoldings] = useState([]);
 
   const [selectedHolding, setSelectedHolding] = useState(null);

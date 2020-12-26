@@ -1,45 +1,45 @@
-import React from "react";
-import './Static.css';
+import React, { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap'
 
-function Register(props) {
-  if (!props.show) {
-    return null
-  } else {
-    return (
-      <div id="register-modal" className="modal">
-        <div className="modal-content">
-          <form>
-            <div className="container">
+const Register = () => {
+  const [show, setShow] = useState(false);
 
-              <span className="close" onClick={props.toggleModal}>&times;</span>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-              <label htmlFor="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" name="email" required />
+  return (
+    <>
+      <Button onClick={handleShow} className="btn btn-warning">Signup</Button>
+      <Modal show={show} onHide={handleClose}>
 
-              <label htmlFor="username"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="username" required />
+        <Modal.Header closeButton>
+          <Modal.Title>Registration Form</Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
 
-              <label htmlFor="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required />
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="username" placeholder="username" />
+          </Form.Group>
 
-              <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-              <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
-
-              <label>
-                <input type="checkbox" checked="checked" name="remember" defaultChecked /> Remember me</label>
-
-              <p>By creating an account you agree to our <a >Terms & Privacy</a>.</p>
-
-              <div className="clearfix">
-                <button type="button" className="cancelbtn" onClick={props.toggleModal}>Cancel</button>
-                <button type="submit" className="signupbtn">Sign Up</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
-};
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Modal>
+    </>
+  );
+}
 
 export default Register;

@@ -6,10 +6,8 @@ import { getHoldings } from '../../dbFunctions'
 import ChartTrade from './ChartTrade'
 
 function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateShares }) {
-  // debugger
-  const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+  // const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [shares, setShares] = useState(0);
-  // const [holdings, setHoldings] = useContext(HoldingContext);
   const [holdings, setHoldings] = useState([]);
 
   useEffect(() => {
@@ -18,9 +16,9 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
       .catch(function (err) { console.error('error get holdings', err) });
   }, []);
 
-  function toggleBuyStockModal() {
-    setIsModalBuyStock(!isModalBuyStock);
-  }
+  // function toggleBuyStockModal() {
+  //   setIsModalBuyStock(!isModalBuyStock);
+  // }
 
   const handleBuyShares = (shares) => {
     updateShares(shares);
@@ -53,15 +51,15 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
           <h2> {companyName}: {symbol}</h2>
           <div className="card-buttons">
             <BuyModal
-              show={isModalBuyStock}
-              toggleBuyStockModal={toggleBuyStockModal}
+              // show={isModalBuyStock}
+              // toggleBuyStockModal={toggleBuyStockModal}
               handleBuyShares={handleBuyShares}
               selectedHolding={selectedHolding}
               shares={shares}
             />
             <SellModal
-              show={isModalBuyStock}
-              toggleBuyStockModal={toggleBuyStockModal}
+              // show={isModalBuyStock}
+              // toggleBuyStockModal={toggleBuyStockModal}
               handleSellShares={handleSellShares}
               selectedHolding={selectedHolding}
               shares={shares}
