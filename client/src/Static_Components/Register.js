@@ -1,39 +1,61 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Button, Modal, Form } from 'react-bootstrap'
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const createUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/register', {
+        user: user,
+        email: email,
+        password: password
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.error('error in createUser', err.message)
+    }
+  }
+
   return (
     <>
       <Button onClick={handleShow} className="btn btn-warning">Signup</Button>
-      <Modal show={show} onHide={handleClose}>
 
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Registration Form</Modal.Title>
         </Modal.Header>
-        <Form>
+        <Form onSubmit={createUser}>
+          <Form.Group controlId="formBasicUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="username" placeholder="username"
+              value={user}
+              onChange={(e) => setUser(e.target.value)} />
+          </Form.Group>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
-
-          <Form.Group controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="username" placeholder="username" />
-          </Form.Group>
-
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" >
             Submit
           </Button>
         </Form>

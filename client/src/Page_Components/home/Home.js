@@ -21,7 +21,6 @@ export default function Home() {
         <h1>Fantazy Trading Stocks</h1>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, omnis? Porro repudiandae id iusto voluptate voluptates esse dignissimos placeat, molestias tempora itaque nam nesciunt nulla facere, numquam ipsum aliquid sint.</p>
         <div className="home-buttons-wrapper">
-          {/* <button onClick={toggleRegisterModal} className="btn btn-warning">Signup</button> */}
           <Register />
           <button onClick={toggleLoginModal} className="btn btn-info">Login</button>
         </div>

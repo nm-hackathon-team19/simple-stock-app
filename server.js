@@ -16,7 +16,6 @@ app.get('/trade', async (req, res) => {
     const response = await pool.query("SELECT * FROM holdings");
     res.json(response.rows);
   } catch (err) {
-    2
     console.error('error from server- get all holdings', err.message);
   }
 })
@@ -67,6 +66,9 @@ app.delete('/trade/:id', async (req, res) => {
   }
 })
 
+// DB Register
+
+
 // API ROUTES \\
 app.get('/api/stocks/search', (req, res) => {
   const symbol = req.query.symbol
@@ -105,8 +107,27 @@ app.get('/api/chart/search', (req, res) => {
     .catch(error => {
       console.log('error from server- API routes', error)
     })
-})
+});
+
+app.post('/register', async (req, res) => {
+  try {
+    const { user, email, password } = req.body;
+
+    const userEmail = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email
+    ]);
+    if (userEmail.rows.length > 0) {
+      return res.status(401).json("User already exists!");
+    };
+
+    const newUser = await pool.query("INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *", [user, email, password]);
+    res.json(newUser.rows[0]);
+  } catch (err) {
+    console.error('error from server- create new holding', err.message);
+  }
+});
+
 
 app.get("/*", (req, res) => { res.sendFile(path.join(__dirname, "client", "build", "index.html")); });
 
-app.listen(port, () => console.log(`Running on port: ${port}`))
+app.listen(port, () => console.log(`Running on port: ${port}`));
