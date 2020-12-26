@@ -22,11 +22,9 @@ export default function Home() {
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, omnis? Porro repudiandae id iusto voluptate voluptates esse dignissimos placeat, molestias tempora itaque nam nesciunt nulla facere, numquam ipsum aliquid sint.</p>
         <div className="home-buttons-wrapper">
           <Register />
-          <button onClick={toggleLoginModal} className="btn btn-info">Login</button>
+          <Login />
         </div>
       </div>
-
-      <Login show={isModalLoginShow} toggleModal={toggleLoginModal} />
     </div>
   )
 }

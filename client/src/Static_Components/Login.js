@@ -1,45 +1,52 @@
-import React from "react";
-import './Static.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Button, Modal, Form } from 'react-bootstrap'
 
+const Register = () => {
+  const [show, setShow] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-function Login(props) {
-  if (!props.show) {
-    return null
-  } else {
-    return (
-      <div id="register-modal" className="modal">
-        <div className="modal-content">
-          <form>
-            <div className="container">
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-              <span className="close" onClick={props.toggleModal}>&times;</span>
+  // const loginUser = async (e) => {
+  //   e.preventDefault();
+  //   try {
 
-              <label htmlFor="username"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="username" required />
+  //   } catch (err) {
+  //     console.error('error in loginUser', err.message)
+  //   }
+  // }
 
-              <label htmlFor="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required />
+  return (
+    <>
+      <Button onClick={handleShow} className="btn btn-primary">Login</Button>
 
-              <label>
-                <input type="checkbox" checked="checked" name="remember" defaultChecked /> Remember me</label>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Form</Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
+          </Form.Group>
+          <Button variant="primary" type="submit" >
+            Submit
+          </Button>
+        </Form>
+      </Modal>
+    </>
+  );
+}
 
-              <p>By creating an account you agree to our <a >Terms & Privacy</a>.</p>
-
-              <div className="clearfix">
-                <button type="submit" className="signupbtn loginbtn">Sign Up</button>
-              </div>
-              <div className="container" >
-                <button type="button" className="cancelbtn" onClick={props.toggleModal}>Cancel</button>
-                <span className="psw">Forgot <a href="#">password?</a></span>
-
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-    );
-  }
-};
-
-export default Login;
+export default Register;
