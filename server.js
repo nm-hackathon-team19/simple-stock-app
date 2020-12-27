@@ -127,10 +127,14 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/login/:email', async (req, res) => {
+app.get('/login', async (req, res) => {
   try {
-    const { email } = req.params;
+    const email = req.query.email;
+    const password = req.query.password;
     console.log(email);
+    // console.log(req.query.email)
+    console.log(password);
+    // req.query.foo
 
     const user = await pool.query("SELECT * FROM users WHERE user_email = ($1)", [email]);
 

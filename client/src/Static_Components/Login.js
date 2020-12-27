@@ -5,20 +5,30 @@ import { Button, Modal, Form } from 'react-bootstrap'
 const Login = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+
+
+
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`/login/${email}`);
+      // axios.post('comments', { comment: this.comment, id: this.postId })
+      // const response = await axios.get(`/login/${email}`);
+      const response = await axios.get('/login', {
+        params: {
+          email: email,
+          password: password
+        }
+      });
       console.log(response.data);
     } catch (err) {
-      console.error('error in loginUser', err.message)
+      console.error('error in loginUser', err.message);
     }
-  };
+  }
 
   return (
     <>
@@ -37,7 +47,9 @@ const Login = () => {
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="password" placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
           </Form.Group>
           <Button variant="primary" type="submit" >
             Submit
