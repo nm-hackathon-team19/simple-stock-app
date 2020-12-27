@@ -129,26 +129,20 @@ app.post('/register', async (req, res) => {
 
 app.get('/login', async (req, res) => {
   try {
-    const email = req.query.email;
-    const password = req.query.password;
-    console.log(email);
-    // console.log(req.query.email)
-    console.log(password);
-    // req.query.foo
+    const { email, password } = req.query
 
     const user = await pool.query("SELECT * FROM users WHERE user_email = ($1)", [email]);
 
-    // console.log(user);
-    // console.log(user.rows.length);
-    // console.log(user.rows.length === 0);
-
+    // check if user exist
     if (user.rows.length === 0) {
       return res.status(401).json("User doesn't exists!");
     };
+    // check passwords match
+    if (user.rows[0].user_password !== password) {
+      return res.status(401).json("Password don't match");
+    };
 
-
-
-    res.json(user.rows[0].user_password);
+    res.json(user.rows[0]);
 
   } catch (err) {
     console.error('error from server- create new holding', err.message);
