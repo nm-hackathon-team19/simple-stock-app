@@ -137,12 +137,12 @@ app.get('/login', async (req, res) => {
     if (user.rows.length === 0) {
       return res.status(401).json("User doesn't exists!");
     };
-    // check passwords match
+    // check passwords match http request and db
     if (user.rows[0].user_password !== password) {
       return res.status(401).json("Password don't match");
     };
 
-    res.json(user.rows[0]);
+    res.json(user.rows[0].user_id);
 
   } catch (err) {
     console.error('error from server- create new holding', err.message);

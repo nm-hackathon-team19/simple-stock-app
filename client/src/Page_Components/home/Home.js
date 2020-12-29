@@ -9,11 +9,11 @@ export default function Home() {
 
   function toggleRegisterModal() {
     setModalRegisterShow(!isModalRegisterShow);
-  }
+  };
 
   function toggleLoginModal() {
     setModalLoginShow(!isModalLoginShow);
-  }
+  };
 
   return (
     <div id="home">
