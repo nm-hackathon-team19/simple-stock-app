@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { HoldingContext } from '../../HoldingContext'
 import { getHoldings } from '../../dbFunctions'
-
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
-  // const [holdings, setHoldings] = useContext(HoldingContext);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
 
@@ -17,10 +14,6 @@ function RenderRecommendations(props) {
     }
   }
 
-  useEffect(() => {
-    isHoldingNegativeOrPositive();
-  }, []);
-
   const compareSelectedHoldingToExisting = () => {
     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
     if (holdingExist) {
@@ -30,6 +23,7 @@ function RenderRecommendations(props) {
 
   useEffect(() => {
     getHoldings().then(holdingsData => setHoldings(holdingsData));
+    isHoldingNegativeOrPositive();
   }, []);
 
   useEffect(() => {
@@ -37,7 +31,6 @@ function RenderRecommendations(props) {
   }, [holdings]);
 
   const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
-
   return (
     <div className="recommended-holding">
       <div className="selected-holding card mt-3">

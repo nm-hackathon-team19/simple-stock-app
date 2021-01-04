@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { HoldingContext } from '../../HoldingContext'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
 import { getHoldings } from '../../dbFunctions'

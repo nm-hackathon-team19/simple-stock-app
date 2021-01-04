@@ -41,7 +41,6 @@ const Form = (props) => {
     try {
       const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
       setCompanyName(response.data.companyName);
-      // console.log(response.data.companyName)
     } catch (err) {
       console.error(err.message)
     }
@@ -56,7 +55,12 @@ const Form = (props) => {
         onChange={(e) => onSearchSymbol(e)}
         className="form-control col-sm-5 text-uppercase"
       />
-      <button type="submit" className="btn btn-primary col-sm-2">Submit</button>
+      <button
+        type="submit"
+        className="btn btn-primary col-sm-2"
+        disabled={!companyName}
+      >Submit
+      </button>
       {/* {companyName ? <FiThumbsUp /> : <FiThumbsDown />} */}
       <h6 className="w-100 text-center text-success" style={{ display: symbol === '' ? 'none' : 'block' }}>{companyName}</h6>
     </form >
