@@ -8,6 +8,7 @@ export const createHolding = async (holding) => {
       shares: holding.shares,
       price: holding.price,
       changePercent: holding.changePercent,
+      user_id: localStorage.getItem('user_id')
     })
   } catch (err) {
     console.error('Error in create holding', err.message)
@@ -16,7 +17,7 @@ export const createHolding = async (holding) => {
 
 export const getHoldings = async () => {
   try {
-    const response = await axios.get('/trade');
+    const response = await axios.get(`/trade/${localStorage.getItem('user_id')}`);
     // setHoldings(response.data)
     return response.data;
   } catch (err) {
@@ -39,5 +40,15 @@ export const deleteHolding = async (id) => {
     const response = await axios.delete(`/trade/${id}`);
   } catch (err) {
     console.error('Error in delete holding', err.message);
+  }
+}
+
+// get user name
+export const getUserName = async (user_id) => {
+  try {
+    const userName = await axios.get(`/portfolio/${user_id}`);
+    return userName.data;
+  } catch (err) {
+    console.error('Error in get user name', err.message);
   }
 }

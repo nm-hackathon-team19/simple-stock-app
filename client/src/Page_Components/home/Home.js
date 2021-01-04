@@ -4,17 +4,6 @@ import Login from '../../Static_Components/Login'
 import './Home.css'
 
 export default function Home() {
-  const [isModalRegisterShow, setModalRegisterShow] = useState(false)
-  const [isModalLoginShow, setModalLoginShow] = useState(false)
-
-  function toggleRegisterModal() {
-    setModalRegisterShow(!isModalRegisterShow);
-  };
-
-  function toggleLoginModal() {
-    setModalLoginShow(!isModalLoginShow);
-  };
-
   return (
     <div id="home">
       <div className="home-content">

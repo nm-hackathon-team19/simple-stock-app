@@ -11,12 +11,9 @@ const Login = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      // axios.post('comments', { comment: this.comment, id: this.postId })
-      // const response = await axios.get(`/login/${email}`);
       const response = await axios.get('/login', {
         params: {
           email: email,
@@ -29,10 +26,9 @@ const Login = () => {
       // get all the holdings which has that user id with a SELECT * FROM holdings where user_id = response.data (server send a request to db)
       // db bring the data back to the server
       // server send back the data to the client who renders the holdings
-      // console.log(response.data);
+      console.log(response.data);
       // storeIdLocalStorage(response.data);
       localStorage.setItem('user_id', response.data);
-
     } catch (err) {
       console.error('error in loginUser', err.message);
     }
@@ -43,6 +39,7 @@ const Login = () => {
     const user = localStorage.getItem('user_id');
     setUserIdLS(user);
   }, [userIdLS]);
+
 
   return (
     <>

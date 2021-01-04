@@ -19,7 +19,7 @@ const Register = () => {
         email: email,
         password: password
       });
-      console.log(response.data);
+      localStorage.setItem('user_id', response.data.user_id);
     } catch (err) {
       console.error('error in createUser', err.message)
     }
@@ -27,7 +27,7 @@ const Register = () => {
 
   return (
     <>
-      <Button onClick={handleShow} className="btn btn-warning">Signup</Button>
+      <Button onClick={handleShow} className="btn btn-warning">Register</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -55,9 +55,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit" >
-            Submit
-          </Button>
+          <Button variant="primary" type="submit" onClick={handleClose} >Submit</Button>
         </Form>
       </Modal>
     </>
