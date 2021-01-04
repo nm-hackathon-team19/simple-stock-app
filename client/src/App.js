@@ -8,24 +8,17 @@ import Trade from './Page_Components/trade/Trade'
 import Portfolio from './Page_Components/portfolio/Portfolio'
 import Confirm from './Page_Components/trade/Confirm'
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { HoldingProvider } from './HoldingContext'
 import ProtectedRoute from './ProtectedRoute'
-import CheckOut from './CheckOut'
-import { useState } from 'react';
 
-function App() {
-  const [isAuth, setIsAuth] = useState(false);
-
+const App = () => {
   return (
     <Router>
       <div className="app" id="app-container">
         <Navigation />
         <main id="main-container">
           <Route path="/" exact component={Home} />
-          {/* <Route path="/main" component={Trade} /> */}
-          <ProtectedRoute path="/main" component={Trade} isAuth={isAuth} />
-          <ProtectedRoute path="/portfolio" component={Portfolio} isAuth={isAuth} />
-          {/* <Route path="/portfolio" component={Portfolio} /> */}
+          <ProtectedRoute path="/main" component={Trade} isAuth={localStorage.getItem('user_id') > 0} />
+          <ProtectedRoute path="/portfolio" component={Portfolio} isAuth={localStorage.getItem('user_id') > 0} />
           <Route path="/confirm" component={Confirm} />
         </main>
         {/* <Footer /> */}
