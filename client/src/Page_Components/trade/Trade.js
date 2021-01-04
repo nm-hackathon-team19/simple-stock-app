@@ -9,6 +9,8 @@ import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
 import Alert from './Alert'
+// import { withRouter } from 'react-router-dom';
+
 
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
@@ -130,4 +132,5 @@ const Trade = (props) => {
   )
 }
 
+// export default withRouter(Trade)
 export default Trade

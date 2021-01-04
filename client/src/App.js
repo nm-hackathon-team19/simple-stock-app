@@ -21,12 +21,10 @@ function App() {
       <div className="app" id="app-container">
         <Navigation />
         <main id="main-container">
-          {/* <HoldingProvider> */}
           <Route path="/" exact component={Home} />
           <Route path="/main" component={Trade} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/confirm" component={Confirm} />
-          {/* </HoldingProvider> */}
           <ProtectedRoute path="/checkout" component={CheckOut} isAuth={isAuth} />
         </main>
         {/* <Footer /> */}

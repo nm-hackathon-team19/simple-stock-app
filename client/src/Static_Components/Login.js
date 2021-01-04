@@ -39,14 +39,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log('inside useEffect')
+    // console.log('inside useEffect')
     const user = localStorage.getItem('user_id');
     setUserIdLS(user);
   }, [userIdLS]);
-
-
-  console.log('line 46')
-  console.log(userIdLS)
 
   return (
     <>
