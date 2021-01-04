@@ -9,12 +9,23 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
   // const [isModalBuyStock, setIsModalBuyStock] = useState(false)
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
+  const [isHoldingNegative, setIsHoldingNegative] = useState('');
+  const [holdingStyleColor, setHoldingStyleColor] = useState('');
 
   useEffect(() => {
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(function (err) { console.error('error get holdings', err) });
   }, []);
+
+  const isHoldingNegativeOrPositive = () => {
+    console.log('inside holding negative')
+    if (String(changePercent).charAt(0) === '-') {
+      console.log('negative');
+    } else {
+      console.log('Positive');
+    }
+  }
 
   // function toggleBuyStockModal() {
   //   setIsModalBuyStock(!isModalBuyStock);
@@ -41,9 +52,11 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   useEffect(() => {
     compareSelectedHoldingToExisting();
+    isHoldingNegativeOrPositive();
   }, [holdings]);
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
+
   return (
     <>
       <div className="selected-holding card mt-4">
