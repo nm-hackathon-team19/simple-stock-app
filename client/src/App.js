@@ -14,7 +14,7 @@ import CheckOut from './CheckOut'
 import { useState } from 'react';
 
 function App() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <Router>
