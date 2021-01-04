@@ -7,6 +7,19 @@ function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
   // const [holdings, setHoldings] = useContext(HoldingContext);
   const [holdings, setHoldings] = useState([]);
+  const [holdingStyleColor, setHoldingStyleColor] = useState('');
+
+  const isHoldingNegativeOrPositive = () => {
+    if (String(changePercent).charAt(0) === '-') {
+      setHoldingStyleColor('red')
+    } else {
+      setHoldingStyleColor('green')
+    }
+  }
+
+  useEffect(() => {
+    isHoldingNegativeOrPositive();
+  }, []);
 
   const compareSelectedHoldingToExisting = () => {
     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
@@ -36,15 +49,15 @@ function RenderRecommendations(props) {
         <div className="card-body">
           <div className="price">
             <strong>Current Price</strong>
-            <p>${latestPrice.toFixed(2)}</p>
+            <p className={holdingStyleColor}>${latestPrice.toFixed(2)}</p>
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p>{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>{changePercent.toFixed(3)}%</p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p>${change}</p>
+            <p className={holdingStyleColor}>${change}</p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
