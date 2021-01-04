@@ -3,6 +3,7 @@ import UserInfo from './UserInfo'
 import CurrentHoldings from './CurrentHoldings'
 import Chart from './Chart'
 import { getHoldings } from '../../dbFunctions'
+import { withRouter } from 'react-router-dom';
 
 const Portfolio = () => {
   const [holdings, setHoldings] = useState([]);
@@ -24,4 +25,6 @@ const Portfolio = () => {
   )
 };
 
-export default Portfolio
+export default withRouter(Portfolio)
+
+// export default Portfolio

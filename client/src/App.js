@@ -22,10 +22,11 @@ function App() {
         <Navigation />
         <main id="main-container">
           <Route path="/" exact component={Home} />
-          <Route path="/main" component={Trade} />
-          <Route path="/portfolio" component={Portfolio} />
+          {/* <Route path="/main" component={Trade} /> */}
+          <ProtectedRoute path="/main" component={Trade} isAuth={isAuth} />
+          <ProtectedRoute path="/portfolio" component={Portfolio} isAuth={isAuth} />
+          {/* <Route path="/portfolio" component={Portfolio} /> */}
           <Route path="/confirm" component={Confirm} />
-          <ProtectedRoute path="/checkout" component={CheckOut} isAuth={isAuth} />
         </main>
         {/* <Footer /> */}
       </div>
