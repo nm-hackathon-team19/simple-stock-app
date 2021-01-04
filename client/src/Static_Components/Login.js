@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form } from 'react-bootstrap'
 
@@ -6,6 +6,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userIdLS, setUserIdLS] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,20 +30,28 @@ const Login = () => {
       // db bring the data back to the server
       // server send back the data to the client who renders the holdings
       // console.log(response.data);
-      storeIdLocalStorage(response.data);
+      // storeIdLocalStorage(response.data);
+      localStorage.setItem('user_id', response.data);
+
     } catch (err) {
       console.error('error in loginUser', err.message);
     }
   }
 
-  const storeIdLocalStorage = (user_id) => {
-    console.log(user_id);
-  }
+  useEffect(() => {
+    console.log('inside useEffect')
+    const user = localStorage.getItem('user_id');
+    setUserIdLS(user);
+  }, [userIdLS]);
+
+
+  console.log('line 46')
+  console.log(userIdLS)
 
   return (
     <>
       <Button onClick={handleShow} className="btn btn-primary">Login</Button>
-
+      <h1>{userIdLS}</h1>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login Form</Modal.Title>

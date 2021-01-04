@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './App.css';
 import Navigation from './Static_Components/Navigation'
 // import Footer from './Static_Components/Footer'
