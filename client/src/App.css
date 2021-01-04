@@ -23,6 +23,14 @@ img {
   color: #0284d0;
 }
 
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
 /* .btn {
   cursor: pointer;
   display: inline-block;

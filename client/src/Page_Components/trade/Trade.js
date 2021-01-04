@@ -11,7 +11,6 @@ import Form from './Form'
 import Alert from './Alert'
 // import { withRouter } from 'react-router-dom';
 
-
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useState([]);

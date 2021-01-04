@@ -5,11 +5,9 @@ import SellModal from './SellModal';
 import { getHoldings } from '../../dbFunctions'
 import ChartTrade from './ChartTrade'
 
-function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateShares }) {
-  // const [isModalBuyStock, setIsModalBuyStock] = useState(false)
+const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateShares }) => {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
-  const [isHoldingNegative, setIsHoldingNegative] = useState('');
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
 
   useEffect(() => {
@@ -19,17 +17,16 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
   }, []);
 
   const isHoldingNegativeOrPositive = () => {
-    console.log('inside holding negative')
     if (String(changePercent).charAt(0) === '-') {
-      console.log('negative');
+      setHoldingStyleColor('red')
     } else {
-      console.log('Positive');
+      setHoldingStyleColor('green')
     }
   }
 
-  // function toggleBuyStockModal() {
-  //   setIsModalBuyStock(!isModalBuyStock);
-  // }
+  useEffect(() => {
+    isHoldingNegativeOrPositive();
+  }, [selectedHolding]);
 
   const handleBuyShares = (shares) => {
     updateShares(shares);
@@ -52,8 +49,8 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   useEffect(() => {
     compareSelectedHoldingToExisting();
-    isHoldingNegativeOrPositive();
   }, [holdings]);
+
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
 
@@ -82,17 +79,18 @@ function SelectedHolding({ selectedHolding, buyNewHolding, sellShares, updateSha
         <hr />
         <div className="card-body">
           <div className="price">
+            {/* className={`card-body ${holdingStyleColor}`} */}
             <strong>Current Price</strong>
-            <p className="mb-0">${latestPrice.toFixed(2)}</p>
-            <small>Previous Closed: ${previousClose.toFixed(2)} </small>
+            <p className={`mb-0 ${holdingStyleColor}`}>${latestPrice.toFixed(2)}</p>
+            <small className={holdingStyleColor}>Previous Closed: ${previousClose.toFixed(2)} </small>
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p>{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>{changePercent.toFixed(3)}%</p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p>${change}</p>
+            <p className={holdingStyleColor}>${change}</p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>

@@ -14,7 +14,7 @@ const Portfolio = () => {
   return (
     <div className="container">
       <UserInfo />
-      <Chart holdings={holdings} />
+      <Chart />
       {holdings.map(holding =>
         <CurrentHoldings
           holding={holding}
