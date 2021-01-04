@@ -36,7 +36,7 @@ const Login = () => {
     } catch (err) {
       console.error('error in loginUser', err.message);
     }
-  }
+  };
 
   useEffect(() => {
     console.log('inside useEffect')
@@ -69,9 +69,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit" >
-            Submit
-          </Button>
+          <Button variant="primary" type="submit" onClick={handleClose}>Submit</Button>
         </Form>
       </Modal>
     </>
