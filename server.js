@@ -5,6 +5,7 @@ const axios = require('axios');
 const port = process.env.PORT || 5000;
 const pool = require('./db')
 const tradeRoutes = require('./routes/tradeRoutes');
+const portfolioRoutes = require('./routes/portfolioRoutes');
 
 // Set my buildb  as a static folder.
 // We just need to put the files in buils and it'll work
@@ -12,20 +13,10 @@ app.use('/', express.static(path.join(__dirname, 'client/build')));
 app.use(express.json()) // to get data from the client side we need to use req.body and this allows us to access the req.body and get json data.
 
 // DB ROUTES \\
-// get all holdings
+
 app.use('/trade/', tradeRoutes);
 
-
-// get user name
-app.get('/portfolio/:user_id', async (req, res) => {
-  try {
-    const { user_id } = req.params
-    const userName = await pool.query("SELECT user_name FROM users WHERE user_id = ($1)", [user_id]);
-    res.send(userName.rows[0].user_name);
-  } catch (err) {
-    console.error('error from server- get user name', err.message);
-  }
-})
+app.use('/portfolio/', portfolioRoutes);
 
 
 // DB Register
