@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Modal, Form } from 'react-bootstrap'
+import { Button, Modal, Form, NavLink } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 
 const Login = (props) => {
   const [show, setShow] = useState(false);
@@ -11,23 +12,22 @@ const Login = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('/login', {
+      const response = await axios.get("/login", {
         params: {
           email: email,
-          password: password
-        }
+          password: password,
+        },
       });
-      localStorage.setItem('user_id', response.data);
+      localStorage.setItem("user_id", response.data);
+      if (localStorage.getItem('user_id') > 0) {
+        return <Redirect to='/main' />
+      }
     } catch (err) {
-      console.error('error in loginUser', err.message);
+      console.error("error in loginUser", err.message);
     }
-    if (localStorage.getItem('user_id') > 0) {
-      props.history.push('/main');
-    };
   };
 
   useEffect(() => {

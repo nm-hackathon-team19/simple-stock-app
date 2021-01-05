@@ -4,6 +4,8 @@ const path = require('path');
 const axios = require('axios');
 const port = process.env.PORT || 5000;
 const pool = require('./db')
+const tradeRoutes = require('./routes/tradeRoutes');
+
 // Set my buildb  as a static folder.
 // We just need to put the files in buils and it'll work
 app.use('/', express.static(path.join(__dirname, 'client/build')));
@@ -11,15 +13,8 @@ app.use(express.json()) // to get data from the client side we need to use req.b
 
 // DB ROUTES \\
 // get all holdings
-app.get('/trade/:user_id', async (req, res) => {
-  try {
-    const { user_id } = req.params
-    const response = await pool.query("SELECT * FROM holdings WHERE user_id = ($1)", [user_id]);
-    res.json(response.rows);
-  } catch (err) {
-    console.error('error from server- get all holdings', err.message);
-  }
-})
+app.use('/trade/', tradeRoutes);
+
 
 // get user name
 app.get('/portfolio/:user_id', async (req, res) => {
@@ -32,51 +27,6 @@ app.get('/portfolio/:user_id', async (req, res) => {
   }
 })
 
-// get a holding
-// app.get('/trade/:id', async (req, res) => {
-//   try {
-//     const { id } = req.params
-//     const response = await pool.query("SELECT * FROM holdings WHERE holding_id = ($1)", [id])
-//     res.json(response.rows[0]);
-//   } catch (err) {
-//     console.log('error from server- get a holding', err.message)
-//   }
-// })
-
-// create new holding
-app.post('/trade', async (req, res) => {
-  try {
-    const { name, symbol, shares, changePercent, price, user_id } = req.body;
-    console.log(req.body);
-    const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, symbol, shares, changePercent, price, user_id]);
-    res.json(newHolding.rows[0]);
-  } catch (err) {
-    console.error('error from server- create new holding', err.message);
-  }
-})
-
-// update existing holding
-app.put('/trade/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { shares } = req.body;
-    const updatedHolding = await pool.query("UPDATE holdings SET shares = $1 WHERE holding_id = $2 RETURNING *", [shares, id])
-    res.json(updatedHolding.rows[0]);
-  } catch (err) {
-    console.error('error from server- update holding', err.message);
-  }
-})
-
-// delete existing holding
-app.delete('/trade/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedHolding = await pool.query("DELETE FROM holdings WHERE holding_id = $1", [id]);
-    res.send(`successfully deleted holding id: ${id}`);
-  } catch (err) {
-    console.error('error from server- delete holdings', err.message);
-  }
-})
 
 // DB Register
 
