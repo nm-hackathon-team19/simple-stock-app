@@ -1,8 +1,17 @@
 import React from 'react'
 import './Static.css'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Route, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-const Navigation = () => {
+
+const Navigation = (props) => {
+
+  const removeLS = () => {
+    localStorage.removeItem('user_id');
+    props.history.push('/');
+  }
+
   return (
     <Navbar bg="dark" variant="dark" id="navbar" >
       <Navbar.Brand href="/">TradingStocks</Navbar.Brand>
@@ -11,12 +20,18 @@ const Navigation = () => {
         <Nav.Link href="/main">Trade</Nav.Link>
         <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
       </Nav>
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-info">Search</Button>
-      </Form>
-    </Navbar>
+      {
+        localStorage.getItem('user_id') > 0 ?
+          <Nav>
+            <Nav.Link>Hello Mister</Nav.Link>
+            <Nav.Link onClick={removeLS}>Logout</Nav.Link>
+          </Nav>
+          : null
+      }
+    </Navbar >
   )
 }
 
-export default Navigation
+export default withRouter(Navigation)
+
+// export default Navigation

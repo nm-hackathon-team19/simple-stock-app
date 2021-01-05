@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,7 @@ const Login = () => {
       console.log(response.data);
       // storeIdLocalStorage(response.data);
       localStorage.setItem('user_id', response.data);
+
     } catch (err) {
       console.error('error in loginUser', err.message);
     }
@@ -38,8 +40,14 @@ const Login = () => {
     // console.log('inside useEffect')
     const user = localStorage.getItem('user_id');
     setUserIdLS(user);
+    // props.history.push('/main')
   }, [userIdLS]);
 
+
+  // const marion = () => {
+  //   // debugger
+  //   props.history.push('/main')
+  // }
 
   return (
     <>
@@ -68,5 +76,8 @@ const Login = () => {
     </>
   );
 }
+//<a href="#" onClick={() => { func1(); func2(); }}>Test Link</a>
 
-export default Login
+
+// export default Login
+export default withRouter(Login)
