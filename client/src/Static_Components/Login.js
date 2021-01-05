@@ -12,6 +12,7 @@ const Login = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const loginUser = async (e) => {
     e.preventDefault();
     try {
@@ -23,7 +24,8 @@ const Login = (props) => {
       });
       localStorage.setItem("user_id", response.data);
       if (localStorage.getItem('user_id') > 0) {
-        return <Redirect to='/main' />
+        console.log('logging in')
+        props.history.push('/main');
       }
     } catch (err) {
       console.error("error in loginUser", err.message);
@@ -55,7 +57,7 @@ const Login = (props) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={handleClose}>Submit</Button>
+          <Button variant="primary" type="submit" >Submit</Button>
         </Form>
       </Modal>
     </>
