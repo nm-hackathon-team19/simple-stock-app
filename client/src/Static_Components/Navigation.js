@@ -4,7 +4,6 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
-
 const Navigation = (props) => {
 
   const removeLS = () => {
@@ -23,7 +22,7 @@ const Navigation = (props) => {
       {
         localStorage.getItem('user_id') > 0 ?
           <Nav>
-            <Nav.Link>Hello Mister</Nav.Link>
+            <Nav.Link>Hello UserName</Nav.Link>
             <Nav.Link onClick={removeLS}>Logout</Nav.Link>
           </Nav>
           : null

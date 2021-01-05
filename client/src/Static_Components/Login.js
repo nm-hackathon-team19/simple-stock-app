@@ -21,38 +21,23 @@ const Login = (props) => {
           password: password
         }
       });
-      // store user id in local storage and send client to home page / holding page
-      // store local storage unique id
-      // redirect user to homepage / holding page. when they land on the page useEffect send a request to grab holding 
-      // get all the holdings which has that user id with a SELECT * FROM holdings where user_id = response.data (server send a request to db)
-      // db bring the data back to the server
-      // server send back the data to the client who renders the holdings
-      console.log(response.data);
-      // storeIdLocalStorage(response.data);
       localStorage.setItem('user_id', response.data);
-
     } catch (err) {
       console.error('error in loginUser', err.message);
     }
+    if (localStorage.getItem('user_id') > 0) {
+      props.history.push('/main');
+    };
   };
 
   useEffect(() => {
-    // console.log('inside useEffect')
     const user = localStorage.getItem('user_id');
     setUserIdLS(user);
-    // props.history.push('/main')
   }, [userIdLS]);
-
-
-  // const marion = () => {
-  //   // debugger
-  //   props.history.push('/main')
-  // }
 
   return (
     <>
       <Button onClick={handleShow} className="btn btn-primary">Login</Button>
-      <h1>{userIdLS}</h1>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login Form</Modal.Title>
@@ -76,8 +61,6 @@ const Login = (props) => {
     </>
   );
 }
-//<a href="#" onClick={() => { func1(); func2(); }}>Test Link</a>
-
 
 // export default Login
 export default withRouter(Login)
