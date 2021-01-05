@@ -11,6 +11,7 @@ CREATE TABLE users
 CREATE TABLE public.holdings
 (
     holding_id serial,
+    user_id integer,
     name character varying,
     symbol character varying,
     shares integer,

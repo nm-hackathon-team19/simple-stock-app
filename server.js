@@ -11,32 +11,44 @@ app.use(express.json()) // to get data from the client side we need to use req.b
 
 // DB ROUTES \\
 // get all holdings
-app.get('/trade', async (req, res) => {
+app.get('/trade/:user_id', async (req, res) => {
   try {
-    const response = await pool.query("SELECT * FROM holdings");
+    const { user_id } = req.params
+    const response = await pool.query("SELECT * FROM holdings WHERE user_id = ($1)", [user_id]);
     res.json(response.rows);
   } catch (err) {
     console.error('error from server- get all holdings', err.message);
   }
 })
 
-// get a holding
-app.get('/trade/:id', async (req, res) => {
+// get user name
+app.get('/portfolio/:user_id', async (req, res) => {
   try {
-    const { id } = req.params
-    const response = await pool.query("SELECT * FROM holdings WHERE holding_id = ($1)", [id])
-    res.json(response.rows[0]);
+    const { user_id } = req.params
+    const userName = await pool.query("SELECT user_name FROM users WHERE user_id = ($1)", [user_id]);
+    res.send(userName.rows[0].user_name);
   } catch (err) {
-    console.log('error from server- get a holding', err.message)
+    console.error('error from server- get user name', err.message);
   }
 })
+
+// get a holding
+// app.get('/trade/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params
+//     const response = await pool.query("SELECT * FROM holdings WHERE holding_id = ($1)", [id])
+//     res.json(response.rows[0]);
+//   } catch (err) {
+//     console.log('error from server- get a holding', err.message)
+//   }
+// })
 
 // create new holding
 app.post('/trade', async (req, res) => {
   try {
-    const { name, symbol, shares, changePercent, price } = req.body;
+    const { name, symbol, shares, changePercent, price, user_id } = req.body;
     console.log(req.body);
-    const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, symbol, shares, changePercent, price]);
+    const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, symbol, shares, changePercent, price, user_id]);
     res.json(newHolding.rows[0]);
   } catch (err) {
     console.error('error from server- create new holding', err.message);
