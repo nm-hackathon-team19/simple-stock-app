@@ -17,8 +17,8 @@ const App = () => {
         <Navigation />
         <main id="main-container">
           <Route path="/" exact component={Home} />
-          <ProtectedRoute path="/main" component={Trade} isAuth={localStorage.getItem('user_id') > 0} />
-          <ProtectedRoute path="/portfolio" component={Portfolio} isAuth={localStorage.getItem('user_id') > 0} />
+          <ProtectedRoute path="/main" component={Trade} />
+          <ProtectedRoute path="/portfolio" component={Portfolio} />
           <Route path="/confirm" component={Confirm} />
         </main>
         {/* <Footer /> */}
