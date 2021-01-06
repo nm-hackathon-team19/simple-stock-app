@@ -9,8 +9,14 @@ const Portfolio = () => {
   const [holdings, setHoldings] = useState([]);
 
   useEffect(() => {
-    getHoldings().then(holdingsData => setHoldings(holdingsData))
+    getHoldingsData();
   }, []);
+
+  const getHoldingsData = () => {
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(err => console.error('error get holdings', err));
+  }
 
   return (
     <div className="container">

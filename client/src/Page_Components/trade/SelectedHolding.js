@@ -10,10 +10,14 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
 
   useEffect(() => {
+    getHoldingsData();
+  }, []);
+
+  const getHoldingsData = () => {
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
-      .catch(function (err) { console.error('error get holdings', err) });
-  }, []);
+      .catch(err => console.error('error get holdings', err));
+  }
 
   const isHoldingNegativeOrPositive = () => {
     if (String(changePercent).charAt(0) === '-') {

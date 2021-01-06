@@ -10,13 +10,21 @@ function UserInformation() {
   const [holdings, setHoldings] = useState([]);
   const [userName, setUserName] = useState('');
 
-  useEffect(() => {
+  const getHoldingsData = () => {
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
-      .catch(function (err) { console.error('error get holdings', err) });
+      .catch(err => console.error('error get holdings', err));
+  }
+
+  const retrieveUserName = () => {
     getUserName(localStorage.getItem('user_id'))
       .then(userName => setUserName(userName))
-      .catch(function (err) { console.error('error get user name', err) });
+      .catch(err => console.error('error get user name', err));
+  }
+
+  useEffect(() => {
+    getHoldingsData();
+    retrieveUserName();
   }, []);
 
   // const calculateFunds = () => {

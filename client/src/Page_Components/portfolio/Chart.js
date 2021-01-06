@@ -9,8 +9,14 @@ const Chart = () => {
   const [holdingShares, setHoldingShares] = useState([]);
 
   useEffect(() => {
-    getHoldings().then(holdingsData => setHoldings(holdingsData));
+    getHoldingsData();
   }, []);
+
+  const getHoldingsData = () => {
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(err => console.error('error get holdings', err));
+  }
 
   useEffect(() => {
     for (let i = 0; holdings.length > i; i++) {

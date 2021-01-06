@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Static.css'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { getUserName } from '../dbFunctions'
 
 const Navigation = (props) => {
+  const [userName, setUserName] = useState('');
 
   const removeLS = () => {
     localStorage.removeItem('user_id');
     props.history.push('/');
   }
+
+  const retrieveUserName = () => {
+    getUserName(localStorage.getItem('user_id'))
+      .then(userName => setUserName(userName))
+      .catch(err => console.error('error get user name', err));
+  }
+
+  useEffect(() => {
+    retrieveUserName();
+  }, []);
 
   return (
     <Navbar bg="dark" variant="dark" id="navbar" expand="sm">
@@ -24,7 +36,7 @@ const Navigation = (props) => {
         {
           localStorage.getItem('user_id') > 0 ?
             <Nav>
-              <Nav.Link>Hello UserName</Nav.Link>
+              <Nav.Link>Hello {userName}</Nav.Link>
               <Nav.Link onClick={removeLS}>Logout</Nav.Link>
             </Nav>
             : null
@@ -35,5 +47,3 @@ const Navigation = (props) => {
 }
 
 export default withRouter(Navigation)
-
-// export default Navigation

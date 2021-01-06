@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios'
 import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
@@ -12,7 +11,6 @@ import Alert from './Alert'
 import { withRouter } from 'react-router-dom';
 
 const Trade = (props) => {
-  const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useState([]);
   const [selectedHolding, setSelectedHolding] = useState(null);
   const [isShowAlert, setIsShowAlert] = useState(false);
@@ -33,13 +31,24 @@ const Trade = (props) => {
       .catch(err => console.error('error get holdings', err));
   };
 
-  useEffect(() => {
+  const renderSearchedHoldingFromPortfolio = () => {
     const queryStrings = qa.parse(
       props.location.search,
       { ignoreQueryPrefix: true });
     if (queryStrings.symbol) {
       handleSearchForHolding(queryStrings.symbol)
     }
+  }
+
+  const getHoldingsData = () => {
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(err => console.error('error get holdings', err));
+  }
+
+  useEffect(() => {
+    renderSearchedHoldingFromPortfolio();
+    getHoldingsData();
   }, []);
 
   const sellShares = (shares) => {
@@ -79,23 +88,6 @@ const Trade = (props) => {
     })
   };
 
-  const getRecommendations = async () => {
-    await axios.get('/api/stocks/recommendation')
-      .then((res) => {
-        setRecommendedHoldings(res.data)
-      })
-      .catch((err) => {
-        console.log("error username response client side", err);
-      });
-  }
-
-  useEffect(() => {
-    getRecommendations();
-    getHoldings()
-      .then(holdingsData => setHoldings(holdingsData))
-      .catch(function (err) { console.error('error get holdings', err) });
-  }, [])
-
   return (
     <div className="container">
       <div className="trade-container">
@@ -118,7 +110,6 @@ const Trade = (props) => {
           />
           : null}
         <Recommendations
-          recommendedHoldings={recommendedHoldings}
           handleSearchForHolding={handleSearchForHolding}
         />
       </div>
