@@ -8,6 +8,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
+  const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
     getHoldingsData();
@@ -21,9 +22,11 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const isHoldingNegativeOrPositive = () => {
     if (String(changePercent).charAt(0) === '-') {
-      setHoldingStyleColor('red')
+      setHoldingStyleColor('red');
+      setPositiveSign(false)
     } else {
       setHoldingStyleColor('green')
+      setPositiveSign('+')
     }
   }
 
@@ -57,7 +60,8 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
 
-  console.log(latestPrice)
+  console.log(changePercent)
+
   return (
     <>
       <div className="selected-holding card mt-4">
@@ -90,11 +94,11 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p className={holdingStyleColor}>${change}</p>
+            <p className={holdingStyleColor}>{positiveSign}${change}</p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>

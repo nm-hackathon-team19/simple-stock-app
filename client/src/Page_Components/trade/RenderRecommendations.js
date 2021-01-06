@@ -5,12 +5,15 @@ function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
+  const [positiveSign, setPositiveSign] = useState(false);
 
   const isHoldingNegativeOrPositive = () => {
     if (String(changePercent).charAt(0) === '-') {
-      setHoldingStyleColor('red')
+      setHoldingStyleColor('red');
+      setPositiveSign(false)
     } else {
       setHoldingStyleColor('green')
+      setPositiveSign('+')
     }
   }
 
@@ -46,13 +49,11 @@ function RenderRecommendations(props) {
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>
-              {changePercent.toFixed(3)}%
-              </p>
+            <p className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p className={holdingStyleColor}>${change}</p>
+            <p className={holdingStyleColor}>{positiveSign}${change}</p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
