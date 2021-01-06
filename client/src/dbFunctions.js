@@ -42,15 +42,15 @@ export const deleteHolding = async (id) => {
   }
 }
 
-// export const searchForHolding = async (symbol) => {
-//   try {
-//     const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
-//     return response.data
-//     // setSelectedHolding(response.data);
-//   } catch (err) {
-//     console.error('error in search for holding', err.message);
-//   };
-// };
+export const searchForHolding = async (symbol) => {
+  try {
+    const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
+    return response.data
+    // setSelectedHolding(response.data);
+  } catch (err) {
+    console.error('error in search for holding', err.message);
+  };
+};
 
 // get user name
 export const getUserName = async (user_id) => {

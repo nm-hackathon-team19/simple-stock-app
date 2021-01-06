@@ -8,7 +8,6 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
-  //  const [selectedHolding, setSelectedHolding] = useState(null);
 
   useEffect(() => {
     getHoldings()
@@ -54,6 +53,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
 
+  console.log(latestPrice)
   return (
     <>
       <div className="selected-holding card mt-4">

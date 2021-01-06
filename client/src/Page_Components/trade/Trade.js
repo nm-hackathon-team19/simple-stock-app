@@ -3,8 +3,7 @@ import axios from 'axios'
 import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
-import { createHolding, deleteHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
-// crudHolding
+import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
 import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
@@ -15,7 +14,6 @@ import { withRouter } from 'react-router-dom';
 const Trade = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
   const [holdings, setHoldings] = useState([]);
-
   const [selectedHolding, setSelectedHolding] = useState(null);
   const [isShowAlert, setIsShowAlert] = useState(false);
   const [sharesPurchased, setSharesPurchased] = useState(0);
@@ -29,13 +27,10 @@ const Trade = (props) => {
     setIsShowAlert(prevState => !prevState);
   }
 
-  const searchForHolding = async (symbol) => {
-    try {
-      const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
-      setSelectedHolding(response.data);
-    } catch (err) {
-      console.error('error in search for holding', err.message);
-    };
+  const handleSearchForHolding = (symbol) => {
+    searchForHolding(symbol)
+      .then(selectedHolding => setSelectedHolding(selectedHolding))
+      .catch(err => console.error('error get holdings', err));
   };
 
   useEffect(() => {
@@ -43,7 +38,7 @@ const Trade = (props) => {
       props.location.search,
       { ignoreQueryPrefix: true });
     if (queryStrings.symbol) {
-      searchForHolding(queryStrings.symbol);
+      handleSearchForHolding(queryStrings.symbol)
     }
   }, []);
 
@@ -87,7 +82,7 @@ const Trade = (props) => {
   const getRecommendations = async () => {
     await axios.get('/api/stocks/recommendation')
       .then((res) => {
-        setRecommendedHoldings(res.data);
+        setRecommendedHoldings(res.data)
       })
       .catch((err) => {
         console.log("error username response client side", err);
@@ -96,7 +91,6 @@ const Trade = (props) => {
 
   useEffect(() => {
     getRecommendations();
-    // getHoldings(setHoldings);
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(function (err) { console.error('error get holdings', err) });
@@ -114,7 +108,7 @@ const Trade = (props) => {
             sharesPurchased={sharesPurchased}
             alertMessage={alertMessage}
           />}
-        <Form searchForHolding={searchForHolding} />
+        <Form handleSearchForHolding={handleSearchForHolding} />
         {selectedHolding ?
           <SelectedHolding
             selectedHolding={selectedHolding}
@@ -125,7 +119,7 @@ const Trade = (props) => {
           : null}
         <Recommendations
           recommendedHoldings={recommendedHoldings}
-          searchForHolding={searchForHolding}
+          handleSearchForHolding={handleSearchForHolding}
         />
       </div>
     </div>
@@ -133,4 +127,3 @@ const Trade = (props) => {
 }
 
 export default withRouter(Trade)
-// export default Trade

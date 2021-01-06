@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 // import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi'
-import { searchForHolding } from '../../dbFunctions.js'
 
 
 const Form = (props) => {
@@ -18,7 +17,7 @@ const Form = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    props.searchForHolding(symbol)
+    props.handleSearchForHolding(symbol)
   }
 
   const onSearchSymbol = (e) => {
