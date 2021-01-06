@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { getHoldings } from '../../dbFunctions'
+import { getHoldings } from '../../crudHoldings'
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
@@ -46,7 +46,9 @@ function RenderRecommendations(props) {
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>
+              {changePercent.toFixed(3)}%
+              </p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>

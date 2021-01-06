@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import UserInfo from './UserInfo'
 import CurrentHoldings from './CurrentHoldings'
 import Chart from './Chart'
-import { getHoldings } from '../../dbFunctions'
+import { getHoldings } from '../../crudHoldings'
 import { withRouter } from 'react-router-dom';
 
 const Portfolio = () => {

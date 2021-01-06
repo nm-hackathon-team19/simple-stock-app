@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 // import { HoldingContext } from '../../HoldingContext'
-import { getHoldings, getUserName } from '../../dbFunctions'
+import { getHoldings, getUserName } from '../../crudHoldings'
 
 
 function UserInformation() {
-  // const [wallet, setWallet] = useState(1000);
-  // const [totalHoldingAmount, setTotalHoldingAmount] = useState(0);
-  // const [holdings, setHoldings] = useContext(HoldingContext);
   const [holdings, setHoldings] = useState([]);
   const [userName, setUserName] = useState('');
 
@@ -26,18 +23,6 @@ function UserInformation() {
     getHoldingsData();
     retrieveUserName();
   }, []);
-
-  // const calculateFunds = () => {
-  //   console.log('beggining calculatorFunds');
-  //   let tempCalc = 0
-  //   holdings.forEach(holding => {
-  //     // console.log(holding);
-  //     tempCalc += holding.price * holding.shares // 127 * 2 = 255
-  //   });
-  //   console.log('end calculatorFunds', holdings);
-  //   setWallet(prevState => prevState - tempCalc); // 1000 - 255 = 744.6 2 time: 744.6 - 255 = 
-  //   setTotalHoldingAmount(tempCalc);
-  // };
 
   const holdingValue = holdings.reduce((total, holding) => {
     return total + (holding.shares * holding.price);

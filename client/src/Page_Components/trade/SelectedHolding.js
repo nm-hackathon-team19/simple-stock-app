@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import BuyModal from './BuyModal';
 import SellModal from './SellModal';
-import { getHoldings } from '../../dbFunctions'
+import { getHoldings } from '../../crudHoldings'
 import ChartTrade from './ChartTrade'
 
 const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateShares }) => {

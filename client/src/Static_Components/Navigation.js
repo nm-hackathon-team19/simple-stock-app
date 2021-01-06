@@ -3,7 +3,7 @@ import './Static.css'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import { getUserName } from '../dbFunctions'
+import { getUserName } from '../crudHoldings'
 
 const Navigation = (props) => {
   const [userName, setUserName] = useState('');
@@ -13,14 +13,20 @@ const Navigation = (props) => {
     props.history.push('/');
   }
 
+  console.log('inside Navigation')
+
   const retrieveUserName = () => {
+    console.log('inside retrieveUserName')
     getUserName(localStorage.getItem('user_id'))
       .then(userName => setUserName(userName))
       .catch(err => console.error('error get user name', err));
   }
 
   useEffect(() => {
-    retrieveUserName();
+    console.log('inside useEffect')
+    if (localStorage.getItem('user_id')) {
+      retrieveUserName();
+    }
   }, []);
 
   return (
