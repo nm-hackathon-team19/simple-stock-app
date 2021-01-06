@@ -12,21 +12,24 @@ const Navigation = (props) => {
   }
 
   return (
-    <Navbar bg="dark" variant="dark" id="navbar" >
+    <Navbar bg="dark" variant="dark" id="navbar" expand="sm">
       <Navbar.Brand href="/">TradingStocks</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/main">Trade</Nav.Link>
-        <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
-      </Nav>
-      {
-        localStorage.getItem('user_id') > 0 ?
-          <Nav>
-            <Nav.Link>Hello UserName</Nav.Link>
-            <Nav.Link onClick={removeLS}>Logout</Nav.Link>
-          </Nav>
-          : null
-      }
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/main">Trade</Nav.Link>
+          <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
+        </Nav>
+        {
+          localStorage.getItem('user_id') > 0 ?
+            <Nav>
+              <Nav.Link>Hello UserName</Nav.Link>
+              <Nav.Link onClick={removeLS}>Logout</Nav.Link>
+            </Nav>
+            : null
+        }
+      </Navbar.Collapse>
     </Navbar >
   )
 }
