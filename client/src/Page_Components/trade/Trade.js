@@ -4,6 +4,7 @@ import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../HoldingContext'
 import { createHolding, deleteHolding, getHoldings, updateHolding } from '../../dbFunctions.js'
+// crudHolding
 import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
@@ -86,7 +87,7 @@ const Trade = (props) => {
   const getRecommendations = async () => {
     await axios.get('/api/stocks/recommendation')
       .then((res) => {
-        setRecommendedHoldings(res.data)
+        setRecommendedHoldings(res.data);
       })
       .catch((err) => {
         console.log("error username response client side", err);

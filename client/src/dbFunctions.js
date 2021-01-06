@@ -18,7 +18,6 @@ export const createHolding = async (holding) => {
 export const getHoldings = async () => {
   try {
     const response = await axios.get(`/trade/${localStorage.getItem('user_id')}`);
-    // setHoldings(response.data)
     return response.data;
   } catch (err) {
     console.error('Error in get holdings', err.message);
@@ -42,6 +41,16 @@ export const deleteHolding = async (id) => {
     console.error('Error in delete holding', err.message);
   }
 }
+
+// export const searchForHolding = async (symbol) => {
+//   try {
+//     const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
+//     return response.data
+//     // setSelectedHolding(response.data);
+//   } catch (err) {
+//     console.error('error in search for holding', err.message);
+//   };
+// };
 
 // get user name
 export const getUserName = async (user_id) => {

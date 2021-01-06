@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import RenderRecommendations from './RenderRecommendations'
 
+
 const Recommendations = (props) => {
 
   const handleTrade = (symbol) => {

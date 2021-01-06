@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 // import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi'
+import { searchForHolding } from '../../dbFunctions.js'
+
 
 const Form = (props) => {
   const [symbol, setSymbol] = useState('');

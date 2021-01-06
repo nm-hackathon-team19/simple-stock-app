@@ -16,7 +16,7 @@ const Login = (props) => {
   const loginUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("/login", {
+      const response = await axios.get("/auth/login", {
         params: {
           email: email,
           password: password,
@@ -24,7 +24,6 @@ const Login = (props) => {
       });
       localStorage.setItem("user_id", response.data);
       if (localStorage.getItem('user_id') > 0) {
-        console.log('logging in')
         props.history.push('/main');
       }
     } catch (err) {

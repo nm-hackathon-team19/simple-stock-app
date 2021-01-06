@@ -8,6 +8,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
+  //  const [selectedHolding, setSelectedHolding] = useState(null);
 
   useEffect(() => {
     getHoldings()
