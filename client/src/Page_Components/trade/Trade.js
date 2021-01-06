@@ -17,6 +17,11 @@ const Trade = (props) => {
   const [sharesPurchased, setSharesPurchased] = useState(0);
   const [alertMessage, setAlertMessage] = useState('');
 
+  useEffect(() => {
+    renderSearchedHoldingFromPortfolio();
+    getHoldingsData();
+  }, []);
+
   const updateShares = (shares) => {
     setSharesPurchased(shares);
   }
@@ -46,10 +51,6 @@ const Trade = (props) => {
       .catch(err => console.error('error get holdings', err));
   }
 
-  useEffect(() => {
-    renderSearchedHoldingFromPortfolio();
-    getHoldingsData();
-  }, []);
 
   const sellShares = (shares) => {
     const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);

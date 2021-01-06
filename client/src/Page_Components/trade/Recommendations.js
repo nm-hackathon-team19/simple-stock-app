@@ -5,6 +5,10 @@ import RenderRecommendations from './RenderRecommendations'
 const Recommendations = (props) => {
   const [recommendedHoldings, setRecommendedHoldings] = useState([]);
 
+  useEffect(() => {
+    getRecommendations();
+  }, [])
+
   const handleTrade = (symbol) => {
     props.handleSearchForHolding(symbol);
   }
@@ -18,10 +22,6 @@ const Recommendations = (props) => {
         console.log("error username response client side", err);
       });
   }
-
-  useEffect(() => {
-    getRecommendations();
-  }, [])
 
   return (
     <Fragment>

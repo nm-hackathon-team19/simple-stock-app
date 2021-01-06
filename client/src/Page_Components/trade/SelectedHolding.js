@@ -14,6 +14,10 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
     getHoldingsData();
   }, []);
 
+  useEffect(() => {
+    compareSelectedHoldingToExisting();
+  }, [holdings]);
+
   const getHoldingsData = () => {
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
@@ -53,15 +57,8 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
     }
   }
 
-  useEffect(() => {
-    compareSelectedHoldingToExisting();
-  }, [holdings]);
-
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
-
-  console.log(changePercent)
-
   return (
     <>
       <div className="selected-holding card mt-4">
