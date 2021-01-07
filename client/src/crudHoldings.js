@@ -17,7 +17,7 @@ export const createHolding = async (holding) => {
 
 export const getHoldings = async () => {
   try {
-    const response = await axios.get(`/trade/${localStorage.getItem('user_id')}`);
+    const response = await axios.get(`/trade/${JSON.parse(localStorage.getItem('data')).id}`);
     return response.data;
   } catch (err) {
     console.error('Error in get holdings', err.message);

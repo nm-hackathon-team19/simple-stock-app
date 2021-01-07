@@ -9,6 +9,7 @@ function UserInformation() {
   // const [userName, setUserName] = useState('');
   const [userName, setUserName] = useContext(UserNameContext)
 
+  console.log(userName);
 
   const getHoldingsData = () => {
     getHoldings()
@@ -35,7 +36,7 @@ function UserInformation() {
   return (
     <div className="container user-information">
       <h1>Account Balance</h1>
-      <h3>User:</h3>
+      <h3>User: {userName}</h3>
       <h3>Wallet: ${(1000 - holdingValue).toFixed(1)}</h3>
       <h3>Total Holding Value: ${holdingValue.toFixed(1)} </h3>
     </div>

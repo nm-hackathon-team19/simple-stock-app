@@ -46,7 +46,7 @@ const Navigation = (props) => {
           <h1 style={{ color: "green" }}>{userName}</h1>
         </Nav>
         {
-          localStorage.getItem('user_id') > 0 ?
+          JSON.parse(localStorage.getItem('data')) ?
             <Nav>
               <Nav.Link>Hello {userName}</Nav.Link>
               <Nav.Link onClick={removeLS}>Logout</Nav.Link>
