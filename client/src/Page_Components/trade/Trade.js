@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import qa from 'qs';
 import './Trade.css'
-import { HoldingContext } from '../../HoldingContext'
+import { HoldingContext } from '../../UserNameContext'
 import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../../crudHoldings.js'
 import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'

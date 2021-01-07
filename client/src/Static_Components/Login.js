@@ -22,8 +22,10 @@ const Login = (props) => {
           password: password,
         },
       });
-      localStorage.setItem("user_id", response.data);
-      if (localStorage.getItem('user_id') > 0) {
+      console.log(response.data)
+      localStorage.setItem('data', JSON.stringify(response.data));
+      console.log(JSON.parse(localStorage.getItem('data')).id);
+      if (JSON.parse(localStorage.getItem('data'))) {
         props.history.push('/main');
       }
     } catch (err) {

@@ -9,20 +9,23 @@ import Portfolio from './Page_Components/portfolio/Portfolio'
 import Confirm from './Page_Components/trade/Confirm'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProtectedRoute from './ProtectedRoute'
+import { UserNameProvider } from './UserNameContext'
 
 const App = () => {
   return (
     <Router>
-      <div className="app" id="app-container">
-        <Navigation />
-        <main id="main-container">
-          <Route path="/" exact component={Home} />
-          <ProtectedRoute path="/main" component={Trade} />
-          <ProtectedRoute path="/portfolio" component={Portfolio} />
-          <Route path="/confirm" component={Confirm} />
-        </main>
-        {/* <Footer /> */}
-      </div>
+      <UserNameProvider>
+        <div className="app" id="app-container">
+          <Navigation />
+          <main id="main-container">
+            <Route path="/" exact component={Home} />
+            <ProtectedRoute path="/main" component={Trade} />
+            <ProtectedRoute path="/portfolio" component={Portfolio} />
+            <Route path="/confirm" component={Confirm} />
+          </main>
+          {/* <Footer /> */}
+        </div>
+      </UserNameProvider>
     </Router>
   );
 }

@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './Static.css'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { getUserName } from '../crudHoldings'
+import { UserNameContext } from '../UserNameContext'
 
 const Navigation = (props) => {
-  const [userName, setUserName] = useState('');
+  // const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useContext(UserNameContext)
+
+  console.log(userName);
 
   useEffect(() => {
     console.log('inside useEffect')
@@ -38,6 +42,7 @@ const Navigation = (props) => {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/main">Trade</Nav.Link>
           <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
+          <h1>{userName}</h1>
         </Nav>
         {
           localStorage.getItem('user_id') > 0 ?
