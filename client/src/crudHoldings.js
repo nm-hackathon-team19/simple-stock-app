@@ -53,11 +53,11 @@ export const searchForHolding = async (symbol) => {
 };
 
 // get user name
-export const getUserName = async (user_id) => {
-  try {
-    const userName = await axios.get(`/portfolio/${user_id}`);
-    return userName.data;
-  } catch (err) {
-    console.error('Error in get user name', err.message);
-  }
-}
+// export const getUserName = async (user_id) => {
+//   try {
+//     const userName = await axios.get(`/portfolio/${user_id}`);
+//     return userName.data;
+//   } catch (err) {
+//     console.error('Error in get user name', err.message);
+//   }
+// }

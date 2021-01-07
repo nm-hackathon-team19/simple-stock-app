@@ -11,22 +11,23 @@ const Navigation = (props) => {
   const [userName, setUserName] = useContext(UserNameContext)
 
   console.log(userName);
+  // console.log(JSON.parse(localStorage.getItem('data')).name);
 
-  useEffect(() => {
-    console.log('inside useEffect')
-    if (localStorage.getItem('user_id')) {
-      retrieveUserName();
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log('inside useEffect')
+  //   if (localStorage.getItem('user_id')) {
+  //     retrieveUserName();
+  //   }
+  // }, []);
 
   console.log('inside Navigation')
 
-  const retrieveUserName = () => {
-    console.log('inside retrieveUserName')
-    getUserName(localStorage.getItem('user_id'))
-      .then(userName => setUserName(userName))
-      .catch(err => console.error('error get user name', err));
-  }
+  // const retrieveUserName = () => {
+  //   console.log('inside retrieveUserName')
+  //   getUserName(localStorage.getItem('user_id'))
+  //     .then(userName => setUserName(userName))
+  //     .catch(err => console.error('error get user name', err));
+  // }
 
   const removeLS = () => {
     localStorage.removeItem('user_id');
@@ -42,7 +43,7 @@ const Navigation = (props) => {
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/main">Trade</Nav.Link>
           <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
-          <h1>{userName}</h1>
+          <h1 style={{ color: "green" }}>{userName}</h1>
         </Nav>
         {
           localStorage.getItem('user_id') > 0 ?
