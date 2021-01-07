@@ -54,8 +54,8 @@ const Chart = () => {
           options={{
             title: {
               display: true,
-              text: 'Current Holdings',
-              fontSize: 25
+              text: 'Holdings Pie Chart',
+              fontSize: 15
             },
             legend: {
               display: true,

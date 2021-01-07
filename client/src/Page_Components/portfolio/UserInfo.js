@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { getHoldings } from '../../crudHoldings'
 import { UserNameContext } from '../../UserNameContext'
-
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function UserInformation() {
   const [holdings, setHoldings] = useState([]);
@@ -22,12 +23,14 @@ function UserInformation() {
   }, 0);
 
   return (
-    <div className="container user-information">
-      <h1>Account Balance</h1>
-      <h3>User: {userName}</h3>
-      <h3>Wallet: ${(1000 - holdingValue).toFixed(1)}</h3>
-      <h3>Total Holding Value: ${holdingValue.toFixed(1)} </h3>
-    </div>
+    <Card style={{ width: '100%' }} align="center">
+      <Card.Header className="h4">Account Information</Card.Header>
+      <ListGroup variant="flush" className="h5">
+        <ListGroup.Item>User: {userName}</ListGroup.Item>
+        <ListGroup.Item>Account Balance: ${(1000 - holdingValue).toFixed(1)}</ListGroup.Item>
+        <ListGroup.Item>Total Holding Value: ${holdingValue.toFixed(1)}</ListGroup.Item>
+      </ListGroup>
+    </Card>
   )
 }
 

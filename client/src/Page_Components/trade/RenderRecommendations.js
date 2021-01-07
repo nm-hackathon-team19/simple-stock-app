@@ -33,7 +33,6 @@ function RenderRecommendations(props) {
     }
   }
 
-
   const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
   return (
     <div className="recommended-holding">

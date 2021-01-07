@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserInfo from './UserInfo'
 import CurrentHoldings from './CurrentHoldings'
+import Header from './Header'
 import Chart from './Chart'
 import { getHoldings } from '../../crudHoldings'
 import { withRouter } from 'react-router-dom';
@@ -19,15 +20,18 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="container">
-      <UserInfo />
-      <Chart />
-      {holdings.map(holding =>
-        <CurrentHoldings
-          holding={holding}
-          key={holding.holding_id}
-        />)}
-    </div>
+    <section>
+      <Header />
+      <div className="container">
+        <UserInfo />
+        <Chart />
+        {holdings.map(holding =>
+          <CurrentHoldings
+            holding={holding}
+            key={holding.holding_id}
+          />)}
+      </div>
+    </section>
   )
 };
 

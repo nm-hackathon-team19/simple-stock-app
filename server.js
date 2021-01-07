@@ -35,14 +35,13 @@ app.get('/api/stocks/search', (req, res) => {
 })
 
 app.get('/api/stocks/recommendation', (req, res) => {
-  const companies = []
+  const holdings = []
   axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
     .then(function (response) {
-      console.log(response.data)
       Object.keys(response.data).forEach(function (key) {
-        companies.push(response.data[key].quote)
+        holdings.push(response.data[key].quote)
       })
-      res.json(companies)
+      res.json(holdings)
     })
     .catch(function (err) {
       console.log('error from server- API routes', err)

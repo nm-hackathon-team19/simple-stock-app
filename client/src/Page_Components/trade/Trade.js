@@ -90,9 +90,9 @@ const Trade = (props) => {
   };
 
   return (
-    <div className="container">
-      <div className="trade-container">
-        <Header />
+    <section >
+      <Header />
+      <div className="container">
         {isShowAlert &&
           <Alert
             toggleAlertState={toggleAlertState}
@@ -114,7 +114,7 @@ const Trade = (props) => {
           handleSearchForHolding={handleSearchForHolding}
         />
       </div>
-    </div>
+    </section>
   )
 }
 

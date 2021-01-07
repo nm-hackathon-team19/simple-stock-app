@@ -8,7 +8,6 @@ const Login = (props) => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [userIdLS, setUserIdLS] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,11 +29,6 @@ const Login = (props) => {
       console.error("error in loginUser", err.message);
     }
   };
-
-  // useEffect(() => {
-  //   const user = localStorage.getItem('user_id');
-  //   setUserIdLS(user);
-  // }, [userIdLS]);
 
   return (
     <>
