@@ -22,9 +22,7 @@ const Login = (props) => {
           password: password,
         },
       });
-      console.log(response.data)
       localStorage.setItem('data', JSON.stringify(response.data));
-      console.log(JSON.parse(localStorage.getItem('data')).id);
       if (JSON.parse(localStorage.getItem('data'))) {
         props.history.push('/main');
       }
@@ -33,10 +31,10 @@ const Login = (props) => {
     }
   };
 
-  useEffect(() => {
-    const user = localStorage.getItem('user_id');
-    setUserIdLS(user);
-  }, [userIdLS]);
+  // useEffect(() => {
+  //   const user = localStorage.getItem('user_id');
+  //   setUserIdLS(user);
+  // }, [userIdLS]);
 
   return (
     <>

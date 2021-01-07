@@ -46,18 +46,7 @@ export const searchForHolding = async (symbol) => {
   try {
     const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
     return response.data
-    // setSelectedHolding(response.data);
   } catch (err) {
     console.error('error in search for holding', err.message);
   };
 };
-
-// get user name
-// export const getUserName = async (user_id) => {
-//   try {
-//     const userName = await axios.get(`/portfolio/${user_id}`);
-//     return userName.data;
-//   } catch (err) {
-//     console.error('Error in get user name', err.message);
-//   }
-// }

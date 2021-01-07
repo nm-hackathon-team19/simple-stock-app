@@ -7,27 +7,7 @@ import { getUserName } from '../crudHoldings'
 import { UserNameContext } from '../UserNameContext'
 
 const Navigation = (props) => {
-  // const [userName, setUserName] = useState('');
   const [userName, setUserName] = useContext(UserNameContext)
-
-  console.log(userName);
-  // console.log(JSON.parse(localStorage.getItem('data')).name);
-
-  // useEffect(() => {
-  //   console.log('inside useEffect')
-  //   if (localStorage.getItem('user_id')) {
-  //     retrieveUserName();
-  //   }
-  // }, []);
-
-  console.log('inside Navigation')
-
-  // const retrieveUserName = () => {
-  //   console.log('inside retrieveUserName')
-  //   getUserName(localStorage.getItem('user_id'))
-  //     .then(userName => setUserName(userName))
-  //     .catch(err => console.error('error get user name', err));
-  // }
 
   const removeLS = () => {
     localStorage.removeItem('data');
@@ -40,10 +20,9 @@ const Navigation = (props) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/main">Trade</Nav.Link>
-          <Nav.Link href="/portfolio">Potrfolio</Nav.Link>
-          <h1 style={{ color: "green" }}>{userName}</h1>
+          <Nav.Link onClick={() => props.history.push('/')}>Home</Nav.Link>
+          <Nav.Link onClick={() => props.history.push('/main')}>Trade</Nav.Link>
+          <Nav.Link onClick={() => props.history.push('/portfolio')}>Potrfolio</Nav.Link>
         </Nav>
         {
           JSON.parse(localStorage.getItem('data')) ?
