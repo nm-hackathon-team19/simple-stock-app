@@ -30,7 +30,7 @@ const Navigation = (props) => {
   // }
 
   const removeLS = () => {
-    localStorage.removeItem('user_id');
+    localStorage.removeItem('data');
     props.history.push('/');
   }
 

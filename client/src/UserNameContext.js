@@ -6,7 +6,7 @@ export const UserNameContext = createContext();
 export const UserNameProvider = (props) => {
   const [userName, setUserName] = useState('')
 
-  console.log(JSON.parse(localStorage.getItem('data')).name);
+  // console.log(JSON.parse(localStorage.getItem('data')).name);
 
   // const retrieveUserName = () => {
   //   getUserName(JSON.parse(localStorage.getItem('data')).id)
@@ -15,7 +15,10 @@ export const UserNameProvider = (props) => {
   // }
 
   const retrieveUserName = () => {
-    setUserName(JSON.parse(localStorage.getItem('data')).name);
+    console.log(JSON.parse(localStorage.getItem('data')))
+    if (JSON.parse(localStorage.getItem('data'))) {
+      setUserName(JSON.parse(localStorage.getItem('data')).name);
+    }
   }
 
   useEffect(() => {
