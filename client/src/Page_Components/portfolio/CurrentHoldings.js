@@ -3,20 +3,21 @@ import { NavLink } from 'react-router-dom'
 
 const CurrentHoldings = (props) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
-
-  const isHoldingNegativeOrPositive = () => {
-    console.log('inside holding negative')
-    if (String(percent_change).charAt(0) === '-') {
-      setHoldingStyleColor('red')
-    } else {
-      setHoldingStyleColor('green')
-    }
-  }
+  const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
     isHoldingNegativeOrPositive();
-  }, [props.holding]);
+  }, []);
 
+  const isHoldingNegativeOrPositive = () => {
+    if (String(percent_change).charAt(0) === '-') {
+      setHoldingStyleColor('red')
+      setPositiveSign(false)
+    } else {
+      setHoldingStyleColor('green')
+      setPositiveSign('+')
+    }
+  }
 
   const { name, symbol, price, percent_change, shares } = props.holding;
   return (
@@ -48,7 +49,7 @@ const CurrentHoldings = (props) => {
         </div>
         <div className="percent-change">
           <strong>Percent Change:</strong>
-          <p className={holdingStyleColor}>{percent_change}%</p>
+          <p className={holdingStyleColor}>{positiveSign}{percent_change}%</p>
         </div>
       </div>
     </div >

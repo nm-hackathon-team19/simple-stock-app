@@ -11,7 +11,8 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
-    getHoldingsData();
+    isHoldingNegativeOrPositive();
+    getHoldingsData()
   }, []);
 
   useEffect(() => {
@@ -56,7 +57,6 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
       holdingExist ? setShares(holdingExist.shares) : null;
     }
   }
-
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
   return (

@@ -54,7 +54,6 @@ export const searchForHolding = async (symbol) => {
 
 // get user name
 export const getUserName = async (user_id) => {
-  console.log('inside getUserName')
   try {
     const userName = await axios.get(`/portfolio/${user_id}`);
     return userName.data;
