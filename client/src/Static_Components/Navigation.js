@@ -8,10 +8,12 @@ import { getUserName } from '../crudHoldings'
 const Navigation = (props) => {
   const [userName, setUserName] = useState('');
 
-  const removeLS = () => {
-    localStorage.removeItem('user_id');
-    props.history.push('/');
-  }
+  useEffect(() => {
+    console.log('inside useEffect')
+    if (localStorage.getItem('user_id')) {
+      retrieveUserName();
+    }
+  }, []);
 
   console.log('inside Navigation')
 
@@ -22,12 +24,10 @@ const Navigation = (props) => {
       .catch(err => console.error('error get user name', err));
   }
 
-  useEffect(() => {
-    console.log('inside useEffect')
-    if (localStorage.getItem('user_id')) {
-      retrieveUserName();
-    }
-  }, []);
+  const removeLS = () => {
+    localStorage.removeItem('user_id');
+    props.history.push('/');
+  }
 
   return (
     <Navbar bg="dark" variant="dark" id="navbar" expand="sm">
