@@ -22,11 +22,14 @@ export const HoldingsAmountProvider = (props) => {
     setHoldingsTotalValue(holdings.reduce((total, holding) => {
       return total + (holding.shares * holding.price);
     }, 0));
-    setWallet(prevState => prevState - holdingsTotalValue);
+    setWallet(wallet - holdingsTotalValue);
   }, [holdings])
 
+  console.log('wallet', wallet);
+  console.log('holdingsTotalValue', holdingsTotalValue);
+
   return (
-    <HoldingsAmountContext.Provider value={[holdingsTotalValue, setHoldingsTotalValue]}>
+    <HoldingsAmountContext.Provider value={[wallet, setWallet]}>
       {props.children}
     </HoldingsAmountContext.Provider>
   )

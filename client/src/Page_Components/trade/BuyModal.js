@@ -6,12 +6,12 @@ import { HoldingsAmountContext } from '../../HoldingsAmountContext';
 const BuyModal = (props) => {
   const [show, setShow] = useState(false);
   const [sharesValue, setSharesValue] = useState('');
-  const [holdingsAmount, setHoldingsAmount] = useContext(HoldingsAmountContext)
+  const [wallet, setWallet] = useContext(HoldingsAmountContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = () => {
-    if (holdingsAmount < (sharesValue * latestPrice)) {
+    if (wallet < (sharesValue * latestPrice)) {
       props.handleBuyShares(sharesValue);
     } else {
       console.log('not enough money dude')

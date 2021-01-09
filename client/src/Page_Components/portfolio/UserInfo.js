@@ -9,8 +9,8 @@ function UserInformation() {
   const [holdingsTotalValue, setHoldingsTotalValue] = useContext(HoldingsAmountContext)
   const [wallet, setWallet] = useContext(HoldingsAmountContext)
 
-  console.log(wallet);
-  console.log(holdingsTotalValue);
+  // console.log(wallet);
+  // console.log(holdingsTotalValue);
 
   return (
     <Card style={{ width: '100%' }} align="center">
