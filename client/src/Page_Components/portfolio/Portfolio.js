@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import UserInfo from './UserInfo'
 import CurrentHoldings from './CurrentHoldings'
 import Header from './Header'
@@ -21,7 +21,7 @@ const Portfolio = () => {
 
   return (
     <section>
-      <Header />
+      {/* <Header /> */}
       <div className="container">
         <UserInfo />
         <Chart />
