@@ -25,7 +25,7 @@ const Recommendations = (props) => {
 
   return (
     <Fragment>
-      <div className="text-center mt-5 h4 font-weight-light">Recommended Stocks</div>
+      <div className="text-center mt-5 h5 font-weight-light">Other Recommendations</div>
       {recommendedHoldings.map(recommendedHolding => (
         <RenderRecommendations
           recommendedHolding={recommendedHolding}
