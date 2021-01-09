@@ -36,7 +36,7 @@ app.get('/api/stocks/search', (req, res) => {
 
 app.get('/api/stocks/recommendation', (req, res) => {
   const holdings = []
-  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
+  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx,googl&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
     .then(function (response) {
       Object.keys(response.data).forEach(function (key) {
         holdings.push(response.data[key].quote)

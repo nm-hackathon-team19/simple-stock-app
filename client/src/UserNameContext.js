@@ -9,7 +9,7 @@ export const UserNameProvider = (props) => {
     if (JSON.parse(localStorage.getItem('data'))) {
       setUserName(JSON.parse(localStorage.getItem('data')).name);
     }
-  }, [])
+  }, []);
 
   return (
     <UserNameContext.Provider value={[userName, setUserName]}>

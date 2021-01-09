@@ -55,7 +55,7 @@ const Form = (props) => {
         autoFocus
         onChange={(e) => onSearchSymbol(e)}
         className="form-control col-sm-5"
-        placeholder="Enter stock symbols"
+        placeholder="Enter stock symbol"
       />
       <button
         type="submit"

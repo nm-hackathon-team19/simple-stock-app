@@ -10,8 +10,8 @@ export default function Home() {
       <div id="home">
         <div className="home-content">
           <h1>Welcome to Fantasy Stock Trader!</h1>
-          <h4>Experience the thrill of the stock market by utilizing fake money to purchase real stocks and buy or sell shares.</h4>
-          <h4>Search stock symbols and use fake money to trade and test your skills</h4>
+          <p>Experience the thrill of the stock market by utilizing fake money to purchase real stocks and buy or sell shares.</p>
+          <p>Search stock symbols and use fake money to trade and test your skills</p>
           <div className="home-buttons-wrapper">
             <Register />
             <Login />

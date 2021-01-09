@@ -8,7 +8,12 @@ const BuyModal = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => props.handleBuyShares(sharesValue);
+  const handleSubmit = () => {
+    console.log(props.shares)
+    console.log(latestPrice)
+    debugger
+    props.handleBuyShares(sharesValue);
+  }
 
   // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
