@@ -1,10 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { getHoldings } from './crudHoldings'
+
 export const HoldingsAmountContext = createContext();
 
 export const HoldingsAmountProvider = (props) => {
   const [holdings, setHoldings] = useState([]);
-  const [holdingsAmount, setHoldingsAmount] = useState('');
+  const [holdingsTotalValue, setHoldingsTotalValue] = useState('');
+  const [wallet, setWallet] = useState(1000);
 
   const getHoldingsData = () => {
     getHoldings()
@@ -17,13 +19,14 @@ export const HoldingsAmountProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    setHoldingsAmount(holdings.reduce((total, holding) => {
+    setHoldingsTotalValue(holdings.reduce((total, holding) => {
       return total + (holding.shares * holding.price);
-    }, 0))
+    }, 0));
+    setWallet(prevState => prevState - holdingsTotalValue);
   }, [holdings])
 
   return (
-    <HoldingsAmountContext.Provider value={[holdingsAmount, setHoldingsAmount]}>
+    <HoldingsAmountContext.Provider value={[holdingsTotalValue, setHoldingsTotalValue]}>
       {props.children}
     </HoldingsAmountContext.Provider>
   )

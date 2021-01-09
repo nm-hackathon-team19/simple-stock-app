@@ -25,7 +25,7 @@ const App = () => {
               <ProtectedRoute path="/portfolio" component={Portfolio} />
               <Route path="/confirm" component={Confirm} />
             </main>
-            {/* <Footer /> */}
+            {/* <Footer /> */}x
           </div>
         </HoldingsAmountProvider>
       </UserNameProvider>
