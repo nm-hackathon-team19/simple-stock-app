@@ -19,7 +19,7 @@ const Register = () => {
         email: email,
         password: password
       });
-      localStorage.setItem('user_id', response.data.user_id);
+      // localStorage.setItem('user_id', response.data.user_id);
     } catch (err) {
       console.error('error in createUser', err.message)
     }

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form, NavLink } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
+// import { UserNameContext } from '../UserNameContext'
 
 const Login = (props) => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [userName, setUserName] = useContext(UserNameContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

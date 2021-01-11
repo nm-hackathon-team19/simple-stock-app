@@ -38,7 +38,6 @@ router.get('/login', async (req, res) => {
     // res.json(user.rows[0].user_id);
     res.json({ id: user.rows[0].user_id, name: user.rows[0].user_name });
 
-
   } catch (err) {
     console.error('error from server- create new holding', err.message);
   }

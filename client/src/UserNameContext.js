@@ -6,10 +6,13 @@ export const UserNameProvider = (props) => {
   const [userName, setUserName] = useState('')
 
   useEffect(() => {
+    console.log('inside useEffect userName');
     if (JSON.parse(localStorage.getItem('data'))) {
       setUserName(JSON.parse(localStorage.getItem('data')).name);
     }
-  }, []);
+  }, [])
+
+  console.log(userName);
 
   return (
     <UserNameContext.Provider value={[userName, setUserName]}>
@@ -17,8 +20,4 @@ export const UserNameProvider = (props) => {
     </UserNameContext.Provider>
   )
 }
-
-
-
-
 

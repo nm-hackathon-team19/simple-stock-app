@@ -16,7 +16,6 @@ const App = () => {
   return (
     <Router>
       <UserNameProvider>
-        {/* <HoldingsAmountProvider> */}
         <div className="app" id="app-container">
           <Navigation />
           <main id="main-container">
@@ -25,9 +24,8 @@ const App = () => {
             <ProtectedRoute path="/portfolio" component={Portfolio} />
             <Route path="/confirm" component={Confirm} />
           </main>
-          {/* <Footer /> */}x
-          </div>
-        {/* </HoldingsAmountProvider> */}
+          {/* <Footer /> */}
+        </div>
       </UserNameProvider>
     </Router>
   );

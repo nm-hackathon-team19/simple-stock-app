@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-input { 
+.selected-holding input { 
     text-transform: uppercase;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */

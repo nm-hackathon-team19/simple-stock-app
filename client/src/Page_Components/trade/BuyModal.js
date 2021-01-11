@@ -32,8 +32,6 @@ const BuyModal = (props) => {
     }
   };
 
-  console.log(wallet);
-  // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
   return (
     <Fragment>
@@ -58,7 +56,7 @@ const BuyModal = (props) => {
         </Modal.Body>
         {isShowAlert &&
           <Alert variant="danger">
-            You currently have only ${wallet}. Either sell some shares or buy less.
+            You currently have only ${wallet}. Either sell some shares or buy less in order to complete the transaction.
         </Alert>}
         <Modal.Footer>
           Your Order is not complete yet. Review and confirm your order in the next step.

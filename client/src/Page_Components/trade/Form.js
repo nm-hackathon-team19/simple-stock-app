@@ -48,7 +48,7 @@ const Form = (props) => {
   }
 
   return (
-    <form className="form-inline justify-content-center mt-3" onSubmit={handleSubmit}>
+    <form className="form-inline justify-content-center mt-3 selected-holding" onSubmit={handleSubmit}>
       <input
         type="symbol"
         value={symbol}
