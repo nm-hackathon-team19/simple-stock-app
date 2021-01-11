@@ -19,24 +19,23 @@ const Portfolio = () => {
       .catch(err => console.error('error get holdings', err));
   }
 
-  // console.log(holdings)
-
   return (
     <section>
       {/* <Header /> */}
       <div className="container">
         <UserInfo />
         <Chart />
-        {holdings.map(holding =>
-          <CurrentHoldings
-            holding={holding}
-            key={holding.holding_id}
-          />)}
+        {holdings.length > 0 ?
+          holdings.map(holding =>
+            <CurrentHoldings
+              holding={holding}
+              key={holding.holding_id}
+            />)
+          : <CurrentHoldings />
+        }
       </div>
     </section>
   )
 };
 
 export default withRouter(Portfolio)
-
-// export default Portfolio

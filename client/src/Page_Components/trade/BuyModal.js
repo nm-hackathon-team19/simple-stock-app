@@ -56,7 +56,7 @@ const BuyModal = (props) => {
         </Modal.Body>
         {isShowAlert &&
           <Alert variant="danger">
-            You currently have only ${wallet}. Either sell some shares or buy less in order to complete the transaction.
+            You currently have only ${wallet.toFixed(2)}. Either sell some shares or buy less in order to complete the transaction.
         </Alert>}
         <Modal.Footer>
           Your Order is not complete yet. Review and confirm your order in the next step.
