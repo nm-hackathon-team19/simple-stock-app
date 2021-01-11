@@ -8,7 +8,7 @@ export const createHolding = async (holding) => {
       shares: holding.shares,
       price: holding.price,
       changePercent: holding.changePercent,
-      user_id: localStorage.getItem('user_id')
+      user_id: JSON.parse(localStorage.getItem('data')).id
     })
   } catch (err) {
     console.error('Error in create holding', err.message)

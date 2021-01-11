@@ -62,6 +62,7 @@ const Trade = (props) => {
   }
 
   const buyNewHolding = (shares) => {
+    console.log(shares);
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
         (holding) => holding.symbol === selectedHolding.symbol);
@@ -88,6 +89,8 @@ const Trade = (props) => {
       return prevHoldings
     })
   };
+
+  console.log(holdings);
 
   return (
     <section >

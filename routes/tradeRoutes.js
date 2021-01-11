@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../db')
 
+// get holdings
 router.get('/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params
@@ -12,6 +13,7 @@ router.get('/:user_id', async (req, res) => {
   }
 })
 
+// create holding
 router.post('/', async (req, res) => {
   try {
     const { name, symbol, shares, changePercent, price, user_id } = req.body;

@@ -19,6 +19,8 @@ const Portfolio = () => {
       .catch(err => console.error('error get holdings', err));
   }
 
+  // console.log(holdings)
+
   return (
     <section>
       {/* <Header /> */}

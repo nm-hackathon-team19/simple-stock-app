@@ -1,22 +1,14 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment } from "react";
 import './Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
-import { HoldingsAmountContext } from '../../HoldingsAmountContext';
 
 const BuyModal = (props) => {
   const [show, setShow] = useState(false);
   const [sharesValue, setSharesValue] = useState('');
-  const [wallet, setWallet] = useContext(HoldingsAmountContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => {
-    if (wallet < (sharesValue * latestPrice)) {
-      props.handleBuyShares(sharesValue);
-    } else {
-      console.log('not enough money dude')
-    }
-  }
+  const handleSubmit = () => props.handleBuyShares(sharesValue);
 
   // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
