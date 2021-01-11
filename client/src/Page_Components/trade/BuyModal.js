@@ -1,15 +1,38 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import './Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
+import { getWallet } from '../../crudHoldings.js'
+import Alert from 'react-bootstrap/Alert'
 
 const BuyModal = (props) => {
   const [show, setShow] = useState(false);
   const [sharesValue, setSharesValue] = useState('');
+  const [wallet, setWallet] = useState(0);
+  const [isShowAlert, setShowAlert] = useState(false);
+
+  useEffect(() => {
+    getUserWallet();
+  }, []);
+
+  const getUserWallet = () => {
+    getWallet()
+      .then(wallet => setWallet(wallet))
+      .catch(err => console.error('error get wallet', err));
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSubmit = () => props.handleBuyShares(sharesValue);
 
+  const handleSubmit = () => {
+    if (wallet > sharesValue * props.selectedHolding.latestPrice) {
+      handleClose();
+      props.handleBuyShares(sharesValue);
+    } else {
+      setShowAlert(true);
+    }
+  };
+
+  console.log(wallet);
   // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
   return (
@@ -33,10 +56,14 @@ const BuyModal = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
+        {isShowAlert &&
+          <Alert variant="danger">
+            You currently have only ${wallet}. Either sell some shares or buy less.
+        </Alert>}
         <Modal.Footer>
           Your Order is not complete yet. Review and confirm your order in the next step.
           <Button variant="secondary" onClick={handleClose}>Cancel Order</Button>
-          <Button variant="primary" onClick={() => { handleClose(); handleSubmit(); }}>Buy Shares</Button>
+          <Button variant="primary" onClick={handleSubmit}>Buy Shares</Button>
         </Modal.Footer>
       </Modal>
     </Fragment>

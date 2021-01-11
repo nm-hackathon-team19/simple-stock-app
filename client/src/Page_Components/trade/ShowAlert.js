@@ -2,7 +2,7 @@ import React from 'react'
 import { Toast } from 'react-bootstrap'
 import { FiCheckCircle } from 'react-icons/fi'
 
-const Alert = (props) => {
+const ShowAlert = (props) => {
   const { latestPrice, symbol } = props.selectedHolding
 
   return (
@@ -20,4 +20,4 @@ const Alert = (props) => {
   );
 }
 
-export default Alert
+export default ShowAlert

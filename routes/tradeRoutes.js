@@ -13,11 +13,25 @@ router.get('/:user_id', async (req, res) => {
   }
 })
 
+router.get('/wallet/:user_id', async (req, res) => {
+  try {
+    const wallet = 1000
+    let holdingsAmount = 0
+    const { user_id } = req.params
+    const response = await pool.query("SELECT * FROM holdings WHERE user_id = ($1)", [user_id]);
+    for (const element of response.rows) {
+      holdingsAmount += element.shares * element.price
+    }
+    res.json(wallet - holdingsAmount);
+  } catch (err) {
+    console.error('error from server- get all holdings', err.message);
+  }
+})
+
 // create holding
 router.post('/', async (req, res) => {
   try {
     const { name, symbol, shares, changePercent, price, user_id } = req.body;
-    console.log(req.body);
     const newHolding = await pool.query("INSERT INTO holdings (name, symbol, shares, percent_change, price, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, symbol, shares, changePercent, price, user_id]);
     res.json(newHolding.rows[0]);
   } catch (err) {

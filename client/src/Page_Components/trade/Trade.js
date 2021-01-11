@@ -7,7 +7,7 @@ import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'
 import Form from './Form'
-import Alert from './Alert'
+import ShowAlert from './ShowAlert'
 import { withRouter } from 'react-router-dom';
 
 const Trade = (props) => {
@@ -51,7 +51,6 @@ const Trade = (props) => {
       .catch(err => console.error('error get holdings', err));
   }
 
-
   const sellShares = (shares) => {
     const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);
     updateHolding(holding.holding_id, holding.shares - shares);
@@ -62,7 +61,6 @@ const Trade = (props) => {
   }
 
   const buyNewHolding = (shares) => {
-    console.log(shares);
     setHoldings(prevHoldings => {
       const matchingHolding = prevHoldings.find(
         (holding) => holding.symbol === selectedHolding.symbol);
@@ -90,14 +88,12 @@ const Trade = (props) => {
     })
   };
 
-  console.log(holdings);
-
   return (
     <section >
       <Header />
       <div className="container">
         {isShowAlert &&
-          <Alert
+          <ShowAlert
             toggleAlertState={toggleAlertState}
             isShowAlert={isShowAlert}
             selectedHolding={selectedHolding}
