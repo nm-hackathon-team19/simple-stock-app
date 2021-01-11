@@ -36,11 +36,6 @@ const SellModal = (props) => {
             <h5 className="text-center">Share value: ${latestPrice}</h5>
             <h5 className="text-center">Current Shares Held: {props.shares}</h5>
             <Form.Group controlId="formBasicEmail">
-              {isShowAlert && (
-                <Alert variant="danger" onClose={() => setIsShowAlert(false)} dismissible className="alert">
-                  <p> Insufficient shares</p>
-                </Alert>
-              )}
               < Form.Label > Share quantity</Form.Label>
               <Form.Control type="number" placeholder="Shares" value={sharesInput} onChange={(e) => setSharesInput(e.target.value)} />
               <Form.Text className="total-price">
@@ -49,8 +44,12 @@ const SellModal = (props) => {
             </Form.Group>
           </Form>
         </Modal.Body>
+        {isShowAlert && (
+          <Alert variant="danger" onClose={() => setIsShowAlert(false)} dismissible className="alert">
+            <p> You don't own enough shares to make that transaction</p>
+          </Alert>
+        )}
         <Modal.Footer>
-          Your Order is not complete yet. Review and confirm your order in the next step.
           <Button variant="secondary" onClick={handleClose}>Cancel Order</Button>
           <Button variant="primary" onClick={() => { handleClose(); handleSubmit(); }}>Sell Shares</Button>
         </Modal.Footer>

@@ -55,11 +55,10 @@ const BuyModal = (props) => {
           </Form>
         </Modal.Body>
         {isShowAlert &&
-          <Alert variant="danger">
+          <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
             You currently have only ${wallet.toFixed(2)}. Either sell some shares or buy less in order to complete the transaction.
         </Alert>}
         <Modal.Footer>
-          Your Order is not complete yet. Review and confirm your order in the next step.
           <Button variant="secondary" onClick={handleClose}>Cancel Order</Button>
           <Button variant="primary" onClick={handleSubmit}>Buy Shares</Button>
         </Modal.Footer>

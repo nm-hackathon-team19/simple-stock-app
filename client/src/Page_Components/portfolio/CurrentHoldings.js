@@ -23,7 +23,6 @@ const CurrentHoldings = (props) => {
     }
 
     const { name, symbol, price, percent_change, shares } = props.holding;
-
     return (
       <div className="selected-holding card mt-4">
         <div className="card-head">

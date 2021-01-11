@@ -3,13 +3,13 @@ import axios from 'axios';
 import { Button, Modal, Form, NavLink } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
-// import { UserNameContext } from '../UserNameContext'
+import { UserNameContext } from '../UserNameContext'
 
 const Login = (props) => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [userName, setUserName] = useContext(UserNameContext)
+  const [userName, setUserName] = useContext(UserNameContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,6 +24,9 @@ const Login = (props) => {
         },
       });
       localStorage.setItem('data', JSON.stringify(response.data));
+
+      setUserName(response.data.name)
+
       if (JSON.parse(localStorage.getItem('data'))) {
         props.history.push('/main');
       }

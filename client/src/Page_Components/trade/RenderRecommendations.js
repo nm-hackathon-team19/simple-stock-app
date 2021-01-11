@@ -39,7 +39,7 @@ function RenderRecommendations(props) {
       <div className="selected-holding card mt-3">
         <div className="card-head">
           <h2> {companyName}: {symbol}</h2>
-          <button className="btn btn-danger" onClick={() => props.handleTrade(symbol)}>Trade</button>
+          <button className="btn btn-info" onClick={() => props.handleTrade(symbol)}>Trade</button>
         </div>
         <hr />
         <div className="card-body">
