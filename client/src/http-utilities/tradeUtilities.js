@@ -44,7 +44,7 @@ export const deleteHolding = async (id) => {
 
 export const searchForHolding = async (symbol) => {
   try {
-    const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
+    const response = await axios.get(`api/stock/search/?symbol=${symbol}`);
     return response.data
   } catch (err) {
     console.error('error in search for holding', err.message);

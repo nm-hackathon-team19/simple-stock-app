@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import { getSearchedStock } from '../../http-utilities/stocksUtilities'
 // import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi'
 
 const Form = (props) => {
@@ -29,7 +30,6 @@ const Form = (props) => {
     if (timeoutRef.current !== null) {
       clearTimeout(timeoutRef.current);
     }
-
     if (isCanSearch) performApiCall();
 
     timeoutRef.current = setTimeout(() => {
@@ -40,12 +40,14 @@ const Form = (props) => {
 
   const performApiCall = async () => {
     try {
-      const response = await axios.get(`api/stocks/search/?symbol=${symbol}`);
+      const response = await axios.get(`api/stock/search/?symbol=${symbol}`);
       setCompanyName(response.data.companyName);
     } catch (err) {
       console.error(err.message)
     }
   }
+
+
 
   return (
     <form className="form-inline justify-content-center mt-3 selected-holding" onSubmit={handleSubmit}>

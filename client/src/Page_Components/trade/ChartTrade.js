@@ -8,17 +8,17 @@ const ChartTrade = ({ symbol }) => {
   const [holdingPrices, setHoldingPrices] = useState([]);
 
   useEffect(() => {
-    getHoldingPricesByDates(symbol);
+    const getHoldingPricesByDates = async (symbol) => {
+      try {
+        const response = await axios.get(`api/chart/data/?symbol=${symbol}`);
+        setDatesAndPricesStates(response.data)
+      } catch (err) {
+        console.error('error in getHoldingPricesByDates', err.message);
+      }
+    }
+    getHoldingPricesByDates();
   }, [])
 
-  const getHoldingPricesByDates = async (symbol) => {
-    try {
-      const response = await axios.get(`api/chart/search/?symbol=${symbol}`);
-      setDatesAndPricesStates(response.data)
-    } catch (err) {
-      console.error('error in getHoldingPricesByDates', err.message);
-    }
-  }
 
   const setDatesAndPricesStates = (data) => {
     for (let i = 0; data.length > i; i++) {

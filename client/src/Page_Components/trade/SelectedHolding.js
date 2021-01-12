@@ -59,6 +59,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   }
 
   const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
+
   return (
     <>
       <div className="selected-holding card mt-4">
