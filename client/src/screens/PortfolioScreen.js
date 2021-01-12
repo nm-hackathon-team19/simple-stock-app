@@ -34,16 +34,18 @@ const PortfolioScreen = () => {
           :
           <>
             <Chart />
-            {holdings.map(holding => (
-              <CurrentHoldings
-                holding={holding}
-                key={holding.holding_id}
-              />))
+            {holdings.length > 0 ?
+              holdings.map(holding =>
+                <CurrentHoldings
+                  holding={holding}
+                  key={holding.holding_id}
+                />)
+              : <CurrentHoldings />
             }
           </>
         }
       </div>
-    </section>
+    </section >
   )
 };
 
