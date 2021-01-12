@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import './Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
-import { getWallet } from '../../utilities/portfolioUtility.js'
+import { getWallet } from '../../http-utilities/portfolioUtilities'
 import Alert from 'react-bootstrap/Alert'
 
 const BuyModal = (props) => {

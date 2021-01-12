@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { getHoldings } from '../../utilities/tradeUtility'
+import { getHoldings } from '../../http-utilities/tradeUtilities'
 // import { Spinner } from 'react-bootstrap'
 
 function RenderRecommendations(props) {

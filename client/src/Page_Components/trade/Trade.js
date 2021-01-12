@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import qa from 'qs';
 import './Trade.css'
 import { HoldingContext } from '../../context/UserNameContext'
-import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../../utilities/tradeUtility.js'
+import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../../http-utilities/tradeUtilities'
 import Recommendations from './Recommendations'
 import SelectedHolding from './SelectedHolding'
 import Header from './Header'

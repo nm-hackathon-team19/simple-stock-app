@@ -21,6 +21,9 @@ app.use('/portfolio/', portfolioRoutes);
 const authRoutes = require('./routes/authRoutes');
 app.use('/auth/', authRoutes);
 
+const stocksRoutes = require('./routes/stocksRoutes');
+app.use('/stocks/', stocksRoutes);
+
 // API ROUTES \\
 app.get('/api/stocks/search', (req, res) => {
   const symbol = req.query.symbol

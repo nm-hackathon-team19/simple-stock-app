@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { getHoldings } from '../../utilities/tradeUtility'
+import { getHoldings } from '../../http-utilities/tradeUtilities'
 import { UserNameContext } from '../../context/UserNameContext'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';

@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
 import RenderRecommendations from './RenderRecommendations'
-import { getHoldings } from '../../utilities/tradeUtility'
+// import { getHoldings } from '../../http-utilities/tradeUtilities'
 import { Spinner } from 'react-bootstrap'
 
 const Recommendations = (props) => {
