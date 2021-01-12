@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import '../Page_Components/home/Home.css'
-import { UserNameContext } from '../UserNameContext'
+import { UserNameContext } from '../context/UserNameContext'
 
 const Welcome = () => {
   const [userName, setUserName] = useContext(UserNameContext)

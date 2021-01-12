@@ -9,7 +9,7 @@ import Portfolio from './Page_Components/portfolio/Portfolio'
 import Confirm from './Page_Components/trade/Confirm'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProtectedRoute from './ProtectedRoute'
-import { UserNameProvider } from './UserNameContext'
+import { UserNameProvider } from './context/UserNameContext'
 // import { HoldingsAmountProvider } from './HoldingsAmountContext'
 
 const App = () => {

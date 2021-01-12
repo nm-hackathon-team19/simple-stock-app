@@ -3,7 +3,7 @@ import UserInfo from './UserInfo'
 import CurrentHoldings from './CurrentHoldings'
 import Header from './Header'
 import Chart from './Chart'
-import { getHoldings } from '../../crudHoldings'
+import { getHoldings } from '../../utilities/tradeUtility'
 import { withRouter } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap'
 

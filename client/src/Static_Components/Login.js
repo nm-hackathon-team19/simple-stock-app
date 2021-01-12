@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, Modal, Form, NavLink } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
-import { UserNameContext } from '../UserNameContext'
+import { UserNameContext } from '../context/UserNameContext'
 
 const Login = (props) => {
   const [show, setShow] = useState(false);

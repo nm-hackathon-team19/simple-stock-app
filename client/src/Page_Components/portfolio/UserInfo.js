@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { getHoldings } from '../../crudHoldings'
-import { UserNameContext } from '../../UserNameContext'
+import { getHoldings } from '../../utilities/tradeUtility'
+import { UserNameContext } from '../../context/UserNameContext'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 

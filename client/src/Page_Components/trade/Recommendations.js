@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
 import RenderRecommendations from './RenderRecommendations'
-import { getHoldings } from '../../crudHoldings'
+import { getHoldings } from '../../utilities/tradeUtility'
 import { Spinner } from 'react-bootstrap'
 
 const Recommendations = (props) => {
@@ -16,9 +16,10 @@ const Recommendations = (props) => {
     props.handleSearchForHolding(symbol);
   }
 
-  const getRecommendations = async () => {
-    await axios.get('/api/stocks/recommendation')
+  const getRecommendations = () => {
+    axios.get('/api/stocks/recommendation')
       .then((res) => {
+        console.log(res.data)
         setRecommendedHoldings(res.data)
         setSpinner(false)
       })
@@ -26,6 +27,8 @@ const Recommendations = (props) => {
         console.log("error username response client side", err);
       });
   }
+
+  console.log(recommendedHoldings)
 
   return (
     <Fragment>

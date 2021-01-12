@@ -4,7 +4,7 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import { Route, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 // import { getUserName } from '../crudHoldings'
-import { UserNameContext } from '../UserNameContext'
+import { UserNameContext } from '../context/UserNameContext'
 
 const Navigation = (props) => {
   const [userName, setUserName] = useContext(UserNameContext)

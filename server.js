@@ -30,7 +30,7 @@ app.get('/api/stocks/search', (req, res) => {
       res.send(response.data[Object.keys(response.data)[0]].quote)
     })
     .catch(error => {
-      // console.log('error from server- API routes', error)
+      console.log('error from server- API routes', error)
     })
 })
 
