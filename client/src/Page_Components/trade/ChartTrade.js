@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import axios from 'axios'
 
 const ChartTrade = ({ symbol }) => {
@@ -8,7 +8,7 @@ const ChartTrade = ({ symbol }) => {
   const [holdingPrices, setHoldingPrices] = useState([]);
 
   useEffect(() => {
-    const getHoldingPricesByDates = async (symbol) => {
+    const getHoldingPricesByDates = async () => {
       try {
         const response = await axios.get(`api/chart/data/?symbol=${symbol}`);
         setDatesAndPricesStates(response.data)
@@ -18,7 +18,6 @@ const ChartTrade = ({ symbol }) => {
     }
     getHoldingPricesByDates();
   }, [])
-
 
   const setDatesAndPricesStates = (data) => {
     for (let i = 0; data.length > i; i++) {
