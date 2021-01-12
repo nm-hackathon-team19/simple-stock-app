@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import './Trade.css';
+import '../../style/Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
 import { getWallet } from '../../http-utilities/portfolioUtilities'
 import Alert from 'react-bootstrap/Alert'

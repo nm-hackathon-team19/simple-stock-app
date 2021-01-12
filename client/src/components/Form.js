@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
-import { getSearchedStock } from '../../http-utilities/stocksUtilities'
-// import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi'
 
 const Form = (props) => {
   const [symbol, setSymbol] = useState('');

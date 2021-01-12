@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import '../Page_Components/home/Home.css'
+import '../style/Home.css'
 import { UserNameContext } from '../context/UserNameContext'
 
 const Welcome = () => {

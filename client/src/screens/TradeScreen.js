@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import qa from 'qs';
-import './Trade.css'
-import { HoldingContext } from '../../context/UserNameContext'
-import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../../http-utilities/tradeUtilities'
-import Recommendations from './Recommendations'
-import SelectedHolding from './SelectedHolding'
-import Header from './Header'
-import Form from './Form'
-import ShowAlert from './ShowAlert'
+import '../style/Trade.css'
+import { HoldingContext } from '../context/UserNameContext'
+import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../http-utilities/tradeUtilities'
+import Recommendations from '../components/Recommendations'
+import SelectedHolding from '../components/SelectedHolding'
+import HeaderTrade from '../components/HeaderTrade'
+import Form from '../components/Form'
+import ShowAlert from '../components/ShowAlert'
 import { withRouter } from 'react-router-dom';
 
-const Trade = (props) => {
+const TradeScreen = (props) => {
   const [holdings, setHoldings] = useState([]);
   const [selectedHolding, setSelectedHolding] = useState(null);
   const [isShowAlert, setIsShowAlert] = useState(false);
@@ -90,7 +90,7 @@ const Trade = (props) => {
 
   return (
     <section >
-      <Header />
+      <HeaderTrade />
       <div className="container">
         {isShowAlert &&
           <ShowAlert
@@ -117,4 +117,4 @@ const Trade = (props) => {
   )
 }
 
-export default withRouter(Trade)
+export default withRouter(TradeScreen)

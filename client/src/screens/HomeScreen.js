@@ -1,8 +1,8 @@
 import React from 'react'
-import Register from '../../Static_Components/Register'
-import Login from '../../Static_Components/Login'
-import './Home.css'
-import Welcome from '../../Static_Components/Welcome'
+import Register from '../components/Register'
+import Login from '../components/Login'
+import '../style/Home.css'
+import Welcome from '../components/Welcome'
 
 export default function Home() {
   if (!localStorage.getItem('data')) {

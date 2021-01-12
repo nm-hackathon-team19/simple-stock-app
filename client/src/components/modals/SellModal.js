@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import './Trade.css';
+import '../../style/Trade.css';
 import { Button, Modal, Form, Alert } from 'react-bootstrap'
 
 const SellModal = (props) => {

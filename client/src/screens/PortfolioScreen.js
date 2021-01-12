@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import UserInfo from './UserInfo'
-import CurrentHoldings from './CurrentHoldings'
-import Header from './Header'
-import Chart from './Chart'
-import { getHoldings } from '../../http-utilities/tradeUtilities'
+import UserInfo from '../components/UserInfo'
+import CurrentHoldings from '../components/CurrentHoldings'
+// import HeaderPortfolio from '../components/HeaderPortfolio'
+import Chart from '../components/Chart'
+import { getHoldings } from '../http-utilities/tradeUtilities'
 import { withRouter } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap'
 
-const Portfolio = () => {
+const PortfolioScreen = () => {
   const [holdings, setHoldings] = useState([]);
   const [isSpinner, setSpinner] = useState(true);
 
@@ -47,4 +47,4 @@ const Portfolio = () => {
   )
 };
 
-export default withRouter(Portfolio)
+export default withRouter(PortfolioScreen)

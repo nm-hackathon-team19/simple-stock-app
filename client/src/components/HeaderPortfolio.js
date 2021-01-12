@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Header() {
+function HeaderPortfolio() {
   return (
     <div className="text-center mt-3">
       <h2>Portfolio</h2>
@@ -10,4 +10,4 @@ function Header() {
   )
 }
 
-export default Header
+export default HeaderPortfolio
