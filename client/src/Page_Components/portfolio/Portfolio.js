@@ -20,8 +20,7 @@ const Portfolio = () => {
       .then(holdingsData => {
         setHoldings(holdingsData);
         setSpinner(false)
-      }
-      )
+      })
       .catch(err => console.error('error get holdings', err));
   }
 
@@ -30,18 +29,18 @@ const Portfolio = () => {
       {/* <Header /> */}
       <div className="container">
         <UserInfo />
-        {
-          Spinner ?
-            <Spinner animation="border" className="spinner mt-5" />
-            :
-            <>
-              <Chart />
-            holdings.map(holding =>
+        {isSpinner ?
+          <Spinner animation="border" className="spinner mt-5" />
+          :
+          <>
+            <Chart />
+            {holdings.map(holding => (
               <CurrentHoldings
                 holding={holding}
                 key={holding.holding_id}
-              />)
-              </>
+              />))
+            }
+          </>
         }
       </div>
     </section>
