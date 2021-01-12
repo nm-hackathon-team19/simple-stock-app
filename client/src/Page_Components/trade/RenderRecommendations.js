@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getHoldings } from '../../crudHoldings'
+// import { Spinner } from 'react-bootstrap'
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
+  // const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
     getHoldings().then(holdingsData => setHoldings(holdingsData));
@@ -34,6 +36,7 @@ function RenderRecommendations(props) {
   }
 
   const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
+
   return (
     <div className="recommended-holding">
       <div className="selected-holding card mt-3">
@@ -64,5 +67,6 @@ function RenderRecommendations(props) {
     </div>
   )
 }
+
 
 export default RenderRecommendations

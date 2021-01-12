@@ -89,3 +89,10 @@ p {
   justify-content: center;
   align-items: center;
 }
+
+.spinner {
+    position: fixed;
+    right: 50%;
+    width: 50px !important;
+    height: 50px !important;
+}

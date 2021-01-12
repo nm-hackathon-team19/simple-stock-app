@@ -5,9 +5,11 @@ import Header from './Header'
 import Chart from './Chart'
 import { getHoldings } from '../../crudHoldings'
 import { withRouter } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap'
 
 const Portfolio = () => {
   const [holdings, setHoldings] = useState([]);
+  const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
     getHoldingsData();
@@ -15,7 +17,11 @@ const Portfolio = () => {
 
   const getHoldingsData = () => {
     getHoldings()
-      .then(holdingsData => setHoldings(holdingsData))
+      .then(holdingsData => {
+        setHoldings(holdingsData);
+        setSpinner(false)
+      }
+      )
       .catch(err => console.error('error get holdings', err));
   }
 
@@ -24,14 +30,18 @@ const Portfolio = () => {
       {/* <Header /> */}
       <div className="container">
         <UserInfo />
-        <Chart />
-        {holdings.length > 0 ?
-          holdings.map(holding =>
-            <CurrentHoldings
-              holding={holding}
-              key={holding.holding_id}
-            />)
-          : <CurrentHoldings />
+        {
+          Spinner ?
+            <Spinner animation="border" className="spinner mt-5" />
+            :
+            <>
+              <Chart />
+            holdings.map(holding =>
+              <CurrentHoldings
+                holding={holding}
+                key={holding.holding_id}
+              />)
+              </>
         }
       </div>
     </section>
