@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import BuyModal from './modals/BuyModal';
 import SellModal from './modals/SellModal';
 import { getHoldings } from '../http-utilities/tradeUtilities'
-import ChartTrade from './ChartTrade'
+import ChartTrade from './charts/ChartTrade'
 
 const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateShares }) => {
   const [shares, setShares] = useState(0);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import UserInfo from '../components/UserInfo'
 import CurrentHoldings from '../components/CurrentHoldings'
 // import HeaderPortfolio from '../components/HeaderPortfolio'
-import Chart from '../components/Chart'
+import Chart from '../components/charts/Chart'
 import { getHoldings } from '../http-utilities/tradeUtilities'
 import { withRouter } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap'

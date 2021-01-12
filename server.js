@@ -8,16 +8,16 @@ app.use('/', express.static(path.join(__dirname, 'client/build')));
 
 app.use(express.json()) // to get data from the client side we need to use req.body and this allows us to access the req.body and get json data.
 
-const tradeRoutes = require('./routes/tradeRoutes');
+const tradeRoutes = require('./server-routes/tradeRoutes');
 app.use('/trade/', tradeRoutes);
 
-const portfolioRoutes = require('./routes/portfolioRoutes');
+const portfolioRoutes = require('./server-routes/portfolioRoutes');
 app.use('/portfolio/', portfolioRoutes);
 
-const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./server-routes/authRoutes');
 app.use('/auth/', authRoutes);
 
-const apiRoutes = require('./routes/apiRoutes');
+const apiRoutes = require('./server-routes/apiRoutes');
 app.use('/api/', apiRoutes);
 
 // Catch all
