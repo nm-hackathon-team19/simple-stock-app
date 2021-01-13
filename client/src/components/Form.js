@@ -45,8 +45,6 @@ const Form = (props) => {
     }
   }
 
-
-
   return (
     <form className="form-inline justify-content-center mt-3 selected-holding" onSubmit={handleSubmit}>
       <input
@@ -63,7 +61,6 @@ const Form = (props) => {
         disabled={!companyName}
       >Submit
       </button>
-      {/* {companyName ? <FiThumbsUp /> : <FiThumbsDown />} */}
       <h6 className="w-100 text-center text-success" style={{ display: symbol === '' ? 'none' : 'block' }}>{companyName}</h6>
     </form >
   )

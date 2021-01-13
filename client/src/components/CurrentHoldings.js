@@ -8,19 +8,22 @@ const CurrentHoldings = (props) => {
   const [positiveSign, setPositiveSign] = useState(false);
 
   if (props.holding) {
+
     useEffect(() => {
-      isHoldingNegativeOrPositive();
+
+      const isHoldingNegativeOrPositive = () => {
+        if (String(percent_change).charAt(0) === '-') {
+          setHoldingStyleColor('red')
+          setPositiveSign(false)
+        } else {
+          setHoldingStyleColor('green')
+          setPositiveSign('+')
+        }
+      };
+
+      isHoldingNegativeOrPositive()
     }, []);
 
-    const isHoldingNegativeOrPositive = () => {
-      if (String(percent_change).charAt(0) === '-') {
-        setHoldingStyleColor('red')
-        setPositiveSign(false)
-      } else {
-        setHoldingStyleColor('green')
-        setPositiveSign('+')
-      }
-    }
 
     const { name, symbol, price, percent_change, shares } = props.holding;
     return (

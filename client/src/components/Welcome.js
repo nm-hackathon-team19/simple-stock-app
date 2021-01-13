@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import '../style/Home.css'
 import { UserNameContext } from '../context/UserNameContext'
-import { Card, Nav, Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 
 const Welcome = (props) => {

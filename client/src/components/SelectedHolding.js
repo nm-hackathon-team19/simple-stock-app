@@ -67,15 +67,11 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
           <h2> {companyName}: {symbol}</h2>
           <div className="card-buttons">
             <BuyModal
-              // show={isModalBuyStock}
-              // toggleBuyStockModal={toggleBuyStockModal}
               handleBuyShares={handleBuyShares}
               selectedHolding={selectedHolding}
               shares={shares}
             />
             <SellModal
-              // show={isModalBuyStock}
-              // toggleBuyStockModal={toggleBuyStockModal}
               handleSellShares={handleSellShares}
               selectedHolding={selectedHolding}
               shares={shares}
@@ -85,7 +81,6 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
         <hr />
         <div className="card-body">
           <div className="price">
-            {/* className={`card-body ${holdingStyleColor}`} */}
             <strong>Current Price</strong>
             <p className={`mb-0 ${holdingStyleColor}`}>${latestPrice.toFixed(2)}</p>
             <small className={holdingStyleColor}>Previous Closed: ${previousClose.toFixed(2)} </small>

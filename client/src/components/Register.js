@@ -28,7 +28,7 @@ const Register = (props) => {
       setUserName(response.data.name);
 
       if (JSON.parse(localStorage.getItem('data'))) {
-        props.history.push('/main');
+        props.history.push('/');
       }
     } catch (err) {
       console.error('error in createUser', err.message)
@@ -73,5 +73,3 @@ const Register = (props) => {
 }
 
 export default withRouter(Register)
-
-// export default Register;

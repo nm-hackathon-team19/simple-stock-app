@@ -14,9 +14,14 @@ router.get('/:user_id', async (req, res) => {
 
 router.get('/wallet/:user_id', async (req, res) => {
   try {
+    const wallet = 10000
+    let holdingsAmount = 0
     const { user_id } = req.params
     const response = await pool.query("SELECT * FROM holdings WHERE user_id = ($1)", [user_id]);
-    res.json(response.rows);
+    for (const element of response.rows) {
+      holdingsAmount += element.shares * element.price
+    }
+    res.json(wallet - holdingsAmount);
   } catch (err) {
     console.error('error from server- get all holdings', err.message);
   }

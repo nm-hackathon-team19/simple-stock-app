@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form, NavLink } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router-dom'
 import { UserNameContext } from '../context/UserNameContext'
 
 const Login = (props) => {
@@ -25,7 +24,6 @@ const Login = (props) => {
       });
       localStorage.setItem('data', JSON.stringify(response.data));
 
-      console.log(response.data);
       setUserName(response.data.name)
 
       if (JSON.parse(localStorage.getItem('data'))) {

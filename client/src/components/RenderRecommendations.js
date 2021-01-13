@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getHoldings } from '../http-utilities/tradeUtilities'
-// import { Spinner } from 'react-bootstrap'
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
-  // const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
     getHoldings().then(holdingsData => setHoldings(holdingsData));

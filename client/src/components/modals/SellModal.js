@@ -11,17 +11,14 @@ const SellModal = (props) => {
   const handleShow = () => { setShow(true); setSharesInput(''); }
   const handleSubmit = () => {
     if (sharesInput > props.shares) {
-      console.log('not enough shares');
       setIsShowAlert(true);
       setShow(true);
     } else {
-      console.log('youre good')
       setIsShowAlert(false);
       props.handleSellShares(sharesInput);
     }
   }
 
-  // debugger
   const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
   return (
     <Fragment>
