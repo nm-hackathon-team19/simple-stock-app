@@ -8,30 +8,34 @@ function RenderRecommendations(props) {
   const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
-    getHoldings().then(holdingsData => setHoldings(holdingsData));
+
+    getHoldings()
+      .then(holdingsData => setHoldings(holdingsData))
+      .catch(err => console.error('error get holdings', err));
+
+    const isHoldingNegativeOrPositive = () => {
+      if (String(changePercent).charAt(0) === '-') {
+        setHoldingStyleColor('red');
+        setPositiveSign(false)
+      } else {
+        setHoldingStyleColor('green')
+        setPositiveSign('+')
+      }
+    }
+
     isHoldingNegativeOrPositive();
   }, []);
 
   useEffect(() => {
-    compareSelectedHoldingToExisting();
+    const compareSelectedHoldingToExistingList = () => {
+      const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
+      if (holdingExist) {
+        setShares(holdingExist.shares);
+      }
+    }
+
+    compareSelectedHoldingToExistingList();
   }, [holdings]);
-
-  const isHoldingNegativeOrPositive = () => {
-    if (String(changePercent).charAt(0) === '-') {
-      setHoldingStyleColor('red');
-      setPositiveSign(false)
-    } else {
-      setHoldingStyleColor('green')
-      setPositiveSign('+')
-    }
-  }
-
-  const compareSelectedHoldingToExisting = () => {
-    const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
-    if (holdingExist) {
-      setShares(holdingExist.shares);
-    }
-  }
 
   const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
 
