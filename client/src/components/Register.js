@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Button, Modal, Form } from 'react-bootstrap'
+import { withRouter } from 'react-router-dom';
+import { UserNameContext } from '../context/UserNameContext'
 
-const Register = () => {
+const Register = (props) => {
   const [show, setShow] = useState(false);
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userName, setUserName] = useContext(UserNameContext)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const createUser = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post('/auth/register', {
         user: user,
         email: email,
         password: password
       });
-      // localStorage.setItem('user_id', response.data.user_id);
+
+      localStorage.setItem('data', JSON.stringify(response.data));
+      setUserName(response.data.name);
+
+      if (JSON.parse(localStorage.getItem('data'))) {
+        props.history.push('/main');
+      }
     } catch (err) {
       console.error('error in createUser', err.message)
     }
@@ -62,4 +72,6 @@ const Register = () => {
   );
 }
 
-export default Register;
+export default withRouter(Register)
+
+// export default Register;

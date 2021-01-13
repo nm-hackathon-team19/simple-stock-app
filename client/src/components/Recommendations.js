@@ -19,7 +19,6 @@ const Recommendations = (props) => {
   const getRecommendations = () => {
     axios.get('/api/stocks/recommendation')
       .then((res) => {
-        console.log(res.data)
         setRecommendedHoldings(res.data)
         setSpinner(false)
       })
@@ -27,8 +26,6 @@ const Recommendations = (props) => {
         console.log("error username response client side", err);
       });
   }
-
-  console.log(recommendedHoldings)
 
   return (
     <Fragment>

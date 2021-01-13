@@ -25,10 +25,11 @@ const Login = (props) => {
       });
       localStorage.setItem('data', JSON.stringify(response.data));
 
+      console.log(response.data);
       setUserName(response.data.name)
 
       if (JSON.parse(localStorage.getItem('data'))) {
-        props.history.push('/main');
+        props.history.push('/');
       }
     } catch (err) {
       console.error("error in loginUser", err.message);

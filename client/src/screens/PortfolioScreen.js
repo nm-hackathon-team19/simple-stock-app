@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import UserInfo from '../components/UserInfo'
 import CurrentHoldings from '../components/CurrentHoldings'
-// import HeaderPortfolio from '../components/HeaderPortfolio'
+import HeaderPortfolio from '../components/HeaderPortfolio'
 import Chart from '../components/charts/Chart'
 import { getHoldings } from '../http-utilities/tradeUtilities'
 import { withRouter } from 'react-router-dom';
@@ -12,21 +12,21 @@ const PortfolioScreen = () => {
   const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
-    getHoldingsData();
+    const fetchHoldingsData = () => {
+      getHoldings()
+        .then(holdingsData => {
+          setHoldings(holdingsData);
+          setSpinner(false)
+        })
+        .catch(err => console.error('error get holdings', err));
+    }
+    fetchHoldingsData();
   }, []);
 
-  const getHoldingsData = () => {
-    getHoldings()
-      .then(holdingsData => {
-        setHoldings(holdingsData);
-        setSpinner(false)
-      })
-      .catch(err => console.error('error get holdings', err));
-  }
 
   return (
     <section>
-      {/* <Header /> */}
+      <HeaderPortfolio />
       <div className="container">
         <UserInfo />
         {isSpinner ?

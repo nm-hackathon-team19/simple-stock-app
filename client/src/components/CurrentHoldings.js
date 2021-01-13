@@ -7,8 +7,6 @@ const CurrentHoldings = (props) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
 
-  console.log('hello from current ')
-
   if (props.holding) {
     useEffect(() => {
       isHoldingNegativeOrPositive();
@@ -23,7 +21,6 @@ const CurrentHoldings = (props) => {
         setPositiveSign('+')
       }
     }
-
 
     const { name, symbol, price, percent_change, shares } = props.holding;
     return (
