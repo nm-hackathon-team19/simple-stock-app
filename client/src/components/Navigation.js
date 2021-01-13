@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import '../style/Static.css'
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
-import { Route, Redirect } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { UserNameContext } from '../context/UserNameContext'
 

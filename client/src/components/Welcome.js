@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import '../style/Home.css'
 import { UserNameContext } from '../context/UserNameContext'
 import { Card, Button } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-const Welcome = (props) => {
+const Welcome = () => {
   const [userName, setUserName] = useContext(UserNameContext)
 
   return (
@@ -16,7 +16,9 @@ const Welcome = (props) => {
             <Card.Title as="h3">Trade Page</Card.Title>
             <Card.Text>
               Buy stocks by searching for a specific stock, or view recommended stocks. You can also buy or sell stocks that you already have in your portfolio. You are initially given a total of 100,00 dollars to buy stocks with.</Card.Text>
-            <Button variant="primary" onClick={() => props.history.push('/main')}>Start Trading</Button>
+            <Link to="/main">
+              <Button variant="primary">Start Trading</Button>
+            </Link>
           </Card.Body>
         </Card>
         <Card bg="transparent" border="primary" className="mt-3 w-75">
@@ -25,7 +27,9 @@ const Welcome = (props) => {
             <Card.Text>
               To view your personal data and current holdings take a look at the portfolio page. With this information you can make informed decisions on what stocks to buy and sell.
               </Card.Text>
-            <Button variant="primary" onClick={() => props.history.push('/portfolio')}>Personal Information</Button>
+            <Link to="/portfolio">
+              <Button variant="primary">Personal Information</Button>
+            </Link>
           </Card.Body>
         </Card>
       </div>
@@ -33,5 +37,5 @@ const Welcome = (props) => {
   );
 };
 
-export default withRouter(Welcome)
+export default Welcome
 

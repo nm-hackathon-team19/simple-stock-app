@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import qa from 'qs';
 import '../style/Trade.css'
-import { HoldingContext } from '../context/UserNameContext'
 import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../http-utilities/tradeUtilities'
 import Recommendations from '../components/Recommendations'
 import SelectedHolding from '../components/SelectedHolding'
@@ -18,8 +17,23 @@ const TradeScreen = (props) => {
   const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
+    const fetchHoldingsData = () => {
+      getHoldings()
+        .then(holdingsData => setHoldings(holdingsData))
+        .catch(err => console.error('error get holdings', err));
+    }
+
+    const renderSearchedHoldingFromPortfolio = () => {
+      const queryStrings = qa.parse(
+        props.location.search,
+        { ignoreQueryPrefix: true });
+      if (queryStrings.symbol) {
+        handleSearchForHolding(queryStrings.symbol)
+      }
+    }
+
     renderSearchedHoldingFromPortfolio();
-    getHoldingsData();
+    fetchHoldingsData();
   }, []);
 
   const updateShares = (shares) => {
@@ -35,21 +49,6 @@ const TradeScreen = (props) => {
       .then(selectedHolding => setSelectedHolding(selectedHolding))
       .catch(err => console.error('error get holdings', err));
   };
-
-  const renderSearchedHoldingFromPortfolio = () => {
-    const queryStrings = qa.parse(
-      props.location.search,
-      { ignoreQueryPrefix: true });
-    if (queryStrings.symbol) {
-      handleSearchForHolding(queryStrings.symbol)
-    }
-  }
-
-  const getHoldingsData = () => {
-    getHoldings()
-      .then(holdingsData => setHoldings(holdingsData))
-      .catch(err => console.error('error get holdings', err));
-  }
 
   const sellShares = (shares) => {
     const holding = holdings.find(holding => holding.symbol == selectedHolding.symbol);

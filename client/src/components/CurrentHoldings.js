@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom';
 
 const CurrentHoldings = (props) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
@@ -10,7 +9,6 @@ const CurrentHoldings = (props) => {
   if (props.holding) {
 
     useEffect(() => {
-
       const isHoldingNegativeOrPositive = () => {
         if (String(percent_change).charAt(0) === '-') {
           setHoldingStyleColor('red')
@@ -19,11 +17,9 @@ const CurrentHoldings = (props) => {
           setHoldingStyleColor('green')
           setPositiveSign('+')
         }
-      };
-
+      }
       isHoldingNegativeOrPositive()
     }, []);
-
 
     const { name, symbol, price, percent_change, shares } = props.holding;
     return (
@@ -31,12 +27,12 @@ const CurrentHoldings = (props) => {
         <div className="card-head">
           <h2> {name}: {symbol}</h2>
           <div className="card-buttons">
-            <NavLink to={{
+            <Link to={{
               pathname: "/main",
               search: `?symbol=${symbol}`
             }}>
               <button className="btn btn-primary">Trade</button>
-            </NavLink>
+            </Link>
           </div>
         </div>
         <hr />
@@ -68,11 +64,13 @@ const CurrentHoldings = (props) => {
           <Card.Text>
             Go to our Trade page to start purchasing new stocks.
     </Card.Text>
-          <Button variant="primary" onClick={() => props.history.push('/main')}>Trade Page</Button>
+          <Link to="/main">
+            <Button variant="primary">Trade Page</Button>
+          </Link>
         </Card.Body>
       </Card>
     )
   }
 }
 
-export default withRouter(CurrentHoldings)
+export default CurrentHoldings
