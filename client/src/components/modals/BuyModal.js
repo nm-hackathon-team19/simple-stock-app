@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import '../../style/Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
-import { getWallet } from '../../http-utilities/portfolioUtilities'
+import { getWalletData } from '../../http-utilities/portfolioUtilities'
 import Alert from 'react-bootstrap/Alert'
 
 const BuyModal = (props) => {
@@ -11,14 +11,14 @@ const BuyModal = (props) => {
   const [isShowAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
-    getUserWallet();
+    const fetchWalletData = () => {
+      getWalletData()
+        .then(res => setWallet(res.wallet))
+        .catch(err => console.error('error get wallet', err));
+    }
+    fetchWalletData();
   }, []);
 
-  const getUserWallet = () => {
-    getWallet()
-      .then(wallet => setWallet(wallet))
-      .catch(err => console.error('error get wallet', err));
-  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

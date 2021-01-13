@@ -21,9 +21,9 @@ router.get('/wallet/:user_id', async (req, res) => {
     for (const element of response.rows) {
       holdingsAmount += element.shares * element.price
     }
-    res.json(wallet - holdingsAmount);
+    res.json({ wallet: wallet - holdingsAmount, holdingsAmount });
   } catch (err) {
-    console.error('error from server- get all holdings', err.message);
+    console.error('error from server- get wallet and holdings amount', err.message);
   }
 })
 
