@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import '../style/Static.css'
+import '../style/index.css'
 import { Navbar, Nav } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { UserNameContext } from '../context/UserNameContext'

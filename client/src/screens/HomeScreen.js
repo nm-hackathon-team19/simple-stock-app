@@ -2,6 +2,7 @@ import React from 'react'
 import Register from '../components/Register'
 import Login from '../components/Login'
 import '../style/Home.css'
+import '../style/mobile.css'
 import Welcome from '../components/Welcome'
 
 export default function Home() {

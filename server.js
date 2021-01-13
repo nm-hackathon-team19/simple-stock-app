@@ -2,11 +2,10 @@ const express = require('express')
 const app = express();
 const path = require('path');
 
-// Set my buildb  as a static folder.
-// We just need to put the files in build and it'll work
+// Set build folder 
 app.use('/', express.static(path.join(__dirname, 'client/build')));
 
-app.use(express.json()) // to get data from the client side we need to use req.body and this allows us to access the req.body and get json data.
+app.use(express.json()) // data from req.body 
 
 const tradeRoutes = require('./server-routes/tradeRoutes');
 app.use('/trade/', tradeRoutes);

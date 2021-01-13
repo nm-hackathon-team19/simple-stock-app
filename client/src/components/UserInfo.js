@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import '../style/mobile.css'
 import { UserNameContext } from '../context/UserNameContext'
 import { getWalletData } from '../http-utilities/portfolioUtilities'
 import Card from 'react-bootstrap/Card';
@@ -16,14 +17,13 @@ function UserInformation() {
           setWallet(res.wallet)
           setTotalHoldingsAmount(res.holdingsAmount)
         })
-        .then(response => console.log(response))
         .catch(err => console.error('error get wallet', err));
     }
     fetchWalletData();
   }, []);
 
   return (
-    <Card className="m-auto w-50" align="center" border="dark">
+    <Card className="m-auto w-50 user-info" align="center" border="dark">
       <Card.Header className="h4">Account Information</Card.Header>
       <ListGroup variant="flush" className="h5">
         <ListGroup.Item>User: {userName}</ListGroup.Item>
