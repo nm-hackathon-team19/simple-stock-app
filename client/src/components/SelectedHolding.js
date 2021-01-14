@@ -10,6 +10,8 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
 
+
+  // test 
   useEffect(() => {
     isHoldingNegativeOrPositive();
     getHoldingsData()
