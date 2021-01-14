@@ -23,6 +23,9 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(err => console.error('error get holdings', err));
+
+    // const response = getHoldings();
+    // console.log(response);
   }
 
   const isHoldingNegativeOrPositive = () => {
