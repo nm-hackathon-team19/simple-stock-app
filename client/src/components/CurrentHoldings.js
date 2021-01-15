@@ -6,22 +6,24 @@ const CurrentHoldings = (props) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
 
+  useEffect(() => {
+    const isHoldingNegativeOrPositive = () => {
+      if (String(percent_change).charAt(0) === '-') {
+        setHoldingStyleColor('red')
+        setPositiveSign(false)
+      } else {
+        setHoldingStyleColor('green')
+        setPositiveSign('+')
+      }
+    }
+    isHoldingNegativeOrPositive()
+  }, []);
+
+  const { name, symbol, price, percent_change, shares } = props.holding;
+
   if (props.holding) {
 
-    useEffect(() => {
-      const isHoldingNegativeOrPositive = () => {
-        if (String(percent_change).charAt(0) === '-') {
-          setHoldingStyleColor('red')
-          setPositiveSign(false)
-        } else {
-          setHoldingStyleColor('green')
-          setPositiveSign('+')
-        }
-      }
-      isHoldingNegativeOrPositive()
-    }, []);
 
-    const { name, symbol, price, percent_change, shares } = props.holding;
     return (
       <div className="selected-holding card mt-4">
         <div className="card-head">
