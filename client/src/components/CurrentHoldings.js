@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { Card, Button } from 'react-bootstrap'
 
 const CurrentHoldings = (props) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
@@ -20,9 +19,6 @@ const CurrentHoldings = (props) => {
   }, []);
 
   const { name, symbol, price, percent_change, shares } = props.holding;
-
-  // if (props.holding) {
-
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">
@@ -57,21 +53,6 @@ const CurrentHoldings = (props) => {
       </div>
     </div >
   )
-  // } else {
-  //   return (
-  //     <Card className="text-center mt-5">
-  //       <Card.Body className="d-block border">
-  //         <Card.Title>You don't own any holdings as of yet.</Card.Title>
-  //         <Card.Text>
-  //           Go to our Trade page to start purchasing new stocks.
-  //   </Card.Text>
-  //         <Link to="/main">
-  //           <Button variant="primary">Trade Page</Button>
-  //         </Link>
-  //       </Card.Body>
-  //     </Card>
-  //   )
-  // }
 }
 
 export default CurrentHoldings
