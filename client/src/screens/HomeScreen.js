@@ -5,7 +5,7 @@ import '../style/Home.css'
 import '../style/mobile.css'
 import Welcome from '../components/Welcome'
 
-export default function Home() {
+const Home = () => {
   if (!localStorage.getItem('data')) {
     return (
       <div id="home">
@@ -27,3 +27,5 @@ export default function Home() {
     )
   }
 }
+
+export default Home
