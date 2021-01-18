@@ -8,8 +8,10 @@ router.get('/stock/search', (req, res) => {
     .then(response => {
       res.send(response.data[Object.keys(response.data)[0]].quote)
     })
-    .catch(error => {
-      console.log('error from server- API routes', error);
+    .catch(err => {
+      if (symbol !== '') {
+        res.send('error')
+      }
     })
 })
 
@@ -37,6 +39,5 @@ router.get('/chart/data', (req, res) => {
       console.log('error from server- API routes', error)
     })
 });
-
 
 module.exports = router;
