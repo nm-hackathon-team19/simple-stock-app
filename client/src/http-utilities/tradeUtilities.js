@@ -51,4 +51,3 @@ export const searchForHolding = async (symbol) => {
   };
 };
 
-

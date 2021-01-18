@@ -20,7 +20,7 @@ const BuyModal = (props) => {
   }, []);
 
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => { setShow(false); setShowAlert(false) }
   const handleShow = () => setShow(true);
 
   const handleSubmit = () => {

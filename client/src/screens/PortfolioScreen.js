@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import UserInfo from '../components/UserInfo'
 import CurrentHoldings from '../components/CurrentHoldings'
+import NoCurrentHoldings from '../components/NoCurrentHoldings'
 import HeaderPortfolio from '../components/HeaderPortfolio'
 import Chart from '../components/charts/Chart'
 import { getHoldings } from '../http-utilities/tradeUtilities'
@@ -38,7 +39,7 @@ const PortfolioScreen = () => {
                   holding={holding}
                   key={holding.holding_id}
                 />)
-              : <CurrentHoldings />
+              : <NoCurrentHoldings />
             }
           </>
         }

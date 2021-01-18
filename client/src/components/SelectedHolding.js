@@ -56,7 +56,9 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const compareSelectedHoldingToExisting = () => {
     if (selectedHolding) {
       const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
-      holdingExist ? setShares(holdingExist.shares) : null;
+      if (holdingExist) {
+        setShares(holdingExist.shares);
+      }
     }
   }
 

@@ -15,7 +15,7 @@ const Welcome = () => {
           <Card.Body className="d-block">
             <Card.Title as="h3">Trade Page</Card.Title>
             <Card.Text>
-              Buy stocks by searching for a specific stock, or view recommended stocks. You can also buy or sell stocks that you already have in your portfolio. You are initially given a total of 100,00 dollars to buy stocks with.</Card.Text>
+              Buy stocks by searching for a specific stock, or view recommended stocks. You can also buy or sell stocks that you already have in your portfolio. You are initially given a total of 10,000 dollars to buy stocks with.</Card.Text>
             <Link to="/main">
               <Button variant="primary">Start Trading</Button>
             </Link>

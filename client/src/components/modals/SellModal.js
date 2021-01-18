@@ -4,17 +4,17 @@ import { Button, Modal, Form, Alert } from 'react-bootstrap'
 
 const SellModal = (props) => {
   const [show, setShow] = useState(false);
-  const [isShowAlert, setIsShowAlert] = useState(false);
+  const [isShowAlert, setShowAlert] = useState(false);
   const [sharesInput, setSharesInput] = useState('');
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => { setShow(false); setShowAlert(false); }
   const handleShow = () => { setShow(true); setSharesInput(''); }
   const handleSubmit = () => {
     if (sharesInput > props.shares) {
-      setIsShowAlert(true);
+      setShowAlert(true);
       setShow(true);
     } else {
-      setIsShowAlert(false);
+      setShowAlert(false);
       props.handleSellShares(sharesInput);
     }
   }
@@ -42,7 +42,7 @@ const SellModal = (props) => {
           </Form>
         </Modal.Body>
         {isShowAlert && (
-          <Alert variant="danger" onClose={() => setIsShowAlert(false)} dismissible className="alert">
+          <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible className="alert">
             <p> You don't own enough shares to make that transaction</p>
           </Alert>
         )}
