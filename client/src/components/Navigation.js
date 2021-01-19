@@ -20,7 +20,7 @@ const Navigation = (props) => {
         <Nav className="mr-auto">
           <Nav.Link onClick={() => props.history.push('/')}>Home</Nav.Link>
           <Nav.Link onClick={() => props.history.push('/main')}>Trade</Nav.Link>
-          <Nav.Link onClick={() => props.history.push('/portfolio')}>Potrfolio</Nav.Link>
+          <Nav.Link onClick={() => props.history.push('/portfolio')}>Portfolio</Nav.Link>
         </Nav>
         {
           JSON.parse(localStorage.getItem('data')) ?

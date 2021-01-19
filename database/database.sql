@@ -20,3 +20,7 @@ CREATE TABLE public.holdings
     PRIMARY KEY (holding_id)
 );
 
+ALTER TABLE public.holdings 
+ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE public.holdings DROP COLUMN created_at;

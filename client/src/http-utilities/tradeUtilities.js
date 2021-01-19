@@ -10,6 +10,7 @@ export const createHolding = async (holding) => {
       changePercent: holding.changePercent,
       user_id: JSON.parse(localStorage.getItem('data')).id
     })
+    console.log(response);
   } catch (err) {
     console.error('Error in create holding', err.message)
   }
