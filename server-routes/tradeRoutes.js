@@ -7,7 +7,15 @@ router.get('/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params
     const response = await pool.query("SELECT * FROM holdings WHERE user_id = ($1)", [user_id]);
-    res.json(response.rows);
+
+    holdings = response.rows
+
+    holdings.forEach((item, index) => {
+      holdings[index].created_at =
+        holdings[index].created_at.toString().substring(0, 24)
+    });
+
+    res.json(holdings);
   } catch (err) {
     console.error('error from server- get all holdings', err.message);
   }
