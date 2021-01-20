@@ -60,31 +60,31 @@ const TradeScreen = (props) => {
   }
 
   const buyNewHolding = (shares) => {
-    setHoldings(prevHoldings => {
-      const matchingHolding = prevHoldings.find(
-        (holding) => holding.symbol === selectedHolding.symbol);
-      if (matchingHolding) {
-        const matchIndex = prevHoldings.indexOf(matchingHolding);
-        prevHoldings[matchIndex].shares = parseInt(prevHoldings[matchIndex].shares) + parseInt(shares);
-        updateHolding(matchingHolding.holding_id, matchingHolding.shares);
-        setAlertMessage('purchased');
-        toggleAlertState();
-      } else {
-        const newShare = {
-          symbol: selectedHolding.symbol,
-          companyName: selectedHolding.companyName,
-          shares: shares,
-          price: selectedHolding.latestPrice,
-          change: selectedHolding.change,
-          changePercent: selectedHolding.changePercent,
-        };
-        prevHoldings.push(newShare);
-        createHolding(newShare);
-        setAlertMessage('purchased');
-        toggleAlertState()
-      }
-      return prevHoldings
-    })
+    // setHoldings(prevHoldings => {
+    const matchingHolding = holdings.find(
+      (holding) => holding.symbol === selectedHolding.symbol);
+    if (matchingHolding) {
+      const matchIndex = holdings.indexOf(matchingHolding);
+      holdings[matchIndex].shares = parseInt(holdings[matchIndex].shares) + parseInt(shares);
+      updateHolding(matchingHolding.holding_id, matchingHolding.shares);
+      setAlertMessage('purchased');
+      toggleAlertState();
+    } else {
+      const newShare = {
+        symbol: selectedHolding.symbol,
+        companyName: selectedHolding.companyName,
+        shares: shares,
+        price: selectedHolding.latestPrice,
+        change: selectedHolding.change,
+        changePercent: selectedHolding.changePercent,
+      };
+      // prevHoldings.push(newShare);
+      createHolding(newShare);
+      setAlertMessage('purchased');
+      toggleAlertState()
+    }
+    // return prevHoldings
+    // })
   };
 
   return (
