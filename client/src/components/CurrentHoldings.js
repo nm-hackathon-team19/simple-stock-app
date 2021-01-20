@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { Row } from 'react-bootstrap'
 
-const CurrentHoldings = (props) => {
+const CurrentHoldings = ({ holding }) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
 
@@ -18,12 +19,13 @@ const CurrentHoldings = (props) => {
     isHoldingNegativeOrPositive()
   }, []);
 
-  const { name, symbol, price, percent_change, shares } = props.holding;
+  const { name, symbol, price, percent_change, shares, created_at } = holding;
 
+  console.log(holding)
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">
-        <h2> {name}: {symbol}</h2>
+        <h2>{name}: {symbol}</h2>
         <div className="card-buttons">
           <Link to={{
             pathname: "/main",
@@ -33,6 +35,7 @@ const CurrentHoldings = (props) => {
           </Link>
         </div>
       </div>
+      <h6 className="ml-2">Date purchased: {created_at}</h6>
       <hr />
       <div className="card-body">
         <div className="Holding Value:">
@@ -44,7 +47,7 @@ const CurrentHoldings = (props) => {
           <p>{shares}</p>
         </div>
         <div className="last-price">
-          <strong>Last Price:</strong>
+          <strong>Current Value:</strong>
           <p className={holdingStyleColor}>${price}</p>
         </div>
         <div className="percent-change">
@@ -52,7 +55,7 @@ const CurrentHoldings = (props) => {
           <p className={holdingStyleColor}>{positiveSign}{percent_change}%</p>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
