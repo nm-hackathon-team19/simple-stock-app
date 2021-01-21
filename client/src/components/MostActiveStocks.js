@@ -8,35 +8,40 @@ const MostActiveStocks = (props) => {
   const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
+    const getRecommendations = () => {
+      axios.get('/api/stocks/mostactive')
+        .then((res) => {
+          setMostActiveStocks(res.data)
+          setSpinner(false)
+        })
+        .catch((err) => {
+          console.log("error mostactive stocks client side", err);
+        });
+    }
+
     getRecommendations();
   }, [])
 
-  const getRecommendations = () => {
-    axios.get('/api/stocks/mostactive')
-      .then((res) => {
-        setMostActiveStocks(res.data)
-        setSpinner(false)
-      })
-      .catch((err) => {
-        console.log("error mostactive stocks client side", err);
-      });
+  const handleTrade = (symbol) => {
+    props.handleSearchForHolding(symbol);
   }
-  // console.log(mostActiveStocks)
 
   return (
     <Fragment>
       <div className="text-center mt-5 h5 font-weight-light">Most Active Stocks </div>
-      {
-        isSpinner ?
-          <Spinner animation="border" className="spinner" />
-          :
-          mostActiveStocks.map(mostActiveStock => (
-            <RenderMostActiveStocks
-              mostActiveStock={mostActiveStock}
-              key={mostActiveStock.marketCap}
-            />
-          ))
-      }
+      <div className="most-active-list d-flex flex-wrap">
+        {
+          isSpinner ?
+            <Spinner animation="border" className="spinner" />
+            :
+            mostActiveStocks.map(mostActiveStock => (
+              <RenderMostActiveStocks
+                mostActiveStock={mostActiveStock}
+                key={mostActiveStock.marketCap}
+              />
+            ))
+        }
+      </div>
     </Fragment>
   )
 }
