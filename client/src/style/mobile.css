@@ -1,4 +1,5 @@
 @media only screen and (max-width: 600px) {
+  /* HOME */
   #home {
     padding: 0;
   }
@@ -14,5 +15,10 @@
 
   div.user-info {
     width: 100% !important;
+  }
+
+  /* INSTRUCTIONS */
+  .guide-container {
+    height: auto !important;
   }
 }

@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react'
-// import { getHoldings } from '../http-utilities/instructionsUtilities'
 import { Link } from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 
-function RenderMostActiveStocks(props) {
-  const [shares, setShares] = useState(0);
-  const [holdings, setHoldings] = useState([]);
+const RenderMostActiveStocks = ({ mostActiveStock }) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
-
-    // getHoldings()
-    //   .then(holdingsData => setHoldings(holdingsData))
-    //   .catch(err => console.error('error get holdings', err));
-
     const isHoldingNegativeOrPositive = () => {
       if (String(changePercent).charAt(0) === '-') {
         setHoldingStyleColor('red');
@@ -28,22 +20,9 @@ function RenderMostActiveStocks(props) {
     isHoldingNegativeOrPositive();
   }, []);
 
-  // useEffect(() => {
-  //   const compareSelectedHoldingToExistingList = () => {
-  //     const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
-  //     if (holdingExist) {
-  //       setShares(holdingExist.shares);
-  //     }
-  //   }
-
-  //   compareSelectedHoldingToExistingList();
-  // }, [holdings]);
-
-  const { companyName, latestPrice, changePercent, change, symbol } = props.mostActiveStock;
+  const { companyName, latestPrice, changePercent, change, symbol } = mostActiveStock;
 
   return (
-
-    // <div className="recommended-holding">
     <div className="active-container card mt-3">
       <Card style={{ width: '18rem' }}>
         <Card.Body className="active-header p-0">
@@ -65,7 +44,6 @@ function RenderMostActiveStocks(props) {
         </Card.Body>
       </Card>
     </div>
-    // </div>
   )
 }
 

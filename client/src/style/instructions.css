@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
 .most-active-list {
   gap: 1.5em;
@@ -6,5 +7,38 @@
 
 .active-title {
       font-family: 'Balsamiq Sans', cursive;
+}
 
+.guide-container {
+  background-image: url('https://www.etoro.com/wp-content/uploads/2019/08/shutterstock_1302276691_v2-scaled.jpg');
+  padding: 50px 0;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  height: 450px;
+  color: #fff;
+}
+
+.guide-container::after {
+  clear: both;
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 200px auto 0;
+  background: #6aac0e;
+}
+
+.guide-rules-container::after {
+  clear: both;
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 30px auto 0;
+  background: #6aac0e;
+}
+
+.guide-text {
+  font-family: 'Open Sans', sans-serif;
 }

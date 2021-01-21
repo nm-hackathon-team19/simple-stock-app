@@ -1,27 +1,14 @@
-import React, { useContext } from 'react'
-import { Jumbotron, Button, ListGroup } from 'react-bootstrap'
-import { UserNameContext } from '../context/UserNameContext'
-import { BiRightArrow } from 'react-icons/bi'
+import React from 'react'
 
 const InstructionsGuide = () => {
-  const [userName, setUserName] = useContext(UserNameContext)
-
   return (
-    <Jumbotron>
-      <h3>Hi {userName}, welcome to the beginners guide to the world of stocks exchange.</h3>
-      <ListGroup variant="flush">
-        <ListGroup.Item><BiRightArrow className="text-success" />Cras justo odio</ListGroup.Item>
-        <ListGroup.Item><BiRightArrow className="text-success" />Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item><BiRightArrow className="text-success" />Morbi leo risus</ListGroup.Item>
-        <ListGroup.Item><BiRightArrow className="text-success" />Porta ac consectetur ac</ListGroup.Item>
-      </ListGroup>
-      <p>
-        You don't need to be rich, famous or have a maths PhD to buy shares
-  </p>
-      <p>
-        <Button variant="primary">Learn more</Button>
-      </p>
-    </Jumbotron>
+    <section className="guide-container mt-3 container">
+      <div className="guide-text container">
+        <h1 className="display-3">Fantazy Stocks Guide</h1>
+        <h3>Want to learn how to trade? You're in the right place.</h3>
+        <h3> Scroll down to view some basic concepts and our top 10 active stocks at a given moment. </h3>
+      </div>
+    </section>
   )
 }
 
