@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import { getHoldings } from '../http-utilities/instructionsUtilities'
 import { Link } from 'react-router-dom'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 
 function RenderMostActiveStocks(props) {
   const [shares, setShares] = useState(0);
@@ -46,47 +46,24 @@ function RenderMostActiveStocks(props) {
     <div className="recommended-holding">
       <div className="selected-holding card mt-3">
         <Card style={{ width: '18rem' }}>
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-    </Card.Text>
+          <Card.Body className="active-header p-0">
+            <Card.Title className="border-0 m-0"> {companyName}</Card.Title>
           </Card.Body>
           <ListGroup className="list-group-flush">
-            <ListGroupItem>Cras justo odio</ListGroupItem>
-            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+            <ListGroupItem><strong>Symbol: </strong>{symbol}</ListGroupItem>
+            <ListGroupItem><strong>Price: </strong><span className={holdingStyleColor}>${latestPrice.toFixed(2)}</span> </ListGroupItem>
+            <ListGroupItem><strong>Percent Change: </strong><span className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</span> </ListGroupItem>
+            <ListGroupItem><strong>Daily Gain/Loss: </strong><span className={holdingStyleColor}>{positiveSign}${change}</span></ListGroupItem>
           </ListGroup>
-          <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
-            <Card.Link href="#">Another Link</Card.Link>
+          <Card.Body className="p-1 d-inline text-center">
+            <Link to={{
+              pathname: "/main",
+              search: `?symbol=${symbol}`
+            }}>
+              <Button className="btn btn-info">Start to Trade</Button>
+            </Link>
           </Card.Body>
         </Card>
-        {/* <div className="card-head">
-          <h2> {companyName}: {symbol}</h2>
-          <Link to={{
-            pathname: "/main",
-            search: `?symbol=${symbol}`
-          }}>
-            <button className="btn btn-info">Trade</button>
-          </Link>
-        </div>
-        <hr />
-        <div className="card-body">
-          <div className="price">
-            <strong>Current Price</strong>
-            <p className={holdingStyleColor}>${latestPrice.toFixed(2)}</p>
-          </div>
-          <div className="percent">
-            <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</p>
-          </div>
-          <div className="change">
-            <strong>Daily Gain/Loss</strong>
-            <p className={holdingStyleColor}>{positiveSign}${change}</p>
-          </div>
-        </div> */}
       </div>
     </div>
   )

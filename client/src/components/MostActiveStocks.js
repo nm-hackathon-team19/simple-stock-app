@@ -2,6 +2,8 @@ import React, { useState, Fragment, useEffect } from 'react'
 import axios from 'axios'
 import RenderMostActiveStocks from './RenderMostActiveStocks'
 import { Spinner } from 'react-bootstrap'
+import '../style/instructions.css'
+
 
 const MostActiveStocks = (props) => {
   const [mostActiveStocks, setMostActiveStocks] = useState([]);
@@ -29,7 +31,7 @@ const MostActiveStocks = (props) => {
   return (
     <Fragment>
       <div className="text-center mt-5 h5 font-weight-light">Most Active Stocks </div>
-      <div className="most-active-list d-flex flex-wrap">
+      <div className="most-active-list d-flex flex-wrap container-fluid justify-content-center">
         {
           isSpinner ?
             <Spinner animation="border" className="spinner" />

@@ -30,8 +30,6 @@ const InstructionsScreen = (props) => {
     <div>
       <HeaderInstructions />
       <MostActiveStocks />
-      <Recommendations
-      />
     </div>
   )
 }
