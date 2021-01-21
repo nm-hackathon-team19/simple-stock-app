@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import '../style/Home.css'
 import { UserNameContext } from '../context/UserNameContext'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'

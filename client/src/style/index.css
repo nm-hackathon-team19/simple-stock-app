@@ -31,16 +31,6 @@ img {
   color: green;
 }
 
-/* .btn {
-  cursor: pointer;
-  display: inline-block;
-  padding: 10px 30px;
-  color: #fff;
-  background-color: #c72727;
-  border: none;
-  border-radius: 5px;
-} */
-
 .btn:hover {
   opacity: 0.9;
 }
@@ -100,9 +90,13 @@ p {
 /* Navbar */
 .navbar-nav a:hover {
   color: red;
-      text-decoration: none;
-
+  text-decoration: none;
 }
+
+.navbar {
+  font-size: 1.1em;
+}
+
 .current {
   border-bottom: black solid 2px;
 }
