@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { UserNameContext } from '../context/UserNameContext'
 import { CgProfile } from 'react-icons/cg'
 
-
-
 const Navigation = (props) => {
   const [userName, setUserName] = useContext(UserNameContext)
 
