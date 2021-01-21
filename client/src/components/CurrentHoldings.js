@@ -21,7 +21,6 @@ const CurrentHoldings = ({ holding }) => {
 
   const { name, symbol, price, percent_change, shares, created_at } = holding;
 
-  console.log(holding)
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">

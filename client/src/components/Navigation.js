@@ -19,6 +19,7 @@ const Navigation = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link onClick={() => props.history.push('/')}>Home</Nav.Link>
+          <Nav.Link onClick={() => props.history.push('/instructions')}>instructions</Nav.Link>
           <Nav.Link onClick={() => props.history.push('/main')}>Trade</Nav.Link>
           <Nav.Link onClick={() => props.history.push('/portfolio')}>Portfolio</Nav.Link>
         </Nav>

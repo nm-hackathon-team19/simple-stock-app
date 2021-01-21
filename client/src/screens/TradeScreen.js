@@ -4,7 +4,7 @@ import '../style/Trade.css'
 import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../http-utilities/tradeUtilities'
 import Recommendations from '../components/Recommendations'
 import SelectedHolding from '../components/SelectedHolding'
-import HeaderTrade from '../components/HeaderTrade'
+import HeaderTrade from '../components/headers/HeaderTrade'
 import Form from '../components/Form'
 import ShowAlert from '../components/ShowAlert'
 import { withRouter } from 'react-router-dom';

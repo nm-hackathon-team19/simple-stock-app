@@ -29,6 +29,16 @@ router.get('/stocks/recommendation', (req, res) => {
     })
 })
 
+router.get('/stocks/mostactive', (req, res) => {
+  axios.get('https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=pk_e187f175e42d4ac89045179e525ef0e5')
+    .then(function (response) {
+      res.json(response.data)
+    })
+    .catch(function (err) {
+      console.log('error from server- API routes', err)
+    })
+})
+
 router.get('/chart/data', (req, res) => {
   const symbol = req.query.symbol
   axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=pk_e187f175e42d4ac89045179e525ef0e5`)

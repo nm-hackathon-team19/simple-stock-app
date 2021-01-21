@@ -10,10 +10,10 @@ const Welcome = () => {
   return (
     <div id="home">
       <div className="home-content m-0 text-justify w-100">
-        <h1>Welcome {userName}!</h1>
+        <h1 className="text-center">Hi {userName}, and welcome to UK's No. 1 trading playground!</h1>
         <Card bg="transparent" border="primary" className="w-75 mt-3">
           <Card.Body className="d-block">
-            <Card.Title as="h3">Trade Page</Card.Title>
+            <Card.Title as="h3">Trading Page</Card.Title>
             <Card.Text>
               Buy stocks by searching for a specific stock, or view recommended stocks. You can also buy or sell stocks that you already have in your portfolio. You are initially given a total of 10,000 dollars to buy stocks with.</Card.Text>
             <Link to="/main">
