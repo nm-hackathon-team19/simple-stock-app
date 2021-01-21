@@ -3,6 +3,9 @@ import '../style/index.css'
 import { Navbar, Nav } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { UserNameContext } from '../context/UserNameContext'
+import { CgProfile } from 'react-icons/cg'
+
+
 
 const Navigation = (props) => {
   const [userName, setUserName] = useContext(UserNameContext)
@@ -26,7 +29,7 @@ const Navigation = (props) => {
         {
           JSON.parse(localStorage.getItem('data')) ?
             <Nav>
-              <Nav.Link>Hello {userName}</Nav.Link>
+              <Nav.Link className="d-flex"><CgProfile size="1.5em" className="mr-1" /> {userName}</Nav.Link>
               <Nav.Link onClick={removeLS}>Logout</Nav.Link>
             </Nav>
             : null

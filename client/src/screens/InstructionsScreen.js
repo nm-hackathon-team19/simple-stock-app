@@ -1,34 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import HeaderInstructions from '../components/headers/HeaderInstructions'
-import Recommendations from '../components/Recommendations'
 import MostActiveStocks from '../components/MostActiveStocks'
-// import qa from 'qs';
+import InstructionsGuide from '../components/InstructionsGuide'
+import { UserNameContext } from '../context/UserNameContext'
 
-const InstructionsScreen = (props) => {
-
-  // useEffect(() => {
-
-  //   const renderSearchedHoldingFromPortfolio = () => {
-  //     const queryStrings = qa.parse(
-  //       props.location.search,
-  //       { ignoreQueryPrefix: true });
-  //     if (queryStrings.symbol) {
-  //       handleSearchForHolding(queryStrings.symbol)
-  //     }
-  //   }
-
-  //   renderSearchedHoldingFromPortfolio();
-  // }, []);
-
-  // const handleSearchForHolding = (symbol) => {
-  //   searchForHolding(symbol)
-  //     .then(selectedHolding => setSelectedHolding(selectedHolding))
-  //     .catch(err => console.error('error get holdings', err));
-  // };
+const InstructionsScreen = () => {
 
   return (
-    <div>
+    <div className="instructions-screen">
       <HeaderInstructions />
+      <section className="instructions-guide mt-3 container">
+        <InstructionsGuide />
+      </section>
       <MostActiveStocks />
     </div>
   )

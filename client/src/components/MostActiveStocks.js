@@ -24,10 +24,6 @@ const MostActiveStocks = (props) => {
     getRecommendations();
   }, [])
 
-  const handleTrade = (symbol) => {
-    props.handleSearchForHolding(symbol);
-  }
-
   return (
     <Fragment>
       <div className="text-center mt-5 h5 font-weight-light">Most Active Stocks </div>
