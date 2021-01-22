@@ -5,18 +5,15 @@ import NoCurrentHoldings from '../components/NoCurrentHoldings'
 import HeaderPortfolio from '../components/headers/HeaderPortfolio'
 import Chart from '../components/charts/Chart'
 import { getHoldings } from '../http-helpers/tradeUtilities'
-import { Spinner, Row, Col } from 'react-bootstrap'
 
 const PortfolioScreen = () => {
   const [holdings, setHoldings] = useState([]);
-  const [isSpinner, setSpinner] = useState(true);
 
   useEffect(() => {
     const fetchHoldingsData = () => {
       getHoldings()
         .then(holdingsData => {
           setHoldings(holdingsData);
-          setSpinner(false)
         })
         .catch(err => console.error('error get holdings', err));
     }
@@ -28,10 +25,6 @@ const PortfolioScreen = () => {
       <HeaderPortfolio />
       <div className="portfolio-top-wrapper d-flex align-items-start">
         <UserInfo />
-        {/* {isSpinner ?
-          <Spinner animation="border" className="spinner mt-5" />
-          :
-          <> */}
         <Chart />
       </div>
       <div className="user-holdings-list container">
@@ -44,8 +37,6 @@ const PortfolioScreen = () => {
           : <NoCurrentHoldings />
         }
       </div>
-      {/* </> */}
-      {/* } */}
     </section >
   )
 };
