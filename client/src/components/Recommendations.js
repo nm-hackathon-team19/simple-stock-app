@@ -28,7 +28,7 @@ const Recommendations = (props) => {
 
   return (
     <Fragment>
-      <div className="text-center mt-5 h5 font-weight-light">Other Recommendations</div>
+      <div className="text-center mt-5 h4 font-weight-light recommendation-header">Other Recommendations</div>
       {
         isSpinner ?
           <Spinner animation="border" className="spinner" />

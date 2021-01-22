@@ -3,7 +3,7 @@ import { UserNameContext } from '../context/UserNameContext'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const Welcome = () => {
+const WelcomePage = () => {
   const [userName, setUserName] = useContext(UserNameContext)
 
   return (
@@ -36,5 +36,5 @@ const Welcome = () => {
   );
 };
 
-export default Welcome
+export default WelcomePage
 

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-// import '../style/index.css'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 import { UserNameContext } from '../context/UserNameContext'
 import { CgProfile } from 'react-icons/cg'
@@ -19,9 +18,8 @@ const Navigation = (props) => {
       <Navbar.Brand href="/">Fantazy<AiOutlineStock />Stocks</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto d-flex w-100 justify-content-center">
+        <Nav className="mr-auto d-flex w-100 justify-content-center nav-links">
           <Nav.Link onClick={() => props.history.push('/')}>Home</Nav.Link>
-          <Nav.Link onClick={() => props.history.push('/instructions')}>instructions</Nav.Link>
           <Nav.Link onClick={() => props.history.push('/main')}>Trade</Nav.Link>
           <Nav.Link onClick={() => props.history.push('/portfolio')}>Portfolio</Nav.Link>
         </Nav>
@@ -33,6 +31,7 @@ const Navigation = (props) => {
             </Nav>
             : null
         }
+        <Nav.Link onClick={() => props.history.push('/instructions')}><Button variant="danger" size="md">Beginner?</Button></Nav.Link>
       </Navbar.Collapse>
     </Navbar >
   )

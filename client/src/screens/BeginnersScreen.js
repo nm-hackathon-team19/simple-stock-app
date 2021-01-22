@@ -1,20 +1,18 @@
 import React from 'react'
 import HeaderInstructions from '../components/headers/HeaderInstructions'
 import MostActiveStocks from '../components/MostActiveStocks'
-import InstructionsGuide from '../components/InstructionsGuide'
+import BeginnersHero from '../components/BeginnersHero'
 import BeginnersInfo from '../components/BeginnersInfo'
-import '../style/instructions.css'
-import '../style/mobile.css'
 
-const InstructionsScreen = () => {
+const BeginnersScreen = () => {
   return (
     <div className="instructions-screen">
       <HeaderInstructions />
-      <InstructionsGuide />
+      <BeginnersHero />
       <BeginnersInfo />
       <MostActiveStocks />
     </div>
   )
 }
 
-export default InstructionsScreen
+export default BeginnersScreen

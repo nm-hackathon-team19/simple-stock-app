@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getHoldings } from '../http-utilities/tradeUtilities'
+import { Button } from 'react-bootstrap'
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
@@ -44,7 +45,7 @@ function RenderRecommendations(props) {
       <div className="selected-holding card mt-3">
         <div className="card-head">
           <h2> {companyName}: {symbol}</h2>
-          <button className="btn btn-info" onClick={() => props.handleTrade(symbol)}>Trade</button>
+          <Button href="#goup" variant="outline-primary" onClick={() => props.handleTrade(symbol)}>Trade</Button>{' '}
         </div>
         <hr />
         <div className="card-body">

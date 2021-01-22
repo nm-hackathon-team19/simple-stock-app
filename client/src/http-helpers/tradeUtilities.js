@@ -31,7 +31,6 @@ export const updateHolding = async (id, shares) => {
     const response = await axios.put(`trade/${id}`, {
       shares
     })
-    console.log('updated holding:', response);
   } catch (err) {
     console.error('Error in update holding', err.message)
   }

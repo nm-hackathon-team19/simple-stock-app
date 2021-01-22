@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import BuyModal from './modals/BuyModal';
 import SellModal from './modals/SellModal';
 import { getHoldings } from '../http-utilities/tradeUtilities'
@@ -9,8 +9,6 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
   const [positiveSign, setPositiveSign] = useState(false);
-
-
 
   useEffect(() => {
     isHoldingNegativeOrPositive();

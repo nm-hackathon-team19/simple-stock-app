@@ -22,3 +22,9 @@
     height: auto !important;
   }
 }
+
+@media (max-width: 992px) { 
+  .guide-container {
+    height: 600px !important;
+  }
+}

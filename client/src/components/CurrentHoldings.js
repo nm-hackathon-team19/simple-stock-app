@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { Row } from 'react-bootstrap'
 
 const CurrentHoldings = ({ holding }) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');

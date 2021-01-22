@@ -37,7 +37,7 @@ const Register = (props) => {
 
   return (
     <>
-      <Button onClick={handleShow} className="btn btn-warning">Register</Button>
+      <Button size="lg" onClick={handleShow} className="btn btn-warning">Register</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

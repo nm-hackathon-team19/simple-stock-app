@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InstructionsGuide = () => {
+const BeginnersHero = () => {
   return (
     <section className="guide-container mt-3 container">
       <div className="guide-text container">
@@ -12,4 +12,4 @@ const InstructionsGuide = () => {
   )
 }
 
-export default InstructionsGuide
+export default BeginnersHero

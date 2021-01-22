@@ -40,9 +40,7 @@ const Form = (props) => {
   }, [isCanSearch]);
 
   const performApiCall = async () => {
-    // console.log('inside perfrom API Call')
     try {
-      // console.log(symbol);
       const response = await axios.get(`api/stock/search/?symbol=${symbol}`);
       if (response.data === 'error') {
         setShowAlert(true);
@@ -52,7 +50,6 @@ const Form = (props) => {
         setCompanyName(response.data.companyName);
       }
     } catch (err) {
-      // console.log('inside perform api call error')
       console.error(err.message)
     }
   }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react";
-import '../../style/Trade.css';
 import { Button, Modal, Form } from 'react-bootstrap'
 import { getWalletData } from '../../http-utilities/portfolioUtilities'
 import Alert from 'react-bootstrap/Alert'
@@ -19,7 +18,6 @@ const BuyModal = (props) => {
     fetchWalletData();
   }, []);
 
-
   const handleClose = () => { setShow(false); setShowAlert(false) }
   const handleShow = () => setShow(true);
 
@@ -32,10 +30,10 @@ const BuyModal = (props) => {
     }
   };
 
-  const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
+  const { companyName, symbol, latestPrice } = props.selectedHolding;
   return (
     <Fragment>
-      <Button variant="primary" onClick={handleShow}>Buy Stocks</Button>
+      <Button className="mr-2" variant="outline-success" onClick={handleShow}>Buy Stocks</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

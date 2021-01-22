@@ -1,16 +1,14 @@
 import React from 'react'
 import Register from '../components/Register'
 import Login from '../components/Login'
-import '../style/Home.css'
-import '../style/mobile.css'
-import Welcome from '../components/Welcome'
+import WelcomePage from '../components/WelcomePage'
 
-const Home = () => {
+const HomeScreen = () => {
   if (!localStorage.getItem('data')) {
     return (
       <div id="home">
-        <div className="home-content mt-5">
-          <h1>Welcome to Fantasy Stock Trader!</h1>
+        <div className="home-content mt-5 h2 font-weight-light">
+          <h1 className="display-4 mb-5 home-header">Welcome to Fantasy Stocks Trading!</h1>
           <p>Experience the thrill of the stock market by utilizing fake money to purchase real stocks and buy or sell shares.
           Search stock symbols and use fake money to trade and test your skills.</p>
           <p>Before you start, you must first register so the system can identify who you are.</p>
@@ -23,9 +21,9 @@ const Home = () => {
     )
   } else {
     return (
-      <Welcome />
+      <WelcomePage />
     )
   }
 }
 
-export default Home
+export default HomeScreen

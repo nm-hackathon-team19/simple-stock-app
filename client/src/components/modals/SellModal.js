@@ -19,10 +19,10 @@ const SellModal = (props) => {
     }
   }
 
-  const { companyName, symbol, latestPrice, changePercent, change } = props.selectedHolding;
+  const { companyName, symbol, latestPrice } = props.selectedHolding;
   return (
     <Fragment>
-      <Button variant="primary" onClick={handleShow}>Sell Stocks</Button>
+      <Button variant="secondary" onClick={handleShow}>Sell Stocks</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

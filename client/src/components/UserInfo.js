@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react'
-import '../style/mobile.css'
 import { UserNameContext } from '../context/UserNameContext'
 import { getWalletData } from '../http-utilities/portfolioUtilities'
 import Card from 'react-bootstrap/Card';

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import qa from 'qs';
-import '../style/Trade.css'
 import { searchForHolding, createHolding, deleteHolding, getHoldings, updateHolding } from '../http-utilities/tradeUtilities'
 import Recommendations from '../components/Recommendations'
 import SelectedHolding from '../components/SelectedHolding'
@@ -60,7 +59,6 @@ const TradeScreen = (props) => {
   }
 
   const buyNewHolding = (shares) => {
-    // setHoldings(prevHoldings => {
     const matchingHolding = holdings.find(
       (holding) => holding.symbol === selectedHolding.symbol);
     if (matchingHolding) {
@@ -78,13 +76,10 @@ const TradeScreen = (props) => {
         change: selectedHolding.change,
         changePercent: selectedHolding.changePercent,
       };
-      // prevHoldings.push(newShare);
       createHolding(newShare);
       setAlertMessage('purchased');
       toggleAlertState()
     }
-    // return prevHoldings
-    // })
   };
 
   return (

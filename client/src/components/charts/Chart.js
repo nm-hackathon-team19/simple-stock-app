@@ -47,7 +47,7 @@ const Chart = () => {
   }, [holdingNames])
 
   return (
-    <div className="chart">
+    <div className="chart chart-portfolio">
       {holdingNames.length > 0 &&
         <Pie
           data={holdingNames.length > 0 ? chartData : null}

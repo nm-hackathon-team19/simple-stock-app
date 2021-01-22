@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Potta+One&display=swap');
 
 #home {
    background: url('../images/stock-hero.jpg') no-repeat center center/cover;
@@ -43,3 +44,6 @@
   font-size: 1.2rem;
 }
 
+.home-header {
+font-family: 'Noto Sans TC', sans-serif;
+}

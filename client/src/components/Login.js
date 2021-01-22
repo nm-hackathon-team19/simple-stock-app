@@ -35,7 +35,7 @@ const Login = (props) => {
 
   return (
     <>
-      <Button onClick={handleShow} className="btn btn-primary">Login</Button>
+      <Button size="lg" onClick={handleShow} className="btn btn-primary">Login</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login Form</Modal.Title>
