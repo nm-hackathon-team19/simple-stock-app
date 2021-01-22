@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserNameContext } from '../context/UserNameContext'
-import { getWalletData } from '../http-utilities/portfolioUtilities'
+import { getWalletData } from '../http-helpers/portfolioUtilities'
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 

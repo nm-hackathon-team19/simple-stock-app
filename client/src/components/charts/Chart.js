@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { getHoldings } from '../../http-utilities/tradeUtilities';
+import { getHoldings } from '../../http-helpers/tradeUtilities';
 
 const Chart = () => {
   const [chartData, setChartData] = useState({})

@@ -4,7 +4,7 @@ import CurrentHoldings from '../components/CurrentHoldings'
 import NoCurrentHoldings from '../components/NoCurrentHoldings'
 import HeaderPortfolio from '../components/headers/HeaderPortfolio'
 import Chart from '../components/charts/Chart'
-import { getHoldings } from '../http-utilities/tradeUtilities'
+import { getHoldings } from '../http-helpers/tradeUtilities'
 import { Spinner } from 'react-bootstrap'
 
 const PortfolioScreen = () => {

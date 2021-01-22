@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getHoldings } from '../http-utilities/tradeUtilities'
+import { getHoldings } from '../http-helpers/tradeUtilities'
 import { Button } from 'react-bootstrap'
 
 function RenderRecommendations(props) {
