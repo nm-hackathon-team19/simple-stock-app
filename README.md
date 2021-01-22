@@ -6,7 +6,14 @@
 
 ### Check out the app [HERE](https://trading-stocks-amitai.herokuapp.com/)!
 
-<img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" width="700" /><img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" width="700" /><img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" width="700" />
+##### Home Page
+<img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" width="700" />
+##### Trade Page
+<img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" width="700" />
+##### Portfolio Page
+<img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" width="700" />
+##### Instructions Page
+<img src="https://user-images.githubusercontent.com/31068256/105557795-fb29b900-5d04-11eb-8284-72c8294f2651.png" width="700" />
 
 ## Instruction & How to use this app
 
@@ -30,7 +37,8 @@ This web application utilizes IEX Cloud API to retrieve and utilize stock inform
 - Node.js and Express.js - Backend Stack and Internal API
 - Postgre SQL - Database
 - IEX Cloud API - RESTAPI
-- Heroku - Hosting platform for both the web server and database
+- Heroku - Hosting platform for web server
+- ElephantSQL - Hosting platform for database
 - Graphs - Chart.js
 
 ## Author
