@@ -6,6 +6,9 @@
 
 ### Check out the app [HERE](https://trading-stocks-amitai.herokuapp.com/)!
 
+#### Login Page
+<img src="https://user-images.githubusercontent.com/31068256/105558067-ab97bd00-5d05-11eb-82ea-c9e3e48d9628.png" alt="login-page" width="700" />
+
 #### Home Page
 <img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" width="700" />
 
