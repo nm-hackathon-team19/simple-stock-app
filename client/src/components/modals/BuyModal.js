@@ -33,7 +33,7 @@ const BuyModal = (props) => {
   const { companyName, symbol, latestPrice } = props.selectedHolding;
   return (
     <Fragment>
-      <Button className="mr-2" variant="outline-success" onClick={handleShow}>Buy Stocks</Button>
+      <Button className="mr-2" variant="outline-primary" onClick={handleShow}>Buy Stocks</Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
