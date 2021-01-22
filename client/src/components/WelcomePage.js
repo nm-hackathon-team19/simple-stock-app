@@ -49,7 +49,7 @@ const WelcomePage = () => {
                 <Card.Body className="d-block">
                   <Card.Title as="h1" className="text-center">Instructions</Card.Title>
                   <Card.Text>
-                    New to the stocks world ? Want to get a better understanding of how to utilize the Fantasy Trade App ? This is the place for you.
+                    New to the stocks world? Want to get a better understanding of how to utilize the Fantasy Trade App? This is the place for you.
               </Card.Text>
                   <Link to="/instructions">
                     <Button variant="danger">Start Learning</Button>
