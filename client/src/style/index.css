@@ -120,9 +120,15 @@ a:hover {
   font-size: 1.2em;
 }
 
-canvas {
+.portfolio-container canvas {
     width: 675px !important;
     height: 310px !important;
+}
+
+.trade-container canvas {
+  height: 460px !important;
+  width: 1000px !important;
+  margin: 10px auto 0 auto;
 }
 
 .card {
