@@ -49,5 +49,4 @@ This web application utilizes IEX Cloud API to retrieve and utilize stock inform
 
 ## Author
 
-### Amitay Soffer- Full Stack Web Developer 
-[Website](https://alielreyes.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/)
+- Amitay Soffer- Full Stack Web Developer [Website](https://alielreyes.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/) | [Github](https://github.com/amitaysoffer)
