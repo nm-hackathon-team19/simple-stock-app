@@ -1,3 +1,7 @@
+.trade-container {
+  font-size: 1.2em;
+}
+
 /* Form */
 #search-form-container form input[type="text"] {
   width: 50%;
@@ -92,7 +96,6 @@ hr {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  /* gap: 2rem; */
   flex-wrap: wrap;
 }
 .stock-box {

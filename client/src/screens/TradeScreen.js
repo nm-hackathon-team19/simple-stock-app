@@ -83,7 +83,7 @@ const TradeScreen = (props) => {
   };
 
   return (
-    <section >
+    <section className="trade-container">
       <HeaderTrade />
       <div className="container">
         {isShowAlert &&

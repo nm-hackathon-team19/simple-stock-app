@@ -17,10 +17,8 @@ CREATE TABLE public.holdings
     shares integer,
     price decimal,
     percent_change character varying,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (holding_id)
 );
 
-ALTER TABLE holdings 
-ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
-ALTER TABLE public.holdings DROP COLUMN created_at;
