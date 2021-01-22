@@ -6,16 +6,19 @@
 
 ### Check out the app [HERE](https://trading-stocks-amitai.herokuapp.com/)!
 
-##### Home Page
+#### Home Page
 <img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" width="700" />
-##### Trade Page
+
+#### Trade Page
 <img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" width="700" />
-##### Portfolio Page
+
+#### Portfolio Page
 <img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" width="700" />
-##### Instructions Page
+
+#### Beginners Page
 <img src="https://user-images.githubusercontent.com/31068256/105557795-fb29b900-5d04-11eb-8284-72c8294f2651.png" width="700" />
 
-## Instruction & How to use this app
+## Instructions & How to use the app
 
 1. cd into the app root directory in your terminal
 3. Create a local database (I used PostgresSQL) based on the queries in the db.js file
