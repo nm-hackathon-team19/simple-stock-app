@@ -39,15 +39,15 @@ const CurrentHoldings = ({ holding }) => {
       <hr />
       <div className="card-body">
         <div className="Holding Value:">
-          <strong>Holding Value</strong>
+          <strong>Holding Total Value:</strong>
           <p className={holdingStyleColor}>${Number(price * shares).toFixed(2)}</p>
         </div>
         <div className="shares">
-          <strong>Shares:</strong>
+          <strong>Number Of Shares:</strong>
           <p>{shares}</p>
         </div>
         <div className="last-price">
-          <strong>Current Value:</strong>
+          <strong>Current Stock Value:</strong>
           <p className={holdingStyleColor}>${price}</p>
         </div>
         <div className="percent-change">
