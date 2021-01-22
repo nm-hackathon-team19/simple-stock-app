@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const createHolding = async (holding) => {
-  console.log('inside createHolding');
   try {
     const response = await axios.post('/trade', {
       name: holding.companyName,
@@ -11,7 +10,6 @@ export const createHolding = async (holding) => {
       changePercent: holding.changePercent,
       user_id: JSON.parse(localStorage.getItem('data')).id
     });
-    console.log('created holding:', response);
   } catch (err) {
     console.error('Error in create holding', err.message)
   }
