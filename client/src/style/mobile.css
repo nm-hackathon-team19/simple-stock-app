@@ -18,13 +18,22 @@
   }
 
   /* INSTRUCTIONS */
-  .guide-container {
-    height: auto !important;
+  .guide-container::after {
+    display: none !important;
   }
+
+  /* PORTFOLIO */
+  .portfolio-container {
+    font-size: 1em;
+}
 }
 
 @media (max-width: 992px) { 
   .guide-container {
-    height: 600px !important;
+    height: auto !important;
+  }
+
+  #home {
+    height: 100%;
   }
 }

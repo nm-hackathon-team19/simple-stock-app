@@ -24,7 +24,7 @@ const PortfolioScreen = () => {
   }, []);
 
   return (
-    <section>
+    <section className="portfolio-container text-size">
       <HeaderPortfolio />
       <div className="container">
         <UserInfo />

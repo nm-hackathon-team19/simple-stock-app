@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
+
 
 const CurrentHoldings = ({ holding }) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
@@ -29,7 +31,7 @@ const CurrentHoldings = ({ holding }) => {
             pathname: "/main",
             search: `?symbol=${symbol}`
           }}>
-            <button className="btn btn-primary">Trade</button>
+            <Button variant="primary" size="md">Trade</Button>
           </Link>
         </div>
       </div>

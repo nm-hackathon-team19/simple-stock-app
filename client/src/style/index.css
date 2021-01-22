@@ -114,7 +114,10 @@ a:hover {
   height: 3px;
   margin: 40px auto;
   background: #007bff;
+}
 
+.portfolio-container {
+  font-size: 1.3em;
 }
 /* Register */
 /* The Modal (background) */

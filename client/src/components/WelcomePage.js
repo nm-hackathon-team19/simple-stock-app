@@ -15,11 +15,11 @@ const WelcomePage = () => {
         <h1 className="text-center">Hi {userName}, and welcome to UK's No. 1 trading playground!</h1>
         <Container>
           <Row>
-            <Col md={4}>
+            <Col lg={4}>
               <Card bg="transparent" className="home-card mt-3">
                 <GiReceiveMoney size="7em" className="col-logo" />
                 <Card.Body className="d-block">
-                  <Card.Title as="h3" className="text-center">Trade</Card.Title>
+                  <Card.Title as="h1" className="text-center">Trade</Card.Title>
                   <Card.Text>
                     Buy stocks by searching for a specific symbol, or view our recommended stocks. You are initially given a total of 10,000 dollars.</Card.Text>
                   <Link to="/main">
@@ -28,11 +28,11 @@ const WelcomePage = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={4}>
+            <Col lg={4}>
               <Card bg="transparent" className="home-card mt-3">
                 <AiOutlineDatabase size="7em" className="col-logo" />
                 <Card.Body className="d-block">
-                  <Card.Title as="h3" className="text-center">Data</Card.Title>
+                  <Card.Title as="h1" className="text-center">Data</Card.Title>
                   <Card.Text>
                     View your personal data, current holdings and statistics.
                     With this information you can make informed decisions on what stocks to buy and sell.
@@ -43,11 +43,11 @@ const WelcomePage = () => {
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={4}>
+            <Col lg={4}>
               <Card bg="transparent" className="home-card mt-3">
                 <BiBookReader size="7em" className="col-logo" />
                 <Card.Body className="d-block">
-                  <Card.Title as="h3" className="text-center">Instructions</Card.Title>
+                  <Card.Title as="h1" className="text-center">Instructions</Card.Title>
                   <Card.Text>
                     New to the stocks world ? Want to get a better understanding of how to utilize the Fantasy Trade App ? This is the place for you.
               </Card.Text>
