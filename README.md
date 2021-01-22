@@ -9,17 +9,17 @@
 #### Login Page
 <img src="https://user-images.githubusercontent.com/31068256/105558067-ab97bd00-5d05-11eb-82ea-c9e3e48d9628.png" alt="login-page" width="700" />
 
-#### Home Page
-<img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" width="700" />
+#### Welcome Page
+<img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" alt="welcome-page" width="700" />
 
 #### Trade Page
-<img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" width="700" />
+<img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" alt="trade-page" width="700" />
 
 #### Portfolio Page
-<img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" width="700" />
+<img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" alt="portfolio-page" width="700" />
 
 #### Beginners Page
-<img src="https://user-images.githubusercontent.com/31068256/105557795-fb29b900-5d04-11eb-8284-72c8294f2651.png" width="700" />
+<img src="https://user-images.githubusercontent.com/31068256/105557795-fb29b900-5d04-11eb-8284-72c8294f2651.png" alt="beginners-page" width="700" />
 
 ## Instructions & How to use the app
 
@@ -49,8 +49,5 @@ This web application utilizes IEX Cloud API to retrieve and utilize stock inform
 
 ## Author
 
-### Amitay Soffer- Full Stack Web Developer
-
-<a href="https://www.esncz.org/sites/default/files/imce/under-construction.jpg" target="_blank" rel="noopener">Portfolio Website</a>
-
-[LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/)
+### Amitay Soffer- Full Stack Web Developer 
+[Website](https://alielreyes.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/)
