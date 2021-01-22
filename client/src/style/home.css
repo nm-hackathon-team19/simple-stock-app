@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Potta+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 #home {
    background: url('../images/stock-hero.jpg') no-repeat center center/cover;
    height: 95vh;
@@ -32,6 +34,7 @@
   padding: 0 20px;
   font-size: 1.3rem;
   color: #fff;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .home-buttons-wrapper {
@@ -44,5 +47,15 @@
 }
 
 .home-header {
-font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+.home-card {
+  width: 300px;
+  height: 400px;
+}
+
+#home .col-logo {
+  margin: auto;
 }
