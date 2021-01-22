@@ -23,9 +23,14 @@
   }
 
   /* PORTFOLIO */
-  .portfolio-container {
-    font-size: 1em;
-}
+    .portfolio-container {
+      font-size: 1em;
+  }
+
+    canvas {
+    height: 172px !important;
+    width: 345px !important;
+  }
 }
 
 @media (max-width: 992px) { 
@@ -35,5 +40,13 @@
 
   #home {
     height: 100%;
+  }
+
+  .portfolio-container .portfolio-top-wrapper {
+    display: block !important;
+  }
+
+  .portfolio-top-wrapper .user-info {
+      margin: 10px auto 0 auto !important;
   }
 }

@@ -5,7 +5,7 @@ import NoCurrentHoldings from '../components/NoCurrentHoldings'
 import HeaderPortfolio from '../components/headers/HeaderPortfolio'
 import Chart from '../components/charts/Chart'
 import { getHoldings } from '../http-helpers/tradeUtilities'
-import { Spinner } from 'react-bootstrap'
+import { Spinner, Row, Col } from 'react-bootstrap'
 
 const PortfolioScreen = () => {
   const [holdings, setHoldings] = useState([]);
@@ -24,26 +24,28 @@ const PortfolioScreen = () => {
   }, []);
 
   return (
-    <section className="portfolio-container text-size">
+    <section className="portfolio-container text-size container">
       <HeaderPortfolio />
-      <div className="container">
+      <div className="portfolio-top-wrapper d-flex align-items-start">
         <UserInfo />
-        {isSpinner ?
+        {/* {isSpinner ?
           <Spinner animation="border" className="spinner mt-5" />
           :
-          <>
-            <Chart />
-            {holdings.length > 0 ?
-              holdings.map(holding =>
-                <CurrentHoldings
-                  holding={holding}
-                  key={holding.holding_id}
-                />)
-              : <NoCurrentHoldings />
-            }
-          </>
+          <> */}
+        <Chart />
+      </div>
+      <div className="user-holdings-list container">
+        {holdings.length > 0 ?
+          holdings.map(holding =>
+            <CurrentHoldings
+              holding={holding}
+              key={holding.holding_id}
+            />)
+          : <NoCurrentHoldings />
         }
       </div>
+      {/* </> */}
+      {/* } */}
     </section >
   )
 };

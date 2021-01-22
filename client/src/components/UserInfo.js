@@ -22,9 +22,9 @@ function UserInformation() {
   }, []);
 
   return (
-    <Card className="m-auto w-50 user-info" align="center" border="dark">
+    <Card className="user-info mt-3 w-50" align="center" border="dark">
       <Card.Header className="h4">Account Information</Card.Header>
-      <ListGroup variant="flush" className="h5">
+      <ListGroup className="h5">
         <ListGroup.Item>User: {userName}</ListGroup.Item>
         <ListGroup.Item>Account Balance: ${wallet.toFixed(1)}</ListGroup.Item>
         <ListGroup.Item>Total Holding Value: ${totalHoldingsAmount.toFixed(1)}</ListGroup.Item>

@@ -106,7 +106,7 @@ a:hover {
 }
 
 /* PORTFOLIO */
-.chart-portfolio::after {
+.user-holdings-list::before {
   clear: both;
   content: '';
   display: block;
@@ -118,6 +118,15 @@ a:hover {
 
 .portfolio-container {
   font-size: 1.2em;
+}
+
+canvas {
+    width: 675px !important;
+    height: 310px !important;
+}
+
+.card {
+  border: 2px solid rgba(0,0,0,.125) !important;
 }
 
 /* Register */
