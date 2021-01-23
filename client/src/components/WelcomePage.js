@@ -23,7 +23,7 @@ const WelcomePage = () => {
                   <Card.Text>
                     Buy stocks by searching for a specific symbol, or view our recommended stocks. You are initially given a total of 10,000 dollars.</Card.Text>
                   <Link to="/main">
-                    <Button variant="primary">Start Trading</Button>
+                    <Button variant="primary" size="lg">Start Trading</Button>
                   </Link>
                 </Card.Body>
               </Card>
@@ -38,7 +38,7 @@ const WelcomePage = () => {
                     With this information you can make informed decisions on what stocks to buy and sell.
               </Card.Text>
                   <Link to="/portfolio">
-                    <Button variant="primary">Personal Information</Button>
+                    <Button variant="primary" size="lg">Personal Information</Button>
                   </Link>
                 </Card.Body>
               </Card>
@@ -52,7 +52,7 @@ const WelcomePage = () => {
                     New to the stocks world? Want to get a better understanding of how to utilize the Fantasy Trade App? This is the place for you.
               </Card.Text>
                   <Link to="/instructions">
-                    <Button variant="danger">Start Learning</Button>
+                    <Button variant="danger" size="lg">Start Learning</Button>
                   </Link>
                 </Card.Body>
               </Card>
