@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import BuyModal from './modals/BuyModal';
 import SellModal from './modals/SellModal';
-import { getHoldings } from '../http-helpers/tradeUtilities'
-import ChartTrade from './charts/ChartTrade'
+import { getHoldings } from '../http-helpers/tradeUtilities';
+import ChartTrade from './charts/ChartTrade';
 
-const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateShares }) => {
+const SelectedHolding = ({
+  selectedHolding,
+  buyNewHolding,
+  sellShares,
+  updateShares,
+}) => {
   const [shares, setShares] = useState(0);
   const [holdings, setHoldings] = useState([]);
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
@@ -12,7 +17,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
 
   useEffect(() => {
     isHoldingNegativeOrPositive();
-    getHoldingsData()
+    getHoldingsData();
   }, []);
 
   useEffect(() => {
@@ -23,50 +28,62 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(err => console.error('error get holdings', err));
-  }
+  };
 
   const isHoldingNegativeOrPositive = () => {
     if (String(changePercent).charAt(0) === '-') {
       setHoldingStyleColor('red');
-      setPositiveSign(false)
+      setPositiveSign(false);
     } else {
-      setHoldingStyleColor('green')
-      setPositiveSign('+')
+      setHoldingStyleColor('green');
+      setPositiveSign('+');
     }
-  }
+  };
 
   useEffect(() => {
     isHoldingNegativeOrPositive();
   }, [selectedHolding]);
 
-  const handleBuyShares = (shares) => {
+  const handleBuyShares = shares => {
     updateShares(shares);
-    buyNewHolding(shares);
+    buyNewHolding(selectedHolding, shares);
     setShares(prevState => prevState + parseInt(shares));
-  }
+  };
 
-  const handleSellShares = (shares) => {
-    sellShares(shares);
+  const handleSellShares = shares => {
+    sellShares(selectedHolding, shares);
     updateShares(shares);
     setShares(prevState => prevState - parseInt(shares));
-  }
+  };
 
   const compareSelectedHoldingToExisting = () => {
     if (selectedHolding) {
-      const holdingExist = holdings.find(holding => holding.symbol == selectedHolding.symbol);
+      const holdingExist = holdings.find(
+        holding => holding.symbol == selectedHolding.symbol
+      );
       if (holdingExist) {
         setShares(holdingExist.shares);
       }
     }
-  }
+  };
 
-  const { companyName, symbol, latestPrice, previousClose, changePercent, change } = selectedHolding;
+  const {
+    companyName,
+    symbol,
+    latestPrice,
+    previousClose,
+    changePercent,
+    change,
+  } = selectedHolding;
 
   return (
     <>
       <div className="selected-holding card mt-4">
         <div className="card-head">
-          <h2> {companyName}: {symbol}</h2>
+          <h2>
+            {' '}
+            {companyName}: {symbol}
+          </h2>
           <div className="card-buttons">
             <BuyModal
               handleBuyShares={handleBuyShares}
@@ -84,16 +101,25 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
         <div className="card-body">
           <div className="price">
             <strong>Current Price</strong>
-            <p className={`mb-0 ${holdingStyleColor}`}>${latestPrice.toFixed(2)}</p>
-            <small className={holdingStyleColor}>Previous Closed: ${previousClose.toFixed(2)} </small>
+            <p className={`mb-0 ${holdingStyleColor}`}>
+              ${latestPrice.toFixed(2)}
+            </p>
+            <small className={holdingStyleColor}>
+              Previous Closed: ${previousClose.toFixed(2)}{' '}
+            </small>
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>
+              {positiveSign}
+              {changePercent.toFixed(3)}%
+            </p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p className={holdingStyleColor}>{positiveSign}${change}</p>
+            <p className={holdingStyleColor}>
+              {positiveSign}${change}
+            </p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
@@ -103,7 +129,7 @@ const SelectedHolding = ({ selectedHolding, buyNewHolding, sellShares, updateSha
       </div>
       <ChartTrade symbol={symbol} />
     </>
-  )
-}
+  );
+};
 
-export default SelectedHolding
+export default SelectedHolding;

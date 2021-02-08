@@ -2,52 +2,78 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+const { IEX_PKEY } = process.env;
+
 router.get('/stock/search', (req, res) => {
-  const symbol = req.query.symbol
-  axios.get(`https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5`)
+  const symbol = req.query.symbol;
+  axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote&token=${IEX_PKEY}`
+    )
     .then(response => {
-      res.send(response.data[Object.keys(response.data)[0]].quote)
+      res.send(response.data[Object.keys(response.data)[0]].quote);
     })
     .catch(err => {
       if (symbol !== '') {
-        res.send('error')
+        res.send('error');
       }
-    })
-})
+      res.status(500).json({
+        errorMessage: 'Something went wrong on the server. Please try again.'
+      });
+    });
+});
 
 router.get('/stocks/recommendation', (req, res) => {
-  const holdings = []
-  axios.get('https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx,googl&types=quote&token=pk_e187f175e42d4ac89045179e525ef0e5')
+  const holdings = [];
+  axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/market/batch?symbols=msft,nflx,googl&types=quote&token=${IEX_PKEY}`
+    )
     .then(function (response) {
       Object.keys(response.data).forEach(function (key) {
-        holdings.push(response.data[key].quote)
-      })
-      res.json(holdings)
+        holdings.push(response.data[key].quote);
+      });
+      res.json(holdings);
     })
     .catch(function (err) {
-      console.log('error from server- API routes', err)
-    })
-})
+      console.log('error from server- API routes', err);
+      res.status(500).json({
+        errorMessage: 'Something went wrong on the server. Please try again.'
+      });
+    });
+});
 
 router.get('/stocks/mostactive', (req, res) => {
-  axios.get('https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=pk_e187f175e42d4ac89045179e525ef0e5')
+  axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${IEX_PKEY}`
+    )
     .then(function (response) {
-      res.json(response.data)
+      res.json(response.data);
     })
     .catch(function (err) {
-      console.log('error from server- API routes', err)
-    })
-})
+      console.log('error from server- API routes', err);
+      res.status(500).json({
+        errorMessage: 'Something went wrong on the server. Please try again.'
+      });
+    });
+});
 
 router.get('/chart/data', (req, res) => {
-  const symbol = req.query.symbol
-  axios.get(`https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=pk_e187f175e42d4ac89045179e525ef0e5`)
+  const symbol = req.query.symbol;
+  axios
+    .get(
+      `https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=${IEX_PKEY}`
+    )
     .then(response => {
-      res.send(response.data)
+      res.send(response.data);
     })
     .catch(error => {
-      console.log('error from server- API routes', error)
-    })
+      console.log('error from server- API routes', error);
+      res.status(500).json({
+        errorMessage: 'Something went wrong on the server. Please try again.'
+      });
+    });
 });
 
 module.exports = router;

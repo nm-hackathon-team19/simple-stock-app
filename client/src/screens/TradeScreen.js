@@ -6,6 +6,8 @@ import {
   deleteHolding,
   getHoldings,
   updateHolding,
+  buyStock,
+  sellStock,
 } from '../http-helpers/tradeUtilities';
 import Recommendations from '../components/Recommendations';
 import SelectedHolding from '../components/SelectedHolding';
@@ -55,40 +57,24 @@ const TradeScreen = props => {
       .catch(err => console.error('error get holdings', err));
   };
 
-  const sellShares = shares => {
-    const holding = holdings.find(
-      holding => holding.symbol == selectedHolding.symbol
-    );
-    updateHolding(holding.holding_id, holding.shares - shares);
+  const sellShares = (holding, shares) => {
+    // const holding = holdings.find(
+    //   holding => holding.symbol == selectedHolding.symbol
+    // );
+    // updateHolding(holding.holding_id, holding.shares - shares);
+    sellStock(holding, shares);
     setAlertMessage('sold');
     toggleAlertState();
-    shares == holding.shares && deleteHolding(holding.holding_id);
+    // shares == holding.shares && deleteHolding(holding.holding_id);
   };
 
-  const buyNewHolding = shares => {
-    const matchingHolding = holdings.find(
-      holding => holding.symbol === selectedHolding.symbol
-    );
-    if (matchingHolding) {
-      const matchIndex = holdings.indexOf(matchingHolding);
-      holdings[matchIndex].shares =
-        parseInt(holdings[matchIndex].shares) + parseInt(shares);
-      updateHolding(matchingHolding.holding_id, matchingHolding.shares);
-      setAlertMessage('purchased');
-      toggleAlertState();
-    } else {
-      const newShare = {
-        symbol: selectedHolding.symbol,
-        companyName: selectedHolding.companyName,
-        shares: shares,
-        price: selectedHolding.latestPrice,
-        change: selectedHolding.change,
-        changePercent: selectedHolding.changePercent,
-      };
-      createHolding(newShare);
-      setAlertMessage('purchased');
-      toggleAlertState();
-    }
+  const buyNewHolding = async (holding, shares) => {
+    // send an http request to buy stocks
+    await buyStock(holding, shares);
+    // set alert messsgae to purchased
+    setAlertMessage('purchased');
+    // toggle alert state
+    toggleAlertState();
   };
 
   return (

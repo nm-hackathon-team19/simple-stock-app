@@ -20,5 +20,3 @@ CREATE TABLE public.holdings
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (holding_id)
 );
-
-
