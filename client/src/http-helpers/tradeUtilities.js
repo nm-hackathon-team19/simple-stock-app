@@ -1,20 +1,5 @@
 import axios from 'axios';
 
-export const createHolding = async holding => {
-  try {
-    const response = await axios.post('/api/holdings', {
-      name: holding.companyName,
-      symbol: holding.symbol,
-      shares: holding.shares,
-      price: holding.price,
-      changePercent: holding.changePercent,
-      user_id: JSON.parse(localStorage.getItem('data')).id,
-    });
-  } catch (err) {
-    console.error('Error in create holding', err.message);
-  }
-};
-
 export const getHoldings = async () => {
   try {
     const response = await axios.get(
@@ -23,24 +8,6 @@ export const getHoldings = async () => {
     return response.data;
   } catch (err) {
     console.error('Error in get holdings', err.message);
-  }
-};
-
-export const updateHolding = async (id, shares) => {
-  try {
-    const response = await axios.put(`/api/holdings/${id}`, {
-      shares,
-    });
-  } catch (err) {
-    console.error('Error in update holding', err.message);
-  }
-};
-
-export const deleteHolding = async id => {
-  try {
-    const response = await axios.delete(`/api/holdings/${id}`);
-  } catch (err) {
-    console.error('Error in delete holding', err.message);
   }
 };
 

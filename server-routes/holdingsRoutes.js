@@ -28,23 +28,6 @@ router.get('/:user_id', async (req, res) => {
   }
 });
 
-// create holding
-router.post('/', async (req, res) => {
-  try {
-    const { name, symbol, shares, changePercent, price, user_id } = req.body;
-    const newHolding = await pool.query(
-      'INSERT INTO holdings (name, symbol, shares, percent_change, price, user_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
-      [name, symbol, shares, changePercent, price, user_id]
-    );
-    res.json(newHolding.rows[0]);
-  } catch (err) {
-    console.error('error from server- create new holding', err.message);
-    res.status(500).json({
-      errorMessage: 'Something went wrong on the server. Please try again.',
-    });
-  }
-});
-
 router.post('/buy', async (req, res) => {
   console.log('req.body: ', req.body);
   const { user_id, holding, shares } = req.body;
@@ -108,7 +91,7 @@ router.post('/sell', async (req, res) => {
     const updatedShares = parseInt(response.rows[0].shares) - parseInt(shares);
 
     if (updatedShares === 0) {
-      // remove holding row
+      // delete holding row
       const deletedHolding = await pool.query(
         'DELETE FROM holdings WHERE holding_id = $1',
         [response.rows[0].holding_id]
@@ -124,41 +107,6 @@ router.post('/sell', async (req, res) => {
     res.json(updatedHolding.rows[0]);
   } catch (err) {
     console.error('error from server- create new holding', err.message);
-    res.status(500).json({
-      errorMessage: 'Something went wrong on the server. Please try again.',
-    });
-  }
-});
-
-// update existing holding
-router.put('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { shares } = req.body;
-    const updatedHolding = await pool.query(
-      'UPDATE holdings SET shares = $1 WHERE holding_id = $2 RETURNING *',
-      [shares, id]
-    );
-    res.json(updatedHolding.rows[0]);
-  } catch (err) {
-    console.error('error from server- update holding', err.message);
-    res.status(500).json({
-      errorMessage: 'Something went wrong on the server. Please try again.',
-    });
-  }
-});
-
-// delete existing holding
-router.delete('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedHolding = await pool.query(
-      'DELETE FROM holdings WHERE holding_id = $1',
-      [id]
-    );
-    res.send(`successfully deleted holding id: ${id}`);
-  } catch (err) {
-    console.error('error from server- delete holdings', err.message);
     res.status(500).json({
       errorMessage: 'Something went wrong on the server. Please try again.',
     });

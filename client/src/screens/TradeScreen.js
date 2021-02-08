@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import qa from 'qs';
 import {
   searchForHolding,
-  createHolding,
-  deleteHolding,
   getHoldings,
-  updateHolding,
   buyStock,
   sellStock,
 } from '../http-helpers/tradeUtilities';
@@ -58,14 +55,9 @@ const TradeScreen = props => {
   };
 
   const sellShares = (holding, shares) => {
-    // const holding = holdings.find(
-    //   holding => holding.symbol == selectedHolding.symbol
-    // );
-    // updateHolding(holding.holding_id, holding.shares - shares);
     sellStock(holding, shares);
     setAlertMessage('sold');
     toggleAlertState();
-    // shares == holding.shares && deleteHolding(holding.holding_id);
   };
 
   const buyNewHolding = async (holding, shares) => {
