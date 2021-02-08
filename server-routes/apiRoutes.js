@@ -18,7 +18,7 @@ router.get('/stock/search', (req, res) => {
         res.send('error');
       }
       res.status(500).json({
-        errorMessage: 'Something went wrong on the server. Please try again.'
+        errorMessage: 'Something went wrong on the server. Please try again.',
       });
     });
 });
@@ -38,7 +38,7 @@ router.get('/stocks/recommendation', (req, res) => {
     .catch(function (err) {
       console.log('error from server- API routes', err);
       res.status(500).json({
-        errorMessage: 'Something went wrong on the server. Please try again.'
+        errorMessage: 'Something went wrong on the server. Please try again.',
       });
     });
 });
@@ -54,7 +54,7 @@ router.get('/stocks/mostactive', (req, res) => {
     .catch(function (err) {
       console.log('error from server- API routes', err);
       res.status(500).json({
-        errorMessage: 'Something went wrong on the server. Please try again.'
+        errorMessage: 'Something went wrong on the server. Please try again.',
       });
     });
 });
@@ -71,7 +71,7 @@ router.get('/chart/data', (req, res) => {
     .catch(error => {
       console.log('error from server- API routes', error);
       res.status(500).json({
-        errorMessage: 'Something went wrong on the server. Please try again.'
+        errorMessage: 'Something went wrong on the server. Please try again.',
       });
     });
 });
