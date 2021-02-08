@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database/db');
 
-// get holdings
 router.get('/:user_id', async (req, res) => {
   try {
     const { user_id } = req.params;
