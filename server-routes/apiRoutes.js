@@ -11,7 +11,7 @@ router.get('/stock/search', (req, res) => {
       `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote&token=${IEX_PKEY}`
     )
     .then(response => {
-      res.send(response.data[Object.keys(response.data)[0]].quote);
+      res.json(response.data[Object.keys(response.data)[0]].quote);
     })
     .catch(err => {
       if (symbol !== '') {
@@ -49,7 +49,7 @@ router.get('/stocks/mostactive', (req, res) => {
       `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${IEX_PKEY}`
     )
     .then(function (response) {
-      res.json(response.data);
+      res.json((response: response.data));
     })
     .catch(function (err) {
       console.log('error from server- API routes', err);
@@ -66,7 +66,7 @@ router.get('/chart/data', (req, res) => {
       `https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=${IEX_PKEY}`
     )
     .then(response => {
-      res.send(response.data);
+      res.json((response: response.data));
     })
     .catch(error => {
       console.log('error from server- API routes', error);

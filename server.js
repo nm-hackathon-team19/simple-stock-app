@@ -7,8 +7,8 @@ app.use('/', express.static(path.join(__dirname, 'client/build'))); // Set build
 
 app.use(express.json()); // access req.body
 
-const tradeRoutes = require('./server-routes/holdingsRoutes');
-app.use('/api/holdings/', tradeRoutes);
+const holdingsRoutes = require('./server-routes/holdingsRoutes');
+app.use('/api/holdings/', holdingsRoutes);
 
 const portfolioRoutes = require('./server-routes/portfolioRoutes');
 app.use('/portfolio/', portfolioRoutes);
