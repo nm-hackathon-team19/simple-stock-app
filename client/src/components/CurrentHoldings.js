@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
-
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const CurrentHoldings = ({ holding }) => {
   const [holdingStyleColor, setHoldingStyleColor] = useState('');
@@ -10,14 +9,14 @@ const CurrentHoldings = ({ holding }) => {
   useEffect(() => {
     const isHoldingNegativeOrPositive = () => {
       if (String(percent_change).charAt(0) === '-') {
-        setHoldingStyleColor('red')
-        setPositiveSign(false)
+        setHoldingStyleColor('red');
+        setPositiveSign(false);
       } else {
-        setHoldingStyleColor('green')
-        setPositiveSign('+')
+        setHoldingStyleColor('green');
+        setPositiveSign('+');
       }
-    }
-    isHoldingNegativeOrPositive()
+    };
+    isHoldingNegativeOrPositive();
   }, []);
 
   const { name, symbol, price, percent_change, shares, created_at } = holding;
@@ -25,13 +24,15 @@ const CurrentHoldings = ({ holding }) => {
   return (
     <div className="selected-holding card mt-4">
       <div className="card-head">
-        <h2>{name}: {symbol}</h2>
+        <h3>
+          {name}: {symbol}
+        </h3>
         <div className="card-buttons">
-          <Link to={{
-            pathname: "/main",
-            search: `?symbol=${symbol}`
-          }}>
-            <Button variant="primary" size="md">Trade</Button>
+          <Link to={{ pathname: '/main', search: `?symbol=${symbol}` }}>
+            <Button variant="primary" size="md">
+              {' '}
+              Trade{' '}
+            </Button>{' '}
           </Link>
         </div>
       </div>
@@ -40,7 +41,9 @@ const CurrentHoldings = ({ holding }) => {
       <div className="card-body">
         <div className="Holding Value:">
           <strong>Shares Total Value:</strong>
-          <p className={holdingStyleColor}>${Number(price * shares).toFixed(2)}</p>
+          <p className={holdingStyleColor}>
+            ${Number(price * shares).toFixed(2)}
+          </p>
         </div>
         <div className="shares">
           <strong>Number Of Shares:</strong>
@@ -52,11 +55,14 @@ const CurrentHoldings = ({ holding }) => {
         </div>
         <div className="percent-change">
           <strong>Percent Change:</strong>
-          <p className={holdingStyleColor}>{positiveSign}{percent_change}%</p>
+          <p className={holdingStyleColor}>
+            {positiveSign}
+            {percent_change}%
+          </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CurrentHoldings
+export default CurrentHoldings;

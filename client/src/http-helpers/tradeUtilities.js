@@ -18,7 +18,9 @@ export const buyStock = async (holding, shares) => {
       holding,
       shares,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const sellStock = async (holding, shares) => {
@@ -28,14 +30,16 @@ export const sellStock = async (holding, shares) => {
       holding,
       shares,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const searchForHolding = async symbol => {
   try {
-    const response = await axios.get(`api/stock/search/?symbol=${symbol}`);
+    const response = await axios.get(`/api/stocks/search/?symbol=${symbol}`);
     return response.data;
   } catch (err) {
-    console.error('error in search for holding', err.message);
+    // console.error('error in search for holding', err.message);
   }
 };

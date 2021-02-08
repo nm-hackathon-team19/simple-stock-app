@@ -11,13 +11,13 @@ const holdingsRoutes = require('./server-routes/holdingsRoutes');
 app.use('/api/holdings/', holdingsRoutes);
 
 const portfolioRoutes = require('./server-routes/portfolioRoutes');
-app.use('/portfolio/', portfolioRoutes);
+app.use('/api/portfolio/', portfolioRoutes);
 
 const authRoutes = require('./server-routes/authRoutes');
-app.use('/auth/', authRoutes);
+app.use('/api/auth/', authRoutes);
 
 const apiRoutes = require('./server-routes/apiRoutes');
-app.use('/api/', apiRoutes);
+app.use('/api/stocks/', apiRoutes);
 
 // Catch all
 app.get('/*', (req, res) => {

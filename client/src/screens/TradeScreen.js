@@ -9,7 +9,7 @@ import {
 import Recommendations from '../components/Recommendations';
 import SelectedHolding from '../components/SelectedHolding';
 import HeaderTrade from '../components/headers/HeaderTrade';
-import Form from '../components/Form';
+import AddHolding from '../components/AddHolding';
 import ShowAlert from '../components/ShowAlert';
 import { withRouter } from 'react-router-dom';
 
@@ -60,7 +60,7 @@ const TradeScreen = props => {
     toggleAlertState();
   };
 
-  const buyNewHolding = async (holding, shares) => {
+  const buyShares = async (holding, shares) => {
     // send an http request to buy stocks
     await buyStock(holding, shares);
     // set alert messsgae to purchased
@@ -82,11 +82,11 @@ const TradeScreen = props => {
             alertMessage={alertMessage}
           />
         )}
-        <Form handleSearchForHolding={handleSearchForHolding} />
+        <AddHolding handleSearchForHolding={handleSearchForHolding} />
         {selectedHolding ? (
           <SelectedHolding
             selectedHolding={selectedHolding}
-            buyNewHolding={buyNewHolding}
+            buyShares={buyShares}
             sellShares={sellShares}
             updateShares={updateShares}
           />

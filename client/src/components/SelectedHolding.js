@@ -6,7 +6,7 @@ import ChartTrade from './charts/ChartTrade';
 
 const SelectedHolding = ({
   selectedHolding,
-  buyNewHolding,
+  buyShares,
   sellShares,
   updateShares,
 }) => {
@@ -46,7 +46,7 @@ const SelectedHolding = ({
 
   const handleBuyShares = shares => {
     updateShares(shares);
-    buyNewHolding(selectedHolding, shares);
+    buyShares(selectedHolding, shares);
     setShares(prevState => prevState + parseInt(shares));
   };
 
@@ -66,7 +66,6 @@ const SelectedHolding = ({
       }
     }
   };
-
   const {
     companyName,
     symbol,

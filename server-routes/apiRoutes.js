@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const { IEX_PKEY } = process.env;
 
-router.get('/stock/search', (req, res) => {
+router.get('/search', (req, res) => {
   const symbol = req.query.symbol;
   axios
     .get(
@@ -23,7 +23,7 @@ router.get('/stock/search', (req, res) => {
     });
 });
 
-router.get('/stocks/recommendation', (req, res) => {
+router.get('/recommendation', (req, res) => {
   const holdings = [];
   axios
     .get(
@@ -43,7 +43,7 @@ router.get('/stocks/recommendation', (req, res) => {
     });
 });
 
-router.get('/stocks/mostactive', (req, res) => {
+router.get('/mostactive', (req, res) => {
   axios
     .get(
       `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${IEX_PKEY}`
@@ -59,7 +59,7 @@ router.get('/stocks/mostactive', (req, res) => {
     });
 });
 
-router.get('/chart/data', (req, res) => {
+router.get('/chart', (req, res) => {
   const symbol = req.query.symbol;
   axios
     .get(

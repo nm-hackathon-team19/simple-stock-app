@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
+import { searchForHolding } from '../http-helpers/tradeUtilities';
 
-const Form = props => {
+const AddHolding = props => {
   const [symbol, setSymbol] = useState('');
   const [companyName, setCompanyName] = useState(null);
   const [isCanSearch, setCanSearch] = useState(true);
@@ -41,16 +41,15 @@ const Form = props => {
 
   const performApiCall = async () => {
     try {
-      const response = await axios.get(`api/stock/search/?symbol=${symbol}`);
-      if (response.data === 'error') {
+      const response = await searchForHolding(symbol);
+      if (response === 'error') {
         setShowAlert(true);
-        console.log(response.data);
-      } else {
+      } else if (response) {
         setShowAlert(false);
-        setCompanyName(response.data.companyName);
+        setCompanyName(response.companyName);
       }
     } catch (err) {
-      console.error(err.message);
+      // console.error(err.message);
     }
   };
 
@@ -58,8 +57,7 @@ const Form = props => {
     <>
       <form
         className="form-inline justify-content-center mt-3 selected-holding"
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         <input
           type="symbol"
           value={symbol}
@@ -71,14 +69,12 @@ const Form = props => {
         <button
           type="submit"
           className="btn btn-primary col-sm-2"
-          disabled={!companyName}
-        >
+          disabled={!companyName}>
           Submit
         </button>
         <h6
           className="w-100 text-center text-success"
-          style={{ display: symbol === '' ? 'none' : 'block' }}
-        >
+          style={{ display: symbol === '' ? 'none' : 'block' }}>
           {companyName}
         </h6>
       </form>
@@ -87,8 +83,7 @@ const Form = props => {
           className="w-50 text-center m-auto"
           variant="danger"
           onClose={() => setShowAlert(false)}
-          dismissible
-        >
+          dismissible>
           <strong className="text-uppercase">{symbol}</strong> is not a valid
           symbol. Please try modifying your search.
         </Alert>
@@ -97,4 +92,4 @@ const Form = props => {
   );
 };
 
-export default Form;
+export default AddHolding;

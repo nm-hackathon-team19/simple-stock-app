@@ -6,7 +6,7 @@
 
   .home-content {
     padding: 5px;
-        align-items: center;
+    align-items: center;
   }
 
   .home-content > div {
@@ -23,13 +23,18 @@
   }
 
   /* PORTFOLIO */
-    .portfolio-container {
-      font-size: 1em;
+  .portfolio-container {
+    font-size: 1em;
   }
 
-    canvas {
-    height: 172px !important;
-    width: 345px !important;
+  .portfolio-container canvas {
+    width: 320px !important;
+    height: 200px !important;
+  }
+
+  .card .card-body > div {
+    padding: 5px;
+    font-size: 0.9em;
   }
 
   /* TRADE */
@@ -37,12 +42,21 @@
     font-size: 1em !important;
   }
 
-  .trade-container canvas{
+  .trade-container canvas {
     display: none !important;
+  }
+
+  .card .card-body {
+    font-size: 0.9em;
+    padding: 0.5rem;
+  }
+
+  .card-head h2 {
+    font-size: 1.6em;
   }
 }
 
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
   .guide-container {
     height: auto !important;
   }
@@ -56,6 +70,11 @@
   }
 
   .portfolio-top-wrapper .user-info {
-      margin: 10px auto 0 auto !important;
+    margin: 10px auto 0 auto !important;
+  }
+
+  .trade-container canvas {
+    height: 400px !important;
+    width: 670px !important;
   }
 }

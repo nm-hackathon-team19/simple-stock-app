@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { getHoldings } from '../http-helpers/tradeUtilities'
-import { Button } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react';
+import { getHoldings } from '../http-helpers/tradeUtilities';
+import { Button } from 'react-bootstrap';
 
 function RenderRecommendations(props) {
   const [shares, setShares] = useState(0);
@@ -9,7 +9,6 @@ function RenderRecommendations(props) {
   const [positiveSign, setPositiveSign] = useState(false);
 
   useEffect(() => {
-
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(err => console.error('error get holdings', err));
@@ -17,35 +16,51 @@ function RenderRecommendations(props) {
     const isHoldingNegativeOrPositive = () => {
       if (String(changePercent).charAt(0) === '-') {
         setHoldingStyleColor('red');
-        setPositiveSign(false)
+        setPositiveSign(false);
       } else {
-        setHoldingStyleColor('green')
-        setPositiveSign('+')
+        setHoldingStyleColor('green');
+        setPositiveSign('+');
       }
-    }
+    };
 
     isHoldingNegativeOrPositive();
   }, []);
 
   useEffect(() => {
     const compareSelectedHoldingToExistingList = () => {
-      const holdingExist = holdings.find(holding => holding.symbol == props.recommendedHolding.symbol);
+      const holdingExist = holdings.find(
+        holding => holding.symbol == props.recommendedHolding.symbol
+      );
       if (holdingExist) {
         setShares(holdingExist.shares);
       }
-    }
+    };
 
     compareSelectedHoldingToExistingList();
   }, [holdings]);
 
-  const { companyName, latestPrice, changePercent, change, symbol } = props.recommendedHolding;
+  const {
+    companyName,
+    latestPrice,
+    changePercent,
+    change,
+    symbol,
+  } = props.recommendedHolding;
 
   return (
     <div className="recommended-holding">
       <div className="selected-holding card mt-3">
         <div className="card-head">
-          <h2> {companyName}: {symbol}</h2>
-          <Button href="#goup" variant="outline-primary" onClick={() => props.handleTrade(symbol)}>Trade</Button>{' '}
+          <h3>
+            {' '}
+            {companyName}: {symbol}
+          </h3>
+          <Button
+            href="#goup"
+            variant="outline-primary"
+            onClick={() => props.handleTrade(symbol)}>
+            Trade
+          </Button>{' '}
         </div>
         <hr />
         <div className="card-body">
@@ -55,11 +70,16 @@ function RenderRecommendations(props) {
           </div>
           <div className="percent">
             <strong>Percent Change</strong>
-            <p className={holdingStyleColor}>{positiveSign}{changePercent.toFixed(3)}%</p>
+            <p className={holdingStyleColor}>
+              {positiveSign}
+              {changePercent.toFixed(3)}%
+            </p>
           </div>
           <div className="change">
             <strong>Daily Gain/Loss</strong>
-            <p className={holdingStyleColor}>{positiveSign}${change}</p>
+            <p className={holdingStyleColor}>
+              {positiveSign}${change}
+            </p>
           </div>
           <div className="shares-held">
             <strong>Shares Held</strong>
@@ -68,8 +88,7 @@ function RenderRecommendations(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-
-export default RenderRecommendations
+export default RenderRecommendations;
