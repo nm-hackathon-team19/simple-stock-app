@@ -49,7 +49,7 @@ router.get('/stocks/mostactive', (req, res) => {
       `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${IEX_PKEY}`
     )
     .then(function (response) {
-      res.json((response: response.data));
+      res.json(response.data);
     })
     .catch(function (err) {
       console.log('error from server- API routes', err);
@@ -66,7 +66,7 @@ router.get('/chart/data', (req, res) => {
       `https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=${IEX_PKEY}`
     )
     .then(response => {
-      res.json((response: response.data));
+      res.json(response.data);
     })
     .catch(error => {
       console.log('error from server- API routes', error);
