@@ -28,7 +28,6 @@ router.get('/:user_id', async (req, res) => {
 });
 
 router.post('/buy', async (req, res) => {
-  console.log('req.body: ', req.body);
   const { user_id, holding, shares } = req.body;
   const { companyName, symbol, latestPrice, changePercent } = holding;
 
@@ -69,7 +68,6 @@ router.post('/buy', async (req, res) => {
 });
 
 router.post('/sell', async (req, res) => {
-  console.log('req.body: ', req.body);
   const { user_id, holding, shares } = req.body;
   const { symbol, latestPrice } = holding;
 
