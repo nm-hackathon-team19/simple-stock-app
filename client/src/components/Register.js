@@ -27,9 +27,7 @@ const Register = props => {
       localStorage.setItem('data', JSON.stringify(response.data));
       setUserName(response.data.name);
 
-      if (JSON.parse(localStorage.getItem('data'))) {
-        props.history.push('/');
-      }
+      props.history.push('/');
     } catch (err) {
       console.error('error in createUser', err.message);
     }

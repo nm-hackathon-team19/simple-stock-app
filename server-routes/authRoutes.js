@@ -40,8 +40,9 @@ router.get('/login', async (req, res) => {
 
     // check if user exist
     if (user.rows.length === 0) {
-      return res.status(401).json("User doesn't exists!");
+      return res.status(401).json("User doesn't exist!");
     }
+
     // check passwords match http request and db
     if (user.rows[0].user_password !== password) {
       return res.status(401).json("Password don't match");

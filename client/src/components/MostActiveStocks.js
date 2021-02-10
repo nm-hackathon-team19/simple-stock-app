@@ -16,7 +16,7 @@ const MostActiveStocks = () => {
           setSpinner(false);
         })
         .catch(err => {
-          console.log('error mostactive stocks client side', err);
+          console.log('error most active stocks client side', err);
         });
     };
 

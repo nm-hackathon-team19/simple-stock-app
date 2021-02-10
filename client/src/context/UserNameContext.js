@@ -6,9 +6,7 @@ export const UserNameProvider = props => {
   const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('data'))) {
-      setUserName(JSON.parse(localStorage.getItem('data')).name);
-    }
+    setUserName(JSON.parse(localStorage.getItem('data')).name);
   }, []);
 
   return (

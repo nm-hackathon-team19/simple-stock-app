@@ -5,7 +5,7 @@ import { searchForHolding } from '../http-helpers/tradeUtilities';
 const AddHolding = props => {
   const [symbol, setSymbol] = useState('');
   const [companyName, setCompanyName] = useState(null);
-  const [isCanSearch, setCanSearch] = useState(true);
+  const [isCanSearch, setCanSearch] = useState(false);
   const timeoutRef = useRef(null);
   const [isShowAlert, setShowAlert] = useState(false);
 
@@ -23,7 +23,7 @@ const AddHolding = props => {
   };
 
   const onSearchSymbol = e => {
-    setCanSearch(prevState => (prevState = false));
+    setCanSearch(false);
     setSymbol(e.target.value);
   };
 
@@ -36,7 +36,7 @@ const AddHolding = props => {
     timeoutRef.current = setTimeout(() => {
       timeoutRef.current = null;
       setCanSearch(true);
-    }, 1000);
+    }, 2000);
   }, [isCanSearch]);
 
   const performApiCall = async () => {
@@ -49,7 +49,7 @@ const AddHolding = props => {
         setCompanyName(response.companyName);
       }
     } catch (err) {
-      // console.error(err.message);
+      console.error(err.message);
     }
   };
 
