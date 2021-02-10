@@ -6,8 +6,8 @@ const AddHolding = props => {
   const [symbol, setSymbol] = useState('');
   const [companyName, setCompanyName] = useState(null);
   const [isCanSearch, setCanSearch] = useState(false);
-  const [isShowAlert, setShowAlert] = useState(false);
   const timeoutRef = useRef(null);
+  const [isShowAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     if (symbol === '') {
