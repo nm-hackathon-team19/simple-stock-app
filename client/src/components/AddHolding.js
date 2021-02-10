@@ -9,6 +9,19 @@ const AddHolding = props => {
   const [isShowAlert, setShowAlert] = useState(false);
   const timeoutRef = useRef(null);
 
+  useEffect(() => {
+    if (symbol === '') {
+      setShowAlert(false);
+      setCompanyName(null);
+    }
+  }, [symbol]);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.handleSearchForHolding(symbol);
+    setSymbol('');
+  };
+
   const onSearchSymbol = e => {
     setCanSearch(false);
     setSymbol(e.target.value);
@@ -39,19 +52,6 @@ const AddHolding = props => {
       console.error(err.message);
     }
   };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.handleSearchForHolding(symbol);
-    setSymbol('');
-  };
-
-  useEffect(() => {
-    if (symbol === '') {
-      setShowAlert(false);
-      setCompanyName(null);
-    }
-  }, [symbol]);
 
   return (
     <>
