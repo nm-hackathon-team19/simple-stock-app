@@ -55,9 +55,7 @@ const AddHolding = props => {
 
   return (
     <>
-      <form
-        className="form-inline justify-content-center mt-3 selected-holding"
-        onSubmit={handleSubmit}>
+      <form className="form-inline justify-content-center mt-3 selected-holding" onSubmit={handleSubmit}>
         <input
           type="symbol"
           value={symbol}
@@ -66,26 +64,20 @@ const AddHolding = props => {
           className="form-control col-sm-5"
           placeholder="Enter stock symbol"
         />
-        <button
-          type="submit"
-          className="btn btn-primary col-sm-2"
-          disabled={!companyName}>
+        <button type="submit" className="btn btn-primary col-sm-2" disabled={!companyName}>
           Submit
         </button>
         <h6
           className="w-100 text-center text-success"
-          style={{ display: symbol === '' ? 'none' : 'block' }}>
+          style={{
+            display: symbol === '' ? 'none' : 'block',
+          }}>
           {companyName}
         </h6>
       </form>
       {isShowAlert && (
-        <Alert
-          className="w-50 text-center m-auto"
-          variant="danger"
-          onClose={() => setShowAlert(false)}
-          dismissible>
-          <strong className="text-uppercase">{symbol}</strong> is not a valid
-          symbol. Please try modifying your search.
+        <Alert className="w-50 text-center m-auto" variant="danger" onClose={() => setShowAlert(false)} dismissible>
+          <strong className="text-uppercase">{symbol}</strong> is not a valid symbol. Please try modifying your search.
         </Alert>
       )}
     </>

@@ -7,30 +7,35 @@
 ### Check out the app [HERE](https://trading-stocks-amitai.herokuapp.com/)!
 
 #### Login Page
+
 <img src="https://user-images.githubusercontent.com/31068256/105558067-ab97bd00-5d05-11eb-82ea-c9e3e48d9628.png" alt="login-page" width="700" />
 
 #### Welcome Page
+
 <img src="https://user-images.githubusercontent.com/31068256/105555024-70df5600-5d00-11eb-994b-d3fe7f867659.png" alt="welcome-page" width="700" />
 
 #### Trade Page
+
 <img src="https://user-images.githubusercontent.com/31068256/105555143-ae43e380-5d00-11eb-9f88-f37ec3fe8891.png" alt="trade-page" width="700" />
 
 #### Portfolio Page
+
 <img src="https://user-images.githubusercontent.com/31068256/105555105-98362300-5d00-11eb-9b9a-615a11faca3d.png" alt="portfolio-page" width="700" />
 
 #### Beginners Page
+
 <img src="https://user-images.githubusercontent.com/31068256/105557795-fb29b900-5d04-11eb-8284-72c8294f2651.png" alt="beginners-page" width="700" />
 
 ## Instructions & How to use the app
 
 1. cd into the app root directory in your terminal
-3. Create a local database (I used PostgresSQL) based on the queries in the db.js file
-2. Run `touch .env` in the root directory
-3. put in the relevant fields based on the sample file `.env_sample`
-4. Run `npm i` command
-5. cd into client folder and run `npm i` command
-6. cd back to root directory and run `npm run dev`
-7. open app in browser on `localhost:5000`
+2. Create a local database (I used PostgresSQL) based on the queries in the db.js file
+3. Run `touch .env` in the root directory
+4. put in the relevant fields based on the sample file `.env_sample`
+5. Run `npm i` command
+6. cd into client folder and run `npm i` command
+7. cd back to root directory and run `npm run dev`
+8. open app in browser on `localhost:5000`
 
 ## Summary
 
@@ -49,4 +54,4 @@ This web application utilizes IEX Cloud API to retrieve and utilize stock inform
 
 ## Author
 
-- Amitay Soffer- Full Stack Web Developer [Website](https://alielreyes.netlify.app/) | [LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/) | [Github](https://github.com/amitaysoffer)
+- Amitay Soffer- Full Stack Web Developer [Website](https://www.amitaysoffer.me/) | [LinkedIn](https://www.linkedin.com/in/amitay-soffer-137304151/) | [Github](https://github.com/amitaysoffer)

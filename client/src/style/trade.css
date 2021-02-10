@@ -3,7 +3,7 @@
 }
 
 /* Form */
-#search-form-container form input[type="text"] {
+#search-form-container form input[type='text'] {
   width: 50%;
   padding: 15px;
   margin: 20px 0;
@@ -13,23 +13,28 @@
   text-align: center;
 }
 
-.selected-holding input { 
-    text-transform: uppercase;
+.selected-holding input {
+  text-transform: uppercase;
 }
-::-webkit-input-placeholder { /* WebKit browsers */
-    text-transform: none;
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  text-transform: none;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    text-transform: none;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  text-transform: none;
 }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    text-transform: none;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  text-transform: none;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    text-transform: none;
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  text-transform: none;
 }
-::placeholder { /* Recent browsers */
-    text-transform: none;
+::placeholder {
+  /* Recent browsers */
+  text-transform: none;
 }
 
 /* User Information */
@@ -58,27 +63,27 @@
 /* Selected Holding */
 .card-head {
   display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
 }
 
 .card-body {
-      display: flex;
-    justify-content: space-between;
-    align-items: center;
-} 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .card-body > div {
   padding: 10px;
   width: 100%;
 }
-.card-body > div:nth-child(-n+3) {
-border-right: 2px solid rgba(0,0,0,.1);
-} 
+.card-body > div:nth-child(-n + 3) {
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
 
 hr {
-  margin: 0!important;
+  margin: 0 !important;
 }
 
 .recommendation-header::before {
@@ -176,19 +181,19 @@ hr {
 }
 
 .alert {
-    animation: fadein 1s;
-    -moz-animation: fadein 1s; /* Firefox */
-    -webkit-animation: fadein 1s; /* Safari and Chrome */
-    -o-animation: fadein 1s; /* Opera */
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
 }
 
 @keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Confirm */

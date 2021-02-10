@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import qa from 'qs';
-import {
-  searchForHolding,
-  getHoldings,
-  buyStock,
-  sellStock,
-} from '../http-helpers/tradeUtilities';
+import { searchForHolding, getHoldings, buyStock, sellStock } from '../http-helpers/tradeUtilities';
 import Recommendations from '../components/Recommendations';
 import SelectedHolding from '../components/SelectedHolding';
 import HeaderTrade from '../components/headers/HeaderTrade';
