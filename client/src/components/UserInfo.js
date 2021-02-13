@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { UserNameContext } from '../context/UserNameContext'
-import { getWalletData } from '../http-helpers/portfolioUtilities'
+import React, { useState, useEffect, useContext } from 'react';
+import { UserNameContext } from '../context/UserNameContext';
+import { getWalletData } from '../http-helpers/portfolioUtilities';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function UserInformation() {
-  const [userName, setUserName] = useContext(UserNameContext)
+  const [userName, setUserName] = useContext(UserNameContext);
   const [wallet, setWallet] = useState(0);
-  const [totalHoldingsAmount, setTotalHoldingsAmount] = useState(0)
+  const [totalHoldingsAmount, setTotalHoldingsAmount] = useState(0);
 
   useEffect(() => {
     const fetchWalletData = async () => {
       getWalletData()
         .then(res => {
-          setWallet(res.wallet)
-          setTotalHoldingsAmount(res.holdingsAmount)
+          setWallet(res.wallet);
+          setTotalHoldingsAmount(res.holdingsAmount);
         })
         .catch(err => console.error('error get wallet', err));
-    }
+    };
     fetchWalletData();
   }, []);
 
@@ -27,10 +27,12 @@ function UserInformation() {
       <ListGroup className="h5">
         <ListGroup.Item>User: {userName}</ListGroup.Item>
         <ListGroup.Item>Account Balance: ${wallet.toFixed(1)}</ListGroup.Item>
-        <ListGroup.Item>Total Holding Value: ${totalHoldingsAmount.toFixed(1)}</ListGroup.Item>
+        <ListGroup.Item>
+          Total Holding Value: ${totalHoldingsAmount.toFixed(1)}
+        </ListGroup.Item>
       </ListGroup>
     </Card>
-  )
+  );
 }
 
-export default UserInformation
+export default UserInformation;

@@ -1,8 +1,8 @@
-import React from 'react'
-import HeaderInstructions from '../components/headers/HeaderInstructions'
-import MostActiveStocks from '../components/MostActiveStocks'
-import BeginnersHero from '../components/BeginnersHero'
-import BeginnersInfo from '../components/BeginnersInfo'
+import React from 'react';
+import HeaderInstructions from '../components/headers/HeaderInstructions';
+import MostActiveStocks from '../components/MostActiveStocks';
+import BeginnersHero from '../components/BeginnersHero';
+import BeginnersInfo from '../components/BeginnersInfo';
 
 const BeginnersScreen = () => {
   return (
@@ -12,7 +12,7 @@ const BeginnersScreen = () => {
       <BeginnersInfo />
       <MostActiveStocks />
     </div>
-  )
-}
+  );
+};
 
-export default BeginnersScreen
+export default BeginnersScreen;

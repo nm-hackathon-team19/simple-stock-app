@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import { getHoldings } from '../../http-helpers/tradeUtilities';
 
 const Chart = () => {
-  const [chartData, setChartData] = useState({})
+  const [chartData, setChartData] = useState({});
   const [holdings, setHoldings] = useState([]);
   const [holdingNames, setHoldingNames] = useState([]);
   const [holdingShares, setHoldingShares] = useState([]);
@@ -16,14 +16,14 @@ const Chart = () => {
     getHoldings()
       .then(holdingsData => setHoldings(holdingsData))
       .catch(err => console.error('error get holdings', err));
-  }
+  };
 
   useEffect(() => {
     for (let i = 0; holdings.length > i; i++) {
       setHoldingNames(prevState => [...prevState, holdings[i].name]);
       setHoldingShares(prevState => [...prevState, holdings[i].shares]);
     }
-  }, [holdings])
+  }, [holdings]);
 
   useEffect(() => {
     setChartData({
@@ -39,32 +39,32 @@ const Chart = () => {
             'rgba(75, 192, 192, 0.6)',
             'rgba(153, 102, 255, 0.6)',
             'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)'
-          ]
-        }
-      ]
+            'rgba(255, 99, 132, 0.6)',
+          ],
+        },
+      ],
     });
-  }, [holdingNames])
+  }, [holdingNames]);
 
   return (
     <div className="chart chart-portfolio">
-      {holdingNames.length > 0 &&
+      {holdingNames.length > 0 && (
         <Pie
           data={holdingNames.length > 0 ? chartData : null}
           options={{
             title: {
               display: true,
-              fontSize: 15
+              fontSize: 15,
             },
             legend: {
               display: true,
-              position: 'right'
-            }
+              position: 'right',
+            },
           }}
         />
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Chart;

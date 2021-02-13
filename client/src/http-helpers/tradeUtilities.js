@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export const getHoldings = async () => {
   try {
-    const response = await axios.get(`/api/holdings/${JSON.parse(localStorage.getItem('data')).id}`);
+    const response = await axios.get(
+      `/api/holdings/${JSON.parse(localStorage.getItem('data')).id}`
+    );
     return response.data;
   } catch (err) {
     console.error('Error in get holdings', err.message);
