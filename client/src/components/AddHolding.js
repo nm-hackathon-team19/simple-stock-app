@@ -31,7 +31,8 @@ const AddHolding = props => {
     if (timeoutRef.current !== null) {
       clearTimeout(timeoutRef.current);
     }
-    if (isCanSearch) performApiCall();
+
+    if (isCanSearch && symbol) performApiCall();
 
     timeoutRef.current = setTimeout(() => {
       timeoutRef.current = null;
@@ -57,8 +58,7 @@ const AddHolding = props => {
     <>
       <form
         className="form-inline justify-content-center mt-3 selected-holding"
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         <input
           type="symbol"
           value={symbol}
@@ -70,16 +70,14 @@ const AddHolding = props => {
         <button
           type="submit"
           className="btn btn-primary col-sm-2"
-          disabled={!companyName}
-        >
+          disabled={!companyName}>
           Submit
         </button>
         <h6
           className="w-100 text-center text-success"
           style={{
             display: symbol === '' ? 'none' : 'block',
-          }}
-        >
+          }}>
           {companyName}
         </h6>
       </form>
@@ -88,8 +86,7 @@ const AddHolding = props => {
           className="w-50 text-center m-auto"
           variant="danger"
           onClose={() => setShowAlert(false)}
-          dismissible
-        >
+          dismissible>
           <strong className="text-uppercase">{symbol}</strong> is not a valid
           symbol. Please try modifying your search.
         </Alert>

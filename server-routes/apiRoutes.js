@@ -16,10 +16,11 @@ router.get('/search', (req, res) => {
     .catch(err => {
       if (symbol !== '') {
         res.send('error');
+      } else {
+        res.status(500).json({
+          errorMessage: 'Something went wrong on the server. Please try again.',
+        });
       }
-      res.status(500).json({
-        errorMessage: 'Something went wrong on the server. Please try again.',
-      });
     });
 });
 

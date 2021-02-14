@@ -36,6 +36,7 @@ export const sellStock = async (holding, shares) => {
 };
 
 export const searchForHolding = async symbol => {
+  // debugger;
   try {
     const response = await axios.get(`/api/stocks/search/?symbol=${symbol}`);
     return response.data;
