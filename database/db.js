@@ -3,11 +3,11 @@ const { Client } = require('pg')
 // var pgtools = require("pgtools");
 
 const config = {
-  user: process.env.DB_USER || 'nmteam19',
+  user: process.env.DB_USER || 'team19',
   password: process.env.DB_PASSWORD || 'northwestern',
-  host: process.env.DB_HOST || 'localhost',
+  host: process.env.DB_HOST || 'nm-hackathon-19.c1dqmlzjizkp.us-east-2.rds.amazonaws.com',
   port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'postgres',
+  database: process.env.DB_NAME || 'tradingstocks',
 }
 
 const pool = new Pool(config);
