@@ -16,7 +16,7 @@ const Navigation = props => {
   return (
     <Navbar bg="dark" variant="dark" id="navbar" expand="sm">
       <Navbar.Brand href="/">
-        Fantazy <AiOutlineStock /> Stocks
+        NM Team 19 Stock App
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

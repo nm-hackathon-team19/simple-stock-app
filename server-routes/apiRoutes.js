@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const { IEX_PKEY } = process.env;
+const IEX_PKEY  = process.env.IEX_PKEY
 
 router.get('/search', (req, res) => {
   const symbol = req.query.symbol;

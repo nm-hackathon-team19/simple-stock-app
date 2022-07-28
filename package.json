@@ -14,10 +14,12 @@
   "author": "Amitay Soffer",
   "license": "ISC",
   "dependencies": {
+    "@databases/pg": "^5.4.1",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.5.1",
+    "pgtools": "^0.3.2",
     "react-icons": "^4.1.0"
   },
   "devDependencies": {
