@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const IEX_PKEY  = process.env.IEX_PKEY
+const IEX_PKEY  = 'pk_6ea87eb2cdc540dd8d7b96e1950d7f49'
 
 router.get('/search', (req, res) => {
   const symbol = req.query.symbol;
